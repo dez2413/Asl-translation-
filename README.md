@@ -73,3 +73,52 @@ Sign-Speak (Ed.). (2025). Ai sign language translation and interpretation: Sign-
 Akash. “Asl Alphabet.” Kaggle, 22 Apr. 2018, [www.kaggle.com/datasets/grassknoted/asl-alphabet/data](https://www.kaggle.com/datasets/grassknoted/asl-alphabet/data).
 
 https://www.instructables.com/How-to-Train-Custom-Hand-Gestures-Using-Mediapipe/ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+📂 Project Structure
+
+/server.js          ← Backend server (Express)
+/package.json       ← Backend dependencies
+/client/            ← React frontend
+   /src             ← React components
+   /public          ← Static files
+   /package.json    ← Frontend dependencies
+
+
+
+
+# How to set up
+
+## Node.js
+    npm install
+
+## React
+    cd client
+    npm install
+
+## run backend
+    file location \GitHub\Asl-translation->
+    node server.js
+
+    should see if no error
+        Backend will run at: http://localhost:5000
+
+## run frontend 
+    cd client
+    npm start
+
+    should see if no error
+        Frontend will run at: http://localhost:3000
+
+
