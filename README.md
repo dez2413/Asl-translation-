@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Asl-translation-
 # Welcome to the Asl-translation- wiki!
 
@@ -122,3 +123,6 @@ https://www.instructables.com/How-to-Train-Custom-Hand-Gestures-Using-Mediapipe/
         Frontend will run at: http://localhost:3000
 
 
+=======
+# Asl-translation-
+>>>>>>> parent of 2c1d2b2 (Update README.md)
