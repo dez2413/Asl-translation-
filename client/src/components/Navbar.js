@@ -1,18 +1,20 @@
 import React from "react";
-import "./Navbar.css";  // Import the CSS for styling
+import { Link } from "react-router-dom";   // ✅ Import Link
+import "./Navbar.css";
 
 function Navbar() {
   return (
     <nav className="navbar">
       <h1 className="logo">ASL Translator</h1>
       <ul className="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/lessons">Lessons</a></li>
-        <li><a href="/practice">Practice</a></li>
-        <li><a href="/quiz">Quiz</a></li>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/lessons">Lessons</Link></li>
+        <li><Link to="/practice">Practice</Link></li>
+        <li><Link to="/quiz">Quiz</Link></li>
       </ul>
     </nav>
   );
 }
 
 export default Navbar;
+
