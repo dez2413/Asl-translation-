@@ -11,6 +11,8 @@ function Navbar() {
         <li><Link to="/lessons">Lessons</Link></li>
         <li><Link to="/practice">Practice</Link></li>
         <li><Link to="/quiz">Quiz</Link></li>
+        <li><Link to="/login">Login</Link></li>
+        <li><Link to="/Sign">SignUp</Link></li>
       </ul>
     </nav>
   );

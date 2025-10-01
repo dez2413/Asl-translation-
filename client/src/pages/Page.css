@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(30, 2, 48);
+}
+
 .page {
   padding: 2rem;
   text-align: center;
