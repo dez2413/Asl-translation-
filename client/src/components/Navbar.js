@@ -20,7 +20,7 @@ function Navbar() {
       {/* Right side - Login / Sign up */}
       <div className="navbar-right">
         <Link to="/login" className="btn-link">Login</Link>
-        <Link to="/signup" className="btn-link signup">Sign Up</Link>
+        <Link to="/sign" className="btn-link signup">Sign Up</Link>
       </div>
     </nav>
   );
