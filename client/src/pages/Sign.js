@@ -1,6 +1,6 @@
 import React from "react";
-import "./Page.css";
-import "./login.css";
+import "./style/Page.css";
+import "./style/login.css";
 import { Link } from "react-router-dom";
 
 import user_icon from "../assets/user.png";
@@ -28,9 +28,9 @@ function Sign() {
             <input type="password" placeholder="Password" />
         </div>
       </div>
-      <div className ="submit-container">
-        <Link to="/sign" className="submit">Sign Up</Link>
-      </div>
+      <Link to="/sign">
+        <button className="submit">Sign Up</button>
+      </Link>
       <div className= "switch">Do have an account? <Link to="/login">Login</Link></div>
     </div>
   );

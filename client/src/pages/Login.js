@@ -1,9 +1,9 @@
 import React from "react";
-import "./Page.css";
-import "./login.css";
+import "./style/Page.css";
+import "./style/login.css";
 import { Link } from "react-router-dom";
 
-// import user_icon from "../assets/user.png";
+
 import email_icon from "../assets/email.png";
 import passwaord_icon from "../assets/password.png";
 
@@ -25,9 +25,9 @@ function Login() {
         </div>
       </div>
       <div className= "forgot-password">Lost Password? <span>Click Here!</span></div>
-      <div className ="submit-container">
-        <Link to="/login" className="submit">Login</Link>
-      </div>
+      <Link to="/Login">
+        <button className="submit">Login</button>
+      </Link>
       <div className= "switch">Don't have an account? <Link to="/sign">Sign Up</Link></div>
     </div>
   );
