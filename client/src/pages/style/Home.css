@@ -56,6 +56,10 @@
   background-color: rgb(17, 4, 31)
 }
 
+.home-button:hover .arrow-icon {
+  transform: translateX(5px);
+}
+
 .arrow-icon {
   width: 20px;
   height: 20px;

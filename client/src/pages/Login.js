@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 import email_icon from "../assets/email.png";
-import passwaord_icon from "../assets/password.png";
+import password_icon from "../assets/password.png";
 
 function Login() {
   return (
@@ -20,12 +20,12 @@ function Login() {
             <input type="email" placeholder="Email" />
         </div>
         <div className = "input">
-            <img src={passwaord_icon} alt=""/>
+            <img src={password_icon} alt=""/>
             <input type="password" placeholder="Password" />
         </div>
       </div>
       <div className= "forgot-password">Lost Password? <span>Click Here!</span></div>
-      <Link to="/Login">
+      <Link to="/login">
         <button className="submit">Login</button>
       </Link>
       <div className= "switch">Don't have an account? <Link to="/sign">Sign Up</Link></div>

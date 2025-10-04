@@ -88,6 +88,11 @@
     font-weight: 700;
     cursor: pointer;
 }
+.submit:hover {
+  background: #470389;
+  transform: scale(1.02);
+  transition: 0.2s ease-in-out;
+}
 
 .switch{
     display: flex;

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import user_icon from "../assets/user.png";
 import email_icon from "../assets/email.png";
-import passwaord_icon from "../assets/password.png";
+import password_icon from "../assets/password.png";
 
 function Sign() {
   return (
@@ -24,7 +24,7 @@ function Sign() {
             <input type="email" placeholder="Email" />
         </div>
         <div className = "input">
-            <img src={passwaord_icon} alt=""/>
+            <img src={password_icon} alt=""/>
             <input type="password" placeholder="Password" />
         </div>
       </div>
