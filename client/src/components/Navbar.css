@@ -2,9 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #030231;
+  background-color: #5b04b1;
   padding: 0.8rem 2rem;
   color: white;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }
 
 .navbar-left .logo {
@@ -37,16 +43,16 @@
 }
 
 .navbar-right .btn-link:hover {
-  background-color: #457b9d;
+  background-color: #37105e;
 }
 
 .navbar-right .signup {
-  background-color: #e63946;
+  background-color: #2b0255;
   border: none;
 }
 
 .navbar-right .signup:hover {
-  background-color: #d62828;
+  background-color: #7f32d8;
 }
 
 

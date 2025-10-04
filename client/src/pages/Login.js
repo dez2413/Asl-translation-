@@ -26,9 +26,9 @@ function Login() {
       </div>
       <div className= "forgot-password">Lost Password? <span>Click Here!</span></div>
       <div className ="submit-container">
-        <Link to="/sign" className="submit">Sign Up</Link>
         <Link to="/login" className="submit">Login</Link>
       </div>
+      <div className= "switch">Don't have an account? <Link to="/sign">Sign Up</Link></div>
     </div>
   );
 }
