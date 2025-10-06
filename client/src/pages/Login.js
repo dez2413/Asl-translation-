@@ -1,75 +1,36 @@
 import React from "react";
-import "./Page.css";
-import "./login.css";
+import "./style/Page.css";
+import "./style/login.css";
 import { Link } from "react-router-dom";
 
-// import user_icon from "../assets/user.png";
+
 import email_icon from "../assets/email.png";
-import passwaord_icon from "../assets/password.png";
-import {useNavigate, Link} from "react-router-dom"
+import password_icon from "../assets/password.png";
 
 function Login() {
-
-  const history=useNavigate();
-
-  const [email,setEmail]=useState("")
-  const [password,setPassword]=useState("")
-
-  async function submit(e){
-    e.preventDefault();
-
-    try{
-      await axios.post("mongodb+srv://jubjub632_db_user:MAxn3eRWMDwmR4o@asldatabase.9sn35at.mongodb.net/?retryWrites=true&w=majority&appName=ASLDatabase"),{
-        email,password
-      })
-
-    // then(res=>{
-    //     if(res.data=="exist"){
-    //       history("/home",{state:{id:email}})
-    //     } 
-    //     else if(res.data=="notexist){
-    //       alert("User not signed up.")
-    // })
-      catch(e=>{})
-        alert{"Wrong password")
-              console.log(e);
-    } catch(e){
-      console.log(e);
-    }
-  
-    return (
-        <div className="container">
-        <div className="header">
-            <div className ="text"> Login</div>
-            <div className="Underline"></div>
+  return (
+    <div className="container">
+      <div className="header">
+        <div className ="text"> Login</div>
+        <div className="Underline"></div>
+      </div>
+      <div className = "inputs">
+        <div className = "input">
+            <img src={email_icon} alt=""/>
+            <input type="email" placeholder="Email" />
         </div>
-        <div className = "inputs">
-            <div className = "input">
-                <img src={email_icon} alt=""/>
-                <input type="email" onChange={(e)=>(setEmail(e.target.value))} placeholder="Email" />
-            </div>
-            <div className = "input">
-                <img src={passwaord_icon} alt=""/>
-                <input type="password" onChange={(e)=>(setPassword(e.target.value))} placeholder="Password" />
-            </div>
-            <input type="submit" onClick={submit}/>
-
-            </form>
-
-            <br />
-            <p>OR</p>
-            <br />
-
-            <Link to="/sign"></Link>Sign
+        <div className = "input">
+            <img src={password_icon} alt=""/>
+            <input type="password" placeholder="Password" />
         </div>
-        <div className= "forgot-password">Lost Password? <span>Click Here!</span></div>
-        <div className ="submit-container">
-            <Link to="/sign" className="submit">Sign Up</Link>
-            <Link to="/login" className="submit">Login</Link>
-        </div>
-        </div>
-    );
+      </div>
+      <div className= "forgot-password">Lost Password? <span>Click Here!</span></div>
+      <Link to="/login">
+        <button className="submit">Login</button>
+      </Link>
+      <div className= "switch">Don't have an account? <Link to="/sign">Sign Up</Link></div>
+    </div>
+  );
 }
-
 
 export default Login;
