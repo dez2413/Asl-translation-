@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import arrow_icon from "../assets/arrow.png";
 
 function Home() {
+  return (
     <div className="home-container">
       {/* Left Section */}
       <div className="home-left">
