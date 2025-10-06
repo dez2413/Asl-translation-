@@ -6,8 +6,11 @@ import { Link } from "react-router-dom";
 // import user_icon from "../assets/user.png";
 import email_icon from "../assets/email.png";
 import passwaord_icon from "../assets/password.png";
+import {useNavigate, Link} from "react-router-dom"
 
 function Login() {
+
+  const history=useNavigate();
 
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
@@ -19,6 +22,15 @@ function Login() {
       await axios.post("mongodb+srv://jubjub632_db_user:MAxn3eRWMDwmR4o@asldatabase.9sn35at.mongodb.net/?retryWrites=true&w=majority&appName=ASLDatabase"),{
         email,password
       })
+      .then(res=>{
+        if(res.data=="exist"){
+          history("/home",{state:{id:email}})
+        } else if(res.data=="notexist){
+          alert("User not signed up.")
+        })
+      .catch(e=>{})
+        alert{"Wrong password")
+              console.log(e);
     } catch(e){
       console.log(e);
     }
