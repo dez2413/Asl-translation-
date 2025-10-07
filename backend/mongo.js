@@ -10,8 +10,8 @@ mongoose.connect("mongodb+srv://jubjub632_db_user:MAxn3eRWMDwmR4o@asldatabase.9s
     console.log("failed");
 })
 
-                 
-const newSchema=new mongoose.Schema({
+// collection schema for users
+const userSchema=new mongoose.Schema({
   email:{
     type:String,
     required:true
@@ -22,6 +22,6 @@ const newSchema=new mongoose.Schema({
   }
 });
 
-const collection = mongoose.model("collection",newSchema)
+const userCollection = mongoose.model("User", userSchema);
 
-module.exports=collection
+module.exports = userCollection

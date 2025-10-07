@@ -21,7 +21,7 @@ function Sign() {
     try{
 
       await axios.post("http://localhost:5000/signUp", {
-        name,email,paswword
+        name,email,password
       })
     }
     catch(e){

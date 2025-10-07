@@ -19,7 +19,7 @@ function Login() {
     try{
 
       await axios.post("http://localhost:5000/login", {
-        email,paswword
+        email,password
       })
     }
     catch(e){
