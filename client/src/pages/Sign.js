@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./style/Page.css";
 import "./style/login.css";
-import { Link } from "react-router-dom";
+import {useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 import user_icon from "../assets/user.png";
@@ -59,3 +59,4 @@ function Sign() {
   );
 }
 
+export default Sign;
