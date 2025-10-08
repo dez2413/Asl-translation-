@@ -51,9 +51,7 @@ function Sign() {
             <input type="password" onChange={(e)=>{setPassword(e.target.value)}} placeholder="Password" />
         </div>
       </div>
-        <input type= "submit" on click = {submit} className="submit"/> <Link to="/sign">
-        <button className="submit">Sign Up</button>
-      </Link>
+        <input type= "submit" on click = {submit} className="submit"/> 
       <div className= "switch">Do have an account? <Link to="/login">Login</Link></div>
     </div>
   );
