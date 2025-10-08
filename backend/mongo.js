@@ -6,8 +6,8 @@ mongoose.connect("mongodb+srv://jubjub632_db_user:MAxn3eRWMDwmR4o@asldatabase.9s
 .then(()=>{
     console.log("mongodb connected");
 })
-.catch(()=>{
-    console.log("failed");
+  .catch((error) => {
+    console.error("MongoDB connection failed:", error.message);
 })
 
 // collection schema for users

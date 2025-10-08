@@ -23,6 +23,18 @@ function Sign() {
       await axios.post("http://localhost:5000/signUp", {
         name,email,password
       })
+            .then(res=>{
+        if(res.data="exist"){
+          alert("User already exist")
+        }
+        else if(res.data="notexist"){
+          history("/lesson", {state:{id:email}})
+        }
+      })
+      .catch(e=>{
+        alert("wrong details")
+        console.log(e);
+      })
     }
     catch(e){
 

@@ -10,6 +10,8 @@ import password_icon from "../assets/password.png";
 
 function Login() {
 
+  const history = useNavigate();
+
   const[email,setEmail] = useState("")
   const[password,setPassword] = useState("")
 
@@ -20,6 +22,18 @@ function Login() {
 
       await axios.post("http://localhost:5000/login", {
         email,password
+      })
+      .then(res=>{
+        if(res.data="exist"){
+          history("/lesson", {state:{id:email}})
+        }
+        else if(res.data="notexist"){
+          alert("User have not sign up")
+        }
+      })
+      .catch(e=>{
+        alert("wrong details")
+        console.log(e);
       })
     }
     catch(e){
