@@ -10,6 +10,8 @@ import password_icon from "../assets/password.png";
 
 function Sign() {
 
+  const history = useNavigate();
+
   const[email,setEmail] = useState("")
   const[password,setPassword] = useState("")
   const[name,setName] = useState("")
