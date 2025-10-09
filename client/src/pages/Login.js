@@ -16,13 +16,14 @@ function Login() {
   const[password,setPassword] = useState("")
 
   async function submit(e){
-    e.preventDefaulf()
+    e.preventDefault()
 
     try{
 
       await axios.post("http://localhost:5000/login", {
         email,password
       })
+
       .then(res=>{
         if(res.data="exist"){
           history("/lesson", {state:{id:email}})
@@ -61,7 +62,7 @@ function Login() {
       </div>
       <div className= "forgot-password">Lost Password? <span>Click Here!</span></div>
 
-      <input type= "submit" on click = {submit} className="submit"/>
+      <input type= "submit" onClick = {submit} className="submit"/>
       <div className= "switch">Don't have an account? <Link to="/sign">Sign Up</Link></div>
     </div>
   );

@@ -18,30 +18,26 @@ function Sign() {
 
 
   async function submit(e){
-    e.preventDefaulf()
+    e.preventDefault()
 
     try{
 
-      await axios.post("http://localhost:5000/signUp", {
+      const res = await axios.post("http://localhost:5000/signUp", {
         name,email,password
       })
-            .then(res=>{
-        if(res.data="exist"){
-          alert("User already exist")
-        }
-        else if(res.data="notexist"){
-          history("/lesson", {state:{id:email}})
-        }
-      })
-      .catch(e=>{
-        alert("wrong details")
-        console.log(e);
-      })
-    }
-    catch(e){
 
-      console.log(e);
+      console.log("Response from backend:", res.data);
 
+      // ✅ comparison should be === not =
+      if (res.data === "exist") {
+        alert("User already exists");
+      } else if (res.data === "notexist") {
+        alert("Signed up successfully!");
+        history("/lesson", { state: { id: email } });
+      }
+    } catch (e) {
+      alert("Something went wrong. Check the console for details.");
+      console.error(e);
     }
   }
 
@@ -65,7 +61,7 @@ function Sign() {
             <input type="password" onChange={(e)=>{setPassword(e.target.value)}} placeholder="Password" />
         </div>
       </div>
-        <input type= "submit" on click = {submit} className="submit"/> 
+        <input type= "submit" onClick = {submit} className="submit"/> 
       <div className= "switch">Do have an account? <Link to="/login">Login</Link></div>
     </div>
   );

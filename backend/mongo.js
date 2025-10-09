@@ -12,6 +12,10 @@ mongoose.connect("mongodb+srv://jubjub632_db_user:4GHp8Eo7YUPss6Jl@asldatabse.8u
 
 // collection schema for users
 const userSchema=new mongoose.Schema({
+  name:{
+    type:String,
+    required:true
+  },
   email:{
     type:String,
     required:true
