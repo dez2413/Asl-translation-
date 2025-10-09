@@ -1,5 +1,5 @@
 const mongoose =require("mongoose");
-mongoose.connect("mongodb+srv://jubjub632_db_user:MAxn3eRWMDwmR4o@asldatabase.9sn35at.mongodb.net/?retryWrites=true&w=majority&appName=ASLDatabase")
+mongoose.connect("mongodb+srv://jubjub632_db_user:4GHp8Eo7YUPss6Jl@asldatabse.8u0ou61.mongodb.net/?retryWrites=true&w=majority&appName=ASLDatabse")
 
 
 
