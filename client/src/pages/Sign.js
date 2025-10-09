@@ -28,12 +28,11 @@ function Sign() {
 
       console.log("Response from backend:", res.data);
 
-      // ✅ comparison should be === not =
       if (res.data === "exist") {
         alert("User already exists");
       } else if (res.data === "notexist") {
         alert("Signed up successfully!");
-        history("/lesson", { state: { id: email } });
+        history("/lessons", { state: { id: email } });
       }
     } catch (e) {
       alert("Something went wrong. Check the console for details.");
@@ -47,22 +46,39 @@ function Sign() {
         <div className ="text"> Sign Up</div>
         <div className="Underline"></div>
       </div>
-      <div className = "inputs">
-        <div className = "input">
-            <img src={user_icon} alt=""/>
-            <input type="text" onChange={(e)=>{setName(e.target.value)}} placeholder="Name" />
+      <form onSubmit={submit}>
+        <div className="inputs">
+          <div className="input">
+            <img src={user_icon} alt="" />
+            <input
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Name"
+            />
+          </div>
+          <div className="input">
+            <img src={email_icon} alt="" />
+            <input
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+            />
+          </div>
+          <div className="input">
+            <img src={password_icon} alt="" />
+            <input
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+            />
+          </div>
         </div>
-        <div className = "input">
-            <img src={email_icon} alt=""/>
-            <input type="email" onChange={(e)=>{setEmail(e.target.value)}} placeholder="Email" />
-        </div>
-        <div className = "input">
-            <img src={password_icon} alt=""/>
-            <input type="password" onChange={(e)=>{setPassword(e.target.value)}} placeholder="Password" />
-        </div>
+        <button type="submit" className="submit">
+          Submit
+        </button>
+      </form>
+      <div className= "switch"> Do have an account? <Link to="/login">Login</Link>
       </div>
-        <input type= "submit" onClick = {submit} className="submit"/> 
-      <div className= "switch">Do have an account? <Link to="/login">Login</Link></div>
     </div>
   );
 }

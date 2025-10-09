@@ -23,7 +23,7 @@ app.post("/login",async(req,res)=>{
 
     if(check){
       res.json("exist")
-    } else{
+    } else{ 
       res.json("notexist")
     }    
   } catch(e){
@@ -31,24 +31,24 @@ app.post("/login",async(req,res)=>{
   }
 })
 
-app.post("/signUp",async(req,res)=>{
-  const{email, password}  =req.body
+app.post("/signUp", async (req, res) => {
+  const { name, email, password } = req.body;
+  const data = { name, email, password };
 
-  const data={ email: email, password: password }
+  try {
+    const existingUser = await collection.findOne({ email });
 
-  try{
-    const check = await collection.findOne({email: email});
+    if (existingUser) {
+      return res.json("exist");
+    }
 
-    if(check){
-      res.json("exist")
-    } else{
-      res.json("notexist")
-      await collection.insertMany([data])
-    }    
-  } catch(e){
-    res.json("notexist");
+    await collection.insertOne(data); 
+    return res.json("notexist"); 
+  } catch (e) {
+    console.error("Signup error:", e);
+    return res.status(500).json("error");
   }
-})
+});
 
 app.listen(PORT, () => {
   console.log(`Backend running at http://localhost:${PORT}`);
