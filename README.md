@@ -102,6 +102,7 @@ https://www.instructables.com/How-to-Train-Custom-Hand-Gestures-Using-Mediapipe/
 # How to set up
 
 ## Node.js
+    cd backend
     npm install
 
 ## React

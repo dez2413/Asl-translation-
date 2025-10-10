@@ -1,25 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Lessons from "./pages/Lessons";
+import Practice from "./pages/Practice";
+import Quiz from "./pages/Quiz";
+import Login from "./pages/Login";
+import Sign from "./pages/Sign";
 
 function App() {
-  const [lessons, setLessons] = useState([]);
-
-  useEffect(() => {
-    fetch('/api/lessons')
-      .then(res => res.json())
-      .then(data => setLessons(data));
-  }, []);
-
   return (
-    <div>
-      <h1>ASL Learner Tool</h1>
-      <ul>
-        {lessons.map(lesson => (
-          <li key={lesson.id}>
-            {lesson.title} <img src={lesson.image} alt={lesson.title} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/lessons" element={<Lessons />} />
+        <Route path="/practice" element={<Practice />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/Sign" element={<Sign />} />
+      </Routes>
+    </Router>
   );
 }
 
