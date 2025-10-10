@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import "./style/Page.css";
 import "./style/login.css";
 import {useNavigate, Link } from "react-router-dom";
@@ -20,27 +20,21 @@ function Login() {
 
     try{
 
-      await axios.post("http://localhost:5000/login", {
+      const res = await axios.post("http://localhost:5000/signUp", {
         email,password
       })
 
-      .then(res=>{
-        if(res.data="exist"){
+       console.log("Response from backend:", res.data);
+
+      if (res.data === "exist") {
+          alert("User logged in successfully!");
           history("/lessons", {state:{id:email}})
-        }
-        else if(res.data="notexist"){
+       } else if (res.data === "notexist") {
           alert("User have not sign up")
-        }
-      })
-      .catch(e=>{
-        alert("wrong details")
-        console.log(e);
-      })
-    }
-    catch(e){
-
-      console.log(e);
-
+      }
+    } catch (e) {
+      alert("Something went wrong. Check the console for details.");
+      console.error(e);
     }
   }
 
@@ -50,19 +44,28 @@ function Login() {
         <div className ="text"> Login</div>
         <div className="Underline"></div>
       </div>
-      <div className = "inputs">
-        <div className = "input">
-            <img src={email_icon} alt=""/>
-            <input type="email" onChange={(e)=>{setEmail(e.target.value)}} placeholder="Email" />
+       <form onSubmit={submit}>
+        <div className = "inputs">
+          <div className = "input">
+              <img src={email_icon} alt=""/>
+              <input 
+                type="email" 
+                onChange={(e)=>{setEmail(e.target.value)}} 
+                placeholder="Email" />
+          </div>
+          <div className = "input">
+              <img src={password_icon} alt=""/>
+              <input 
+                type="password" 
+                onChange={(e)=>{setPassword(e.target.value)}} 
+                placeholder="Password" />
+          </div>
         </div>
-        <div className = "input">
-            <img src={password_icon} alt=""/>
-            <input type="password" onChange={(e)=>{setPassword(e.target.value)}} placeholder="Password" />
-        </div>
-      </div>
-      <div className= "forgot-password">Lost Password? <span>Click Here!</span></div>
-
-      <input type= "submit" onClick = {submit} className="submit"/>
+        <div className= "forgot-password">Lost Password? <span>Click Here!</span></div>
+          <button type="submit" className="submit">
+            Submit
+          </button>
+        </form>
       <div className= "switch">Don't have an account? <Link to="/sign">Sign Up</Link></div>
     </div>
   );
