@@ -15,21 +15,27 @@ app.get('/',cors(),(req, res) => {
   ]);
 });
 
-app.post("/login",async(req,res)=>{
-  const{email, password}  =req.body
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
 
-  try{
-    const check = await collection.findOne({email: email});
+  try {
+    const user = await collection.findOne({ email });
 
-    if(check){
-      res.json("exist")
-    } else{ 
-      res.json("notexist")
-    }    
-  } catch(e){
-    res.json("notexist");
+    if (!user) {
+      return res.json("notexist");
+    }
+
+    // (optional) verify password match
+    if (user.password !== password) {
+      return res.json("wrongpassword");
+    }
+
+    res.json("exist");
+  } catch (e) {
+    console.error("Login error:", e);
+    res.status(500).json("error");
   }
-})
+});
 
 app.post("/signUp", async (req, res) => {
   const { name, email, password } = req.body;
