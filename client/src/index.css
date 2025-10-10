@@ -5,5 +5,8 @@ body{
     -webkit-front-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 100vh;
-    background: linear-gradient(rgb(30, 14, 35), rgba(84, 0, 129, 0.744));
+ 
+  background: linear-gradient(135deg, #0e001f, #4b0082);
+  
+
 }

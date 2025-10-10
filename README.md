@@ -104,10 +104,12 @@ https://www.instructables.com/How-to-Train-Custom-Hand-Gestures-Using-Mediapipe/
 ## Node.js
     cd backend
     npm install
+    npm install mongoose
 
 ## React
     cd client
     npm install
+    npm install axios
 
 ## run backend
     file location \GitHub\Asl-translation->
