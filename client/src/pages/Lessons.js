@@ -1,11 +1,16 @@
 import React from "react";
-import "./Page.css";
+// import {useNavigate, useLocation} from "react-router-dom";
+import "./style/Page.css";
+import "./style/Lesson.css"
 
 function Lessons() {
+  // const location = useLocation();
+  
   return (
     <div className="page">
       <h1>Lessons</h1>
-      <p>Here you will find ASL alphabet and word lessons.</p>
+      {/* <h2>Hello {location.state.id} </h2> */}
+      
     </div>
   );
 }
