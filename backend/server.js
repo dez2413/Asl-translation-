@@ -15,17 +15,20 @@ app.get('/',cors(),(req, res) => {
   ]);
 });
 
+
+//
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await collection.findOne({ email });
+    const user = await collection.findOne({ email }); //getting email
 
+    //change if user exist
     if (!user) {
       return res.json("notexist");
     }
 
-    // (optional) verify password match
+    // verify password match
     if (user.password !== password) {
       return res.json("wrongpassword");
     }
@@ -37,6 +40,12 @@ app.post("/login", async (req, res) => {
   }
 });
 
+//get the login page
+app.get("/login",cors(),(req, res) => {
+ 
+  })
+
+//post all the sign to the database
 app.post("/signUp", async (req, res) => {
   const { name, email, password } = req.body;
   const data = { name, email, password };
@@ -44,6 +53,7 @@ app.post("/signUp", async (req, res) => {
   try {
     const existingUser = await collection.findOne({ email });
 
+    //changing if user exist
     if (existingUser) {
       return res.json("exist");
     }
