@@ -20,7 +20,7 @@ function Login() {
 
     try{
 
-      const res = await axios.post("http://localhost:5000/signUp", {
+      const res = await axios.post("http://localhost:5000/login", {
         email,password
       })
 

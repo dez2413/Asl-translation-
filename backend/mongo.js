@@ -14,11 +14,12 @@ mongoose.connect("mongodb+srv://jubjub632_db_user:4GHp8Eo7YUPss6Jl@asldatabse.8u
 const userSchema=new mongoose.Schema({
   name:{
     type:String,
-    required:false
+    required:true
   },
   email:{
     type:String,
-    required:true
+    required:true,
+    unique:true
   },
   password:{
     type:String,
