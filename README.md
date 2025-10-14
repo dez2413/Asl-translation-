@@ -110,6 +110,7 @@ https://www.instructables.com/How-to-Train-Custom-Hand-Gestures-Using-Mediapipe/
     cd client
     npm install
     npm install axios
+    npm install @mediapipe/hands @mediapipe/camera_utils @mediapipe/drawing_utils
 
 ## run backend
     file location \GitHub\Asl-translation->

@@ -1,114 +1,97 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { Hands } from "@mediapipe/hands";
+import { Camera } from "@mediapipe/camera_utils";
+import { drawConnectors, drawLandmarks } from "@mediapipe/drawing_utils";
 import "./style/Page.css";
 
-const video1 = document.getElementsByClassName('input_video1')[0];
-const out1 = document.getElementsByClassName('output1')[0];
-const controlsElement1 = document.getElementsByClassName('control1')[0];
-const canvasCtx1 = out1.getContext('2d');
-const fpsControl = new FPS();
-
 function Practice() {
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    const canvasElement = canvasRef.current;
+    const canvasCtx = canvasElement.getContext("2d");
+
+    // Set up hands model
+    const hands = new Hands({
+      locateFile: (file) =>
+        `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`,
+    });
+
+    hands.setOptions({
+      maxNumHands: 2,
+      modelComplexity: 1,
+      minDetectionConfidence: 0.5,
+      minTrackingConfidence: 0.5,
+    });
+
+    hands.onResults((results) => {
+      canvasCtx.save();
+      canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+      canvasCtx.drawImage(
+        results.image,
+        0,
+        0,
+        canvasElement.width,
+        canvasElement.height
+      );
+
+      if (results.multiHandLandmarks) {
+        for (const landmarks of results.multiHandLandmarks) {
+          drawConnectors(canvasCtx, landmarks, Hands.HAND_CONNECTIONS, {
+            color: "#00FF00",
+            lineWidth: 2,
+          });
+          drawLandmarks(canvasCtx, landmarks, {
+            color: "#FF0000",
+            lineWidth: 1,
+          });
+        }
+      }
+      canvasCtx.restore();
+    });
+
+    if (typeof videoElement !== "undefined" && videoElement !== null) {
+      const camera = new Camera(videoElement, {
+        onFrame: async () => {
+          await hands.send({ image: videoElement });
+        },
+        width: 480,
+        height: 480,
+      });
+      camera.start();
+    }
+  }, []);
+
   return (
-    <div className="page">
-      <h1>Practice</h1>
-      <p>Try ASL gestures using your camera here.</p>
-    
-        <div class="column">
-          <article class="panel is-info">
-            <p class="panel-heading">
-              Webcam Input
-            </p>
-            <div class="panel-block">
-              <video class="input_video3"></video>
-            </div>
-          </article>
+    <div className="page p-6 text-center">
+      <h1 className="text-3xl font-bold mb-4">Practice</h1>
+      <p className="mb-6">Try ASL gestures using your camera here.</p>
+
+      <div className="flex flex-col md:flex-row justify-center items-center gap-6">
+        {/* Webcam */}
+        <div className="border p-4 rounded-2xl shadow-md bg-gray-50">
+          <p className="font-semibold mb-2">Webcam Input</p>
+          <video
+            ref={videoRef}
+            className="input_video"
+            autoPlay
+            playsInline
+            muted
+            width="480"
+            height="480"
+          ></video>
         </div>
 
-        <div class="column">
-          <article class="panel is-info">
-            <p class="panel-heading">
-              Mediapipe Hands Detection
-            </p>
-            <div class="panel-block">
-              <canvas class="output3" width="480px" height="480px"></canvas>
-            </div>
-          </article>
+        {/* Output Canvas */}
+        <div className="border p-4 rounded-2xl shadow-md bg-gray-50">
+          <p className="font-semibold mb-2">Hand Detection</p>
+          <canvas ref={canvasRef} className="output_canvas" width="480" height="480"></canvas>
         </div>
-    
+      </div>
     </div>
   );
 }
-
-function onResultsHands(results) {
-  document.body.classList.add('loaded');
-  fpsControl.tick();
-
-  canvasCtx1.save();
-  canvasCtx1.clearRect(0, 0, out1.width, out1.height);
-  canvasCtx1.drawImage(
-      results.image, 0, 0, out1.width, out1.height);
-  if (results.multiHandLandmarks && results.multiHandedness) {
-    for (let index = 0; index < results.multiHandLandmarks.length; index++) {
-      const classification = results.multiHandedness[index];
-      const isRightHand = classification.label === 'Right';
-      const landmarks = results.multiHandLandmarks[index];
-      drawConnectors(
-          canvasCtx1, landmarks, HAND_CONNECTIONS,
-          {color: isRightHand ? '#EBD51C' : '#D280FF'}),
-      drawLandmarks(canvasCtx1, landmarks, {
-        color: isRightHand ? '#EBD51C'  : '#D280FF',
-        fillColor: isRightHand ? '#FF0000' : '#00FF00',
-        radius: (x) => {
-          return lerp(x.from.z, -0.15, .1, 10, 1);
-        }
-      });
-    }
-  }
-  canvasCtx1.restore();
-}
-
-const hands = new Hands({locateFile: (file) => {
-  return `https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.1/${file}`;
-}});
-hands.onResults(onResultsHands);
-
-const camera = new Camera(video1, {
-  onFrame: async () => {
-    await hands.send({image: video1});
-  },
-  width: 480,
-  height: 480
-});
-camera.start();
-
-new ControlPanel(controlsElement1, {
-      selfieMode: true,
-      maxNumHands: 2,
-      minDetectionConfidence: 0.5,
-      minTrackingConfidence: 0.5
-    })
-    .add([
-      new StaticText({title: 'MediaPipe Hands'}),
-      fpsControl,
-      new Toggle({title: 'Selfie Mode', field: 'selfieMode'}),
-      new Slider(
-          {title: 'Max Number of Hands', field: 'maxNumHands', range: [1, 4], step: 1}),
-      new Slider({
-        title: 'Min Detection Confidence',
-        field: 'minDetectionConfidence',
-        range: [0, 1],
-        step: 0.01
-      }),
-      new Slider({
-        title: 'Min Tracking Confidence',
-        field: 'minTrackingConfidence',
-        range: [0, 1],
-        step: 0.01
-      }),
-    ])
-    .on(options => {
-      video1.classList.toggle('selfie', options.selfieMode);
-      hands.setOptions(options);
-    });
 
 export default Practice;
