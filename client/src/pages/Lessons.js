@@ -10,6 +10,8 @@ function Lessons() {
     <div className="page">
       <h1>Lessons</h1>
       <p>Welcome, {location.state?.id || "Guest"}!</p>
+
+      
       
     </div>
   );
