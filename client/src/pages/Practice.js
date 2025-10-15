@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Hands } from "@mediapipe/hands";
+import { Hands, HAND_CONNECTIONS } from "@mediapipe/hands";
 import { Camera } from "@mediapipe/camera_utils";
 import { drawConnectors, drawLandmarks } from "@mediapipe/drawing_utils";
 import "./style/Page.css";
@@ -39,13 +39,13 @@ function Practice() {
 
       if (results.multiHandLandmarks) {
         for (const landmarks of results.multiHandLandmarks) {
-          drawConnectors(canvasCtx, landmarks, Hands.HAND_CONNECTIONS, {
-            color: "#00FF00",
-            lineWidth: 2,
+          drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {
+            color: "#00FF00",  
+            lineWidth: 3,
           });
           drawLandmarks(canvasCtx, landmarks, {
             color: "#FF0000",
-            lineWidth: 1,
+            lineWidth: 0.5,
           });
         }
       }
