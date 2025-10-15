@@ -1,12 +1,12 @@
 import React, { useState} from "react";
 import "./style/Page.css";
 import "./style/login.css";
-import {useNavigate, Link } from "react-router-dom";
+// import {useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 function Account() {
 
-  const history = useNavigate();
+  // const history = useNavigate();
 
   const[email,setEmail] = useState("")
   const[password,setPassword] = useState("")
@@ -43,7 +43,6 @@ function Account() {
       <form onSubmit={submit}>
         <div className="inputs">
           <div className="input">
-            <img src={user_icon} alt="" />
             <input
               type="text"
               onChange={(e) => setName(e.target.value)}
@@ -51,7 +50,6 @@ function Account() {
             />
           </div>
           <div className="input">
-            <img src={email_icon} alt="" />
             <input
               type="email"
               onChange={(e) => setEmail(e.target.value)}
@@ -59,7 +57,6 @@ function Account() {
             />
           </div>
           <div className="input">
-            <img src={password_icon} alt="" />
             <input
               type="password"
               onChange={(e) => setPassword(e.target.value)}
@@ -75,4 +72,4 @@ function Account() {
   );
 }
 
-export default Sign;
+export default Account;

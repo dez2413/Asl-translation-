@@ -7,6 +7,7 @@ import Practice from "./pages/Practice";
 import Quiz from "./pages/Quiz";
 import Login from "./pages/Login";
 import Sign from "./pages/Sign";
+import Account from "./pages/Account"
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
             <Route path="/practice" element={<Practice />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/Sign" element={<Sign />} />
+            <Route path="/sign" element={<Sign />} />
+            <Route path="/account" element={<Account />} />
         </Routes>
     </div>
   );

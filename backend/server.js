@@ -66,116 +66,120 @@ app.post("/signUp", async (req, res) => {
   }
 });
 
+
+
+
+
 app.post("/account", async (req, res) => { //Work in Progress. Need to implement updating info for account.
-  return (
-    <div className="container">
-      <div className="header">
-        <div className ="text"> Sign Up</div>
-        <div className="Underline"></div>
-      </div>
-      <form onSubmit={submit}>
-        <div className="inputs">
-          <div className="input">
-            <img src={user_icon} alt="" />
-            <input
-              type="text"
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Name"
-            />
-          </div>
-          <div className="input">
-            <img src={email_icon} alt="" />
-            <input
-              type="email"
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-            />
-          </div>
-          <div className="input">
-            <img src={password_icon} alt="" />
-            <input
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-            />
-          </div>
-        </div>
-        <button type="submit" className="submit">
-          Submit
-        </button>
-      </form>
-      <div className= "switch"> Do have an account? <Link to="/login">Login</Link>
-      </div>
-    </div>
-  );
-}
+  // return (
+//     <div className="container">
+//       <div className="header">
+//         <div className ="text"> Sign Up</div>
+//         <div className="Underline"></div>
+//       </div>
+//       <form onSubmit={submit}>
+//         <div className="inputs">
+//           <div className="input">
+//             <img src={user_icon} alt="" />
+//             <input
+//               type="text"
+//               onChange={(e) => setName(e.target.value)}
+//               placeholder="Name"
+//             />
+//           </div>
+//           <div className="input">
+//             <img src={email_icon} alt="" />
+//             <input
+//               type="email"
+//               onChange={(e) => setEmail(e.target.value)}
+//               placeholder="Email"
+//             />
+//           </div>
+//           <div className="input">
+//             <img src={password_icon} alt="" />
+//             <input
+//               type="password"
+//               onChange={(e) => setPassword(e.target.value)}
+//               placeholder="Password"
+//             />
+//           </div>
+//         </div>
+//         <button type="submit" className="submit">
+//           Submit
+//         </button>
+//       </form>
+//       <div className= "switch"> Do have an account? <Link to="/login">Login</Link>
+//       </div>
+//     </div>
+//   );
+// }
 
-export default Sign;
-  return (
-    <div className="container">
-      <div className="header">
-        <div className ="text"> Sign Up</div>
-        <div className="Underline"></div>
-      </div>
-      <form onSubmit={submit}>
-        <div className="inputs">
-          <div className="input">
-            <img src={user_icon} alt="" />
-            <input
-              type="text"
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Name"
-            />
-          </div>
-          <div className="input">
-            <img src={email_icon} alt="" />
-            <input
-              type="email"
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-            />
-          </div>
-          <div className="input">
-            <img src={password_icon} alt="" />
-            <input
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-            />
-          </div>
-        </div>
-        <button type="submit" className="submit">
-          Submit
-        </button>
-      </form>
-      <div className= "switch"> Do have an account? <Link to="/login">Login</Link>
-      </div>
-    </div>
-  );
-}
+// export default Sign;
+//   return (
+//     <div className="container">
+//       <div className="header">
+//         <div className ="text"> Sign Up</div>
+//         <div className="Underline"></div>
+//       </div>
+//       <form onSubmit={submit}>
+//         <div className="inputs">
+//           <div className="input">
+//             <img src={user_icon} alt="" />
+//             <input
+//               type="text"
+//               onChange={(e) => setName(e.target.value)}
+//               placeholder="Name"
+//             />
+//           </div>
+//           <div className="input">
+//             <img src={email_icon} alt="" />
+//             <input
+//               type="email"
+//               onChange={(e) => setEmail(e.target.value)}
+//               placeholder="Email"
+//             />
+//           </div>
+//           <div className="input">
+//             <img src={password_icon} alt="" />
+//             <input
+//               type="password"
+//               onChange={(e) => setPassword(e.target.value)}
+//               placeholder="Password"
+//             />
+//           </div>
+//         </div>
+//         <button type="submit" className="submit">
+//           Submit
+//         </button>
+//       </form>
+//       <div className= "switch"> Do have an account? <Link to="/login">Login</Link>
+//       </div>
+//     </div>
+//   );
+// }
 
-export default Sign;
-  const { name, email, password } = req.body;
+// export default Sign;
+//   const { name, email, password } = req.body;
 
-  try {
-    const user = await collection.findOne({ email }); //
+//   try {
+//     const user = await collection.findOne({ email }); //
 
-    //change if user exist
-    if (!user) {
-      return res.json("notexist");
-    }
+//     //change if user exist
+//     if (!user) {
+//       return res.json("notexist");
+//     }
 
-    // verify password match
-    if (user.password !== password) {
-      return res.json("wrongpassword");
-    }
+//     // verify password match
+//     if (user.password !== password) {
+//       return res.json("wrongpassword");
+//     }
 
-    res.json("exist");
-  } catch (e) {
-    console.error("Login error:", e);
-    res.status(500).json("error");
-  }
-});
+//     res.json("exist");
+//   } catch (e) {
+//     console.error("Login error:", e);
+//     res.status(500).json("error");
+//   }
+ });
 
 
 app.listen(PORT, () => {
