@@ -1,7 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Navbar.css";
+import React from "react";              // Importing React library
+import { Link } from "react-router-dom"; // For internal navigation links
+import "./Navbar.css";            // Navbar specific styling
 
+// Importing logo asset
 import logo_icon from "../assets/logo.png";
 
 function Navbar() {

@@ -1,10 +1,11 @@
-import React from "react";
-import {useLocation, Link} from "react-router-dom";
-import "./style/Page.css";
-import "./style/Lesson.css"
-import { lessonsData } from "../data/lessonsData";
+import React from "react";           // Importing React library
+import {useLocation, Link} from "react-router-dom";  // For accessing location and internal navigation links
+import "./style/Page.css";            // General page styling
+import "./style/Lesson.css"        // Lesson page specific styling
+import { lessonsData } from "../data/lessonsData"; // Importing lessons data
 
 function Lessons() {
+  // Access location to retrieve passed state (e.g., user email)
   const location = useLocation();
   
   return (
