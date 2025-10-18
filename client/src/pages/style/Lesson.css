@@ -1,0 +1,21 @@
+.lesson{
+    margin:1cm; 
+    font-size: 48px;
+    
+}
+
+.lesson-underline{
+    width: auto;
+    height: 6px;
+    background:  rgb(251, 251, 251);
+    border-radius: 9px;
+}
+
+.lesson-id{
+    margin:13cm; 
+    color: #f1faee;
+}
+.lesson-title{
+    text-decoration: none;
+    background: rgba(10, 1, 19, 0.377);
+}
