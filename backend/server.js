@@ -92,7 +92,6 @@ app.post("/account", async (req, res) => {
   // TODO: Implement logic for updating or deleting account info
   // e.g., Update name, email, or password in the database
 
-  
 
 // export default Sign;
 //   const { name, email, password } = req.body;
@@ -111,7 +110,9 @@ app.post("/account", async (req, res) => {
 //    console.error("Update error:", e);
 //    return res.status(500).json("error");
 //  }
+
 });
+
 
 
 // ------------------------------
