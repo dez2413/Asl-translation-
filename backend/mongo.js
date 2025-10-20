@@ -1,10 +1,10 @@
-// Import mongoose and dotenv to load environment variables
+// Import the Mongoose library — used for connecting to MongoDB and defining schemas
 const mongoose = require("mongoose");
-require("dotenv").config(); // Load variables from .env
 
-// Connect to MongoDB using the URI stored in .env
-mongoose.connect(process.env.MONGODB_URI)
-
+// Connect to your MongoDB Atlas database using a connection string
+mongoose.connect(
+  "mongodb+srv://jubjub632_db_user:4GHp8Eo7YUPss6Jl@asldatabse.8u0ou61.mongodb.net/?retryWrites=true&w=majority&appName=ASLDatabse"
+)
 // If the connection is successful, log a confirmation message
 .then(() => {
   console.log("MongoDB connected successfully");
