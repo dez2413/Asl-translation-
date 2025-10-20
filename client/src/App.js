@@ -15,7 +15,6 @@ import Sign from "./pages/Sign";
 import Account from "./pages/Account"
 
 // Importing additional components for nested routes
-import LessonDetail from "./pages/LessonDetail";
 import MiniSection from "./pages/MiniSection";
 // import DictionaryModal from "./pages/DictionaryModal";
 
@@ -36,7 +35,6 @@ function App() {
           
         {/* Lessons routes with nested routes for lesson details and mini sections */}
             <Route path="/lessons" element={<Lessons />} />
-              <Route path="/lessons/:id" element={<LessonDetail />} />
                 <Route path="/lessons/:lessonId/:sectionId" element={<MiniSection />} />
 
         {/* Practice route */}

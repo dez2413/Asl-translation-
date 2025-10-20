@@ -1,15 +1,19 @@
 
 .page {
-  padding: 2rem;
+  padding: 40px;
   text-align: center;
-  font-family: Arial, sans-serif;
 }
 
-h1 {
-  color: #919191;
+/* Header */
+.page h1 {
+  font-size: 2.5rem;
+  color: #a7a7a7;
+  margin-bottom: 10px;
+  font-weight: 700;
 }
 
-p {
-  font-size: 1.2rem;
-  color: #fffefe;
+.page p {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 40px;
 }
