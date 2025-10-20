@@ -90,14 +90,14 @@ function Practice() {
 
   // ✅ JSX layout of the Practice page
   return (
-    <div className="page p-6 text-center">
-      <h1 className="text-3xl font-bold mb-4">Practice</h1>
-      <p className="mb-6">Try ASL gestures using your camera here.</p>
+    <div className="page">
+      <h1 className="practice-title">Practice</h1>
+      <p>Try ASL gestures using your camera here.</p>
 
-      <div className="flex flex-col md:flex-row justify-center items-center gap-6">
+      <div className="practice-camera">
         {/* Webcam Input Panel */}
-        <div className="border p-4 rounded-2xl shadow-md bg-gray-50">
-          <p className="font-semibold mb-2">Webcam Input</p>
+        <div className="webcam-canvas">
+          <p className="webcam-Input">Webcam Input</p>
           <video
             ref={videoRef}             // Reference for MediaPipe to access webcam
             className="input_video"
@@ -106,12 +106,14 @@ function Practice() {
             muted                      // Mute video (no need for audio)
             width="480"
             height="480"
-          ></video>
+          >
+          </video>
+          
         </div>
 
         {/* Output Canvas Panel */}
-        <div className="border p-4 rounded-2xl shadow-md bg-gray-50">
-          <p className="font-semibold mb-2">Hand Detection</p>
+        <div className="webcam-canvas">
+          <p className="practice-description">Hand Detection</p>
           <canvas
             ref={canvasRef}            // Reference for drawing detections
             className="output_canvas"
