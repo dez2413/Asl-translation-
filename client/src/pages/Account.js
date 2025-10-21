@@ -42,13 +42,15 @@ function Account() {
       </div>
       <form onSubmit={submit}>
         <div className="inputs">
+          <div className="account-text"> User Name</div>
           <div className="input">
             <input
-              type="text"
+              type="account-text"
               onChange={(e) => setName(e.target.value)}
               placeholder="Name"
             />
           </div>
+          <div className ="account-text"> Email</div>
           <div className="input">
             <input
               type="email"
@@ -56,6 +58,7 @@ function Account() {
               placeholder="Email"
             />
           </div>
+          <div className="account-text"> Password</div>
           <div className="input">
             <input
               type="password"
@@ -73,4 +76,5 @@ function Account() {
 }
 
 export default Account;
+
 

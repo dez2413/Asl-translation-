@@ -88,11 +88,17 @@ https://www.instructables.com/How-to-Train-Custom-Hand-Gestures-Using-Mediapipe/
 
 
 📂 Project Structure
-
-/server.js          ← Backend server (Express)
-/package.json       ← Backend dependencies
+/backend/           ← Backend server (Express, Mongoose)
+    /mongo.js       ← MongoDB connection and Schema
+    /server.js      ← Backend server (Express)
+    /package.json   ← Backend dependencies
 /client/            ← React frontend
-   /src             ← React components
+   /src/            ← React components
+        /asserts    ← Imgine and icons
+        /components ← Navbar 
+        /data       ← Lesson data
+        /pages/     ← Pages in React
+            /style  ← Pages css
    /public          ← Static files
    /package.json    ← Frontend dependencies
 
@@ -109,8 +115,7 @@ https://www.instructables.com/How-to-Train-Custom-Hand-Gestures-Using-Mediapipe/
 ## React
     cd client
     npm install
-    npm install axios
-    npm install @mediapipe/hands @mediapipe/camera_utils @mediapipe/drawing_utils
+    npm install react-script
 
 ## run backend
     file location \GitHub\Asl-translation->
@@ -126,7 +131,19 @@ https://www.instructables.com/How-to-Train-Custom-Hand-Gestures-Using-Mediapipe/
     should see if no error
         Frontend will run at: http://localhost:3000
 
-
+## if there's an error of allowed hosts
+in the terminal in client directory: unset HOST
+replace the proxy part of the package.json file in client folder with:
+"options":{
+    "allowedHosts":[
+        "localhost",
+        ".localhost"
+    ],
+    "proxy":[
+        "https://localhost:5000/",
+        "https://localhost:3000/"
+    ]
+}
 =======
 # Asl-translation-
 >>>>>>> parent of 2c1d2b2 (Update README.md)
