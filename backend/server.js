@@ -95,17 +95,14 @@ app.post("/account", async (req, res) => {
 
 // export default Sign;
 //   const { name, email, password } = req.body;
+//   const data = { name, emial, password};
+//   const { newName, newEmail, newPassword } = req.body;
+//   const updateData = { newName, newEmail, newPassword};
 
 //   try {
 //     const user = await collection.findAndModify({ 
-//       query:{$and[
-//         {email: email}
-//         {password: password}
-//         ]}
-//         update:{$set[
-//         name: name
-//         email: email
-//         password: password]})
+//       query:{[data]}
+//         update:{$set[updateData]})
 //  } catch (e) {
 //    console.error("Update error:", e);
 //    return res.status(500).json("error");
