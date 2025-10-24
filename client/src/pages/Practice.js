@@ -9,6 +9,20 @@ import { drawConnectors, drawLandmarks } from "@mediapipe/drawing_utils"; // Dra
 // Import styling
 import "./style/Page.css";
 
+function GestureTest(){
+
+  return;
+}
+
+function processResult(){
+  console.log("entered process Result");
+  return(
+    <script>
+      console.log("return from procRes");
+    </script>
+  );
+}
+
 function Practice() {
   // React "refs" to directly access DOM elements
   const videoRef = useRef(null);   // For webcam video input
