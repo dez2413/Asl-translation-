@@ -1,0 +1,140 @@
+/* Lesson.css */
+
+/* ===============================
+   General Page Styles
+================================ */
+.lessons-container {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(260px, 1fr));
+  gap: 50px;
+  justify-items: center;
+  align-items: stretch;
+}
+
+/* Individual lesson card */
+.lesson-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #4408803f;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: left;
+  box-shadow: 10px 4px 10px rgba(0, 0, 0, 0.589);
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 1000px;
+  cursor: pointer;
+}
+
+/* Hover effect for interactivity */
+.lesson-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(75, 74, 74, 0.486);
+}
+
+/* Lesson Card Header */
+.lesson-card-header {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 15px;
+}
+
+
+/* Lesson Title */
+.lesson-title {
+  width: 85%;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff; 
+  margin-bottom: 10px;
+}
+
+/* Underline accent below title */
+.lesson-divider {
+  width: 200px;
+  height: 4px;
+  background-color: #fff3f3;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/* Lesson Description */
+.lesson-description {
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Dictionary link */
+.lesson-dictionary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.dictionary-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.dictionary-link {
+  color: #f3f3f3; 
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dictionary-link:hover {
+  text-decoration: underline;
+}
+
+/* Sections grid */
+.lesson-sections {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+  gap: 3rem;
+}
+
+/* Each mini-section button */
+.lesson-section-card {
+  display: flex;
+  flex-direction: column;
+  background: #bd62ff;
+  border: 7px double #ffffff;
+  border-radius: 50%;
+  height: 90px;
+  width: 90px;
+  padding: 0.8rem;
+  margin: 20px auto;
+  text-align: center;
+  color: #000000;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.lesson-section-card:hover {
+  background: #eacbfc;
+}
+
+/* Mini-section title */
+.lesson-section-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* ===============================
+   Responsive Design
+================================*/
+@media (max-width: 768px) {
+  .page {
+    padding: 20px;
+  }
+
+  .lesson-id {
+    max-width: 100%;
+  }
+}

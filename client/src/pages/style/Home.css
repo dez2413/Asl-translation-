@@ -1,3 +1,8 @@
+  /*Home.css */
+  /* ===================================================
+   Home Page Styles
+   ================================================== */ 
+
 .home-container {
   display: flex;
   align-items: center;
@@ -6,9 +11,10 @@
   min-height: 60vh;
   padding: 2rem 4rem;
   background: rgba(10, 1, 19, 0.377);
-  color: #1d3557;
+  color: #ffffff;
 }
 
+/* Left section with text */
 .home-left {
   flex: 1;
   display: flex;
@@ -17,6 +23,7 @@
   max-width: 600px;
 }
 
+/* Hashtag styling */
 .hashtag {
   display: inline-block;
   background-color: rgb(143, 34, 245);
@@ -29,6 +36,7 @@
   margin-bottom: 1rem;
 }
 
+/* Title styling */
 .home-title {
   color:aliceblue;
   font-size: 2.5rem;
@@ -36,12 +44,14 @@
   margin-bottom: 1rem;
 }
 
+/* Informational text */
 .home-info {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
 
+/* Button styling */
 .home-button {
   background-color: rgb(143, 34, 245);
   color: white;
@@ -52,20 +62,24 @@
   transition: 0.3s;
 }
 
+/* Button hover effect */
 .home-button:hover {
   background-color: rgb(17, 4, 31)
 }
 
+/* Arrow icon animation on button hover */
 .home-button:hover .arrow-icon {
   transform: translateX(5px);
 }
 
+/* Arrow icon styling */
 .arrow-icon {
   width: 20px;
   height: 20px;
   transition: transform 0.3s;
 }
 
+/* Circle around arrow */
 .arrow-circle{
     margin-left: 10px;
     display: inline-block;
@@ -74,6 +88,7 @@
     padding: 5px;
 }
 
+/* Right section with image */
 .home-right {
   flex: 1;
   display: flex;
@@ -81,6 +96,7 @@
   align-items: center;
 }
 
+/* Home page image styling */
 .home-image {
   max-width: 90%;
   height: auto;

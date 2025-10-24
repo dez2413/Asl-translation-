@@ -1,7 +1,7 @@
-import React from "react";
-import "./style/Page.css";
-import "./style/Home.css";
-import { Link } from "react-router-dom";
+import React from "react";             // Importing React library
+import "./style/Page.css";             // General page styling
+import "./style/Home.css";             // Home page specific styling
+import { Link } from "react-router-dom"; // For internal navigation links
 
 // import home_image from "../assets/home_image.png";
 import arrow_icon from "../assets/arrow.png";
@@ -11,8 +11,10 @@ function Home() {
     <div className="home-container">
       {/* Left Section */}
       <div className="home-left">
+        {/* Hashtag Section */}
         <div className="hashtag">#ASL Translate</div>
 
+        {/* Title and Description */}
         <h1 className="home-title">ASL Translate Goal's</h1>
         <p className="home-info">
          This project helps people learn ASL through video lessons, 
@@ -21,10 +23,11 @@ function Home() {
          one-on-one practice with an instructor.
         </p>
 
+        {/* Get Started Button */}
         <Link to="/sign">
           <button className="home-button">Get Started 
             <div className="arrow-circle">
-              <img src={arrow_icon} alt="" className="arrow-icon"/>
+              <img src={arrow_icon} alt="" className="arrow-icon" />
             </div>
           </button>
         </Link>
@@ -32,7 +35,8 @@ function Home() {
 
       {/* Right Section */}
       <div className="home-right">
-        <img src="" alt="" className="home-image" />
+        {/* Placeholder for future image or content */}
+        {/* <img src={home_image} alt="Home" className="home-image" /> */}
       </div>
     </div>
   );
