@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, use, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 // control
 //hands, hand connections, -> handLandmarker.Hand_connections, createFromModel
 // camera, ????????
@@ -6,13 +6,12 @@ import React, { useRef, useEffect, use, useState } from "react";
 import {
   HandLandmarker,
   //HandLandmarkerOptions,HandLandmarkerResult
-  DrawingUtils, //maybe in individual packets
   GestureRecognizer, 
   FilesetResolver,
 } from "@mediapipe/tasks-vision";
 
 import hand_landmarker_task from "./hand_landmarker.task";
-
+import recognizerTask from "./handgesture_recognizer.task";
 import "./style/Page.css";
 
 /*set true in
@@ -28,6 +27,12 @@ media.getusermedia.insecure.enabled
 // https://codepen.io/mediapipe-preview/pen/gOKBGPN?editors=1010
 // https://medium.com/@kiyo07/integrating-mediapipe-tasks-vision-for-hand-landmark-detection-in-react-a2cfb9d543c7
 // 0.10.17 most popular version of tasks vision
+
+// https://github.com/google-ai-edge/mediapipe/issues/5997
+// https://github.com/google-ai-edge/mediapipe/blob/master/mediapipe/tasks/python/metadata/metadata_writers/metadata_writer.py
+// https://github.com/google-ai-edge/mediapipe/tree/master/mediapipe/tasks/python/metadata/metadata_writers
+// https://ai.google.dev/edge/mediapipe/solutions/customization/gesture_recognizer
+// https://ai.google.dev/edge/mediapipe/solutions/customization/gesture_recognizerhttps://ai.google.dev/edge/mediapipe/solutions/customization/gesture_recognizer
 function Practice() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -41,6 +46,12 @@ function Practice() {
     let animationFrameId;
     let gestureRecognizer;
 
+    let categoryName;
+    let categoryScore;
+    let handedness;
+    let indexFingerCoor;
+    let indexFingerCoorWorld;
+
     const initializeHandDetection = async () => {
       console.log("in initHandDetect");
       try{
@@ -51,7 +62,7 @@ function Practice() {
         handLandmarker = await HandLandmarker.createFromOptions(
           vision, {
             baseOptions: { modelAssetPath: hand_landmarker_task},
-            numHands: 2,
+            numHands: 1,
             runningMode: "video"
           }
         );
@@ -71,8 +82,10 @@ function Practice() {
 
         gestureRecognizer = await GestureRecognizer.createFromOptions(
           vision, {
-            baseOptions: { modelAssetPath: "https://storage.googleapis.com/mediapipe-tasks/gesture_recognizer/gesture_recognizer.task"},
-            numHands: 2,
+            baseOptions: { 
+            //modelAssetPath: "https://storage.googleapis.com/mediapipe-tasks/gesture_recognizer/gesture_recognizer.task"},
+            modelAssetPath: recognizerTask},
+            numHands: 1,
             runningMode: "video"
           }
         );
@@ -102,15 +115,34 @@ function Practice() {
         canvasCtx.fillStyle = 'white';
         canvasCtx.textAlign = 'center';
         
-        const categoryName = recognizerResult.gestures[0][0].categoryName;
-        const categoryScore = parseFloat(
-          recognizerResult.gestures[0][0].score * 100
-        ).toFixed(2);
-        const handedness = recognizerResult.handednesses[0][0].displayName;
-
+        // top = 0
+        // left = 0
+        // right = 0.9
+        // bottom = 0.9
+        // by seeing camera view
+        // through experience it is flipped
+        
+        if(recognizerResult.gestures[0] !== undefined){
+          categoryName = recognizerResult.gestures[0][0].categoryName;
+          categoryScore = parseFloat(recognizerResult.gestures[0][0].score * 100).toFixed(2);
+          handedness = recognizerResult.handednesses[0][0].displayName;
+          indexFingerCoor = recognizerResult.landmarks[0][8].x;
+          indexFingerCoorWorld = recognizerResult.landmarks[0][8].x;
+        }
+        else{
+          categoryName ="No Hand";
+          categoryScore = 0;
+          handedness = "No Hand";
+          indexFingerCoor = 0;
+          indexFingerCoorWorld = 0;
+        }
+        
         canvasCtx.fillText(categoryName, canvas.width / 4, canvas.height / 6);
         canvasCtx.fillText(categoryScore, canvas.width / 2, canvas.height / 6);
         canvasCtx.fillText(handedness, (canvas.width / 4)*3, canvas.height / 6);
+
+        canvasCtx.fillText(indexFingerCoor, (canvas.width / 4), (canvas.height / 6)*5.5);
+        canvasCtx.fillText(indexFingerCoorWorld, (canvas.width / 4)*3, (canvas.height / 6)*5.5);
       });
     };
 
@@ -119,7 +151,6 @@ function Practice() {
       if(videoRef.current && videoRef.current.readyState >= 2){
         const detections = handLandmarker.detectForVideo(videoRef.current, performance.now());
         setHandPresence(detections.handednesses.length > 0);
-
         
         const gestureRecognizerResult = gestureRecognizer.recognizeForVideo(videoRef.current, performance.now());
         
@@ -198,7 +229,7 @@ function Practice() {
             <video ref={videoRef} autoPlay playsInline></video>
             <canvas ref={canvasRef} style={{
               backgroundColor: "black",
-              width:"600px",
+              width:"640px",
               height: "480px"
             }}>
             </canvas>
