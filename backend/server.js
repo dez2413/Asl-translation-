@@ -91,22 +91,22 @@ app.post("/signUp", async (req, res) => {
 app.post("/account", async (req, res) => {
   // TODO: Implement logic for updating or deleting account info
   // e.g., Update name, email, or password in the database
+  //Current Status: It does not update the user info but it does not break anything.
 
+   const { name, email, password } = req.body;
+   const data = { name, emial, password};
+   const { newName, newEmail, newPassword } = req.body;
+   const updateData = { newName, newEmail, newPassword};
 
-// export default Sign;
-//   const { name, email, password } = req.body;
-//   const data = { name, emial, password};
-//   const { newName, newEmail, newPassword } = req.body;
-//   const updateData = { newName, newEmail, newPassword};
-
-//   try {
-//     const user = await collection.findAndModify({ 
-//       query:{[data]}
-//         update:{$set[updateData]})
-//  } catch (e) {
-//    console.error("Update error:", e);
-//    return res.status(500).json("error");
-//  }
+   try {
+    await collection.findAndModify({ 
+       query:{data},
+       update:{$set:[updateData]},
+      })
+  } catch (e) {
+    console.error("Update error:", e);
+    return res.status(500).json("error");
+  }
 
 });
 
