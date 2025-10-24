@@ -160,6 +160,7 @@ function Practice() {
         cancelAnimationFrame(animationFrameId);
       }
     };
+
 //        <div className="practice-camera">
 //         {/* Webcam Input Panel */}
 //         <div className="webcam-canvas">
@@ -191,9 +192,6 @@ function Practice() {
 //     </div>
 //   );
 // }
-
-
-
   }, []);
   return (
     <div className="page p-6 text-center">
@@ -208,6 +206,7 @@ function Practice() {
         <>
           <h1> Hand There? {handPresence? "Yes" : "No"}</h1>
           <div style={{ position: "relative"}}>
+
             <video 
               ref={videoRef} 
               muted
