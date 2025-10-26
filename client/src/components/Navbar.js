@@ -1,30 +1,48 @@
-import React from "react";              // Importing React library
-import { Link } from "react-router-dom"; // For internal navigation links
-import "./Navbar.css";            // Navbar specific styling
-
-// Importing logo asset
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import "./Navbar.css";
 import logo_icon from "../assets/logo.png";
 
 function Navbar() {
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <nav className="navbar">
-      {/* Left side - Logo / Home */}
+      {/* Left side */}
       <div className="navbar-left">
-        <img src={logo_icon} alt="" className="logo-icon"/>
+        <img src={logo_icon} alt="logo" className="logo-icon" />
         <Link to="/" className="logo">ASL Translate</Link>
       </div>
 
-      {/* Center links */}
+      {/* Center */}
       <div className="navbar-center">
         <Link to="/lessons">Lessons</Link>
         <Link to="/practice">Practice</Link>
         <Link to="/quiz">Quiz</Link>
       </div>
 
-      {/* Right side - Login / Sign up */}
+      {/* Right side changes depending on login */}
       <div className="navbar-right">
-        <Link to="/login" className="btn-link">Login</Link>
-        <Link to="/sign" className="btn-link signup">Sign Up</Link>
+        {user ? (
+          <>
+            <Link to="/account" className="btn-link">Account</Link>
+            <button onClick={handleLogout} className="btn-link logout">
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="btn-link">Login</Link>
+            <Link to="/sign" className="btn-link signup">Sign Up</Link>
+          </>
+        )}
       </div>
     </nav>
   );

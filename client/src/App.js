@@ -18,39 +18,53 @@ import Account from "./pages/Account"
 import MiniSection from "./pages/MiniSection";
 // import DictionaryModal from "./pages/DictionaryModal";
 
+// Importing ProtectedRoute component for route protection
+import ProtectedRoute from "./components/ProtectedRoute";
+
+// Importing AuthProvider for authentication context
+import { AuthProvider } from "./context/AuthContext";
+
 
 // Main App component that sets up routing for the application
 function App() {
   return (
   
-  <div className = "App">
-    {/* Navbar component for navigation */}
-    <Navbar />
-    
-      {/* Defining application routes */}
-      <Routes>
-
-        {/* Home route */}
+ <AuthProvider>
+      <div className="App">
+        <Navbar />
+        <Routes>
           <Route path="/" element={<Home />} />
-          
-        {/* Lessons routes with nested routes for lesson details and mini sections */}
-            <Route path="/lessons" element={<Lessons />} />
-                <Route path="/lessons/:lessonId/:sectionId" element={<MiniSection />} />
-
-        {/* Practice route */}
-            <Route path="/practice" element={<Practice />} />
-
-        {/* Quiz route */}
-            <Route path="/quiz" element={<Quiz />} />
-
-        {/* Authentication routes */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/sign" element={<Sign />} />
-            
-        {/* Account route */}
-            <Route path="/account" element={<Account />} />
+          <Route
+            path="/lessons"
+            element={
+              <ProtectedRoute>
+                <Lessons />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/practice"
+            element={
+              <ProtectedRoute>
+                <Practice />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/sign" element={<Sign />} />
+          <Route
+            path="/account"
+            element={
+              <ProtectedRoute>
+                <Account />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/lessons/:lessonId/:sectionId" element={<MiniSection />} />
         </Routes>
-    </div>
+      </div>
+    </AuthProvider>
   );
 }
 

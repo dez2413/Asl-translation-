@@ -82,51 +82,63 @@ function Practice() {
     }; 
 
     const drawLandmarks = (landmarksArray, recognizerResult) => {
-      console.log("in drawLandmarks");
       const canvas = canvasRef.current;
-      const canvasCtx = canvas.getContext('2d');
-      canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
-      canvasCtx.fillStyle = 'white';
+      const video = videoRef.current;
+      const ctx = canvas.getContext("2d");
 
+      // Draw video feed first
+      ctx.save();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      if (!landmarksArray || landmarksArray.length === 0) {
+        ctx.restore();
+        return;
+      }
+
+      // Draw landmarks on top of video
+      ctx.fillStyle = "lime";
       landmarksArray.forEach(landmarks => {
-        landmarks.forEach(landmark => {
-          const x = landmark.x * canvas.width;
-          const y = landmark.y * canvas.height;
-
-          canvasCtx.beginPath();
-          canvasCtx.arc(x, y, 5, 0, 2*Math.PI);
-          canvasCtx.fill();
+        landmarks.forEach(point => {
+          const x = point.x * canvas.width;
+          const y = point.y * canvas.height;
+          ctx.beginPath();
+          ctx.arc(x, y, 5, 0, 2 * Math.PI);
+          ctx.fill();
         });
-
-        canvasCtx.font = '10px Arial';
-        canvasCtx.fillStyle = 'white';
-        canvasCtx.textAlign = 'center';
-        
-        const categoryName = recognizerResult.gestures[0][0].categoryName;
-        const categoryScore = parseFloat(
-          recognizerResult.gestures[0][0].score * 100
-        ).toFixed(2);
-        const handedness = recognizerResult.handednesses[0][0].displayName;
-
-        canvasCtx.fillText(categoryName, canvas.width / 4, canvas.height / 6);
-        canvasCtx.fillText(categoryScore, canvas.width / 2, canvas.height / 6);
-        canvasCtx.fillText(handedness, (canvas.width / 4)*3, canvas.height / 6);
       });
+
+      // Draw gesture info
+      if (
+        recognizerResult &&
+        recognizerResult.gestures &&
+        recognizerResult.gestures.length > 0 &&
+        recognizerResult.gestures[0].length > 0
+      ) {
+        const gesture = recognizerResult.gestures[0][0];
+        const name = gesture.categoryName || "Unknown";
+        const score = ((gesture.score || 0) * 100).toFixed(1);
+
+        ctx.font = "18px Arial";
+        ctx.fillStyle = "white";
+        ctx.fillText(`Gesture: ${name} (${score}%)`, 20, 30);
+      }
+
+      ctx.restore();
     };
 
-    const detectHands = () => {
-      console.log("in detectHands");
-      if(videoRef.current && videoRef.current.readyState >= 2){
-        const detections = handLandmarker.detectForVideo(videoRef.current, performance.now());
-        setHandPresence(detections.handednesses.length > 0);
 
-        
-        const gestureRecognizerResult = gestureRecognizer.recognizeForVideo(videoRef.current, performance.now());
-        
-        //if detections.landmarks is array of landmarks object
-        if(detections.landmarks){
-          drawLandmarks(detections.landmarks, gestureRecognizerResult);
-        }
+    const detectHands = () => {
+      if (!videoRef.current || !handLandmarker) return;
+
+      const detections = handLandmarker.detectForVideo(videoRef.current, performance.now());
+      const gestureRecognizerResult = gestureRecognizer.recognizeForVideo(videoRef.current, performance.now());
+
+      if (detections && detections.landmarks && detections.landmarks.length > 0) {
+        setHandPresence(true);
+        drawLandmarks(detections.landmarks, gestureRecognizerResult);
+      } else {
+        setHandPresence(false);
       }
 
       requestAnimationFrame(detectHands);

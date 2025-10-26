@@ -1,8 +1,9 @@
-import React, { useState } from "react"; // React and useState hook for managing form input states
+import React, { useState, useContext  } from "react"; // React and useState hook for managing form input states
 import "./style/Page.css";              // General styling
 import "./style/login.css";             // Page-specific styling for the login page
 import { useNavigate, Link } from "react-router-dom"; // For navigation and internal routing
 import axios from "axios";              // For making HTTP requests to the backend
+import { AuthContext } from "../context/AuthContext"; // Importing AuthContext for authentication state management
 
 // Importing assets for icons
 import email_icon from "../assets/email.png";
@@ -11,6 +12,7 @@ import password_icon from "../assets/password.png";
 function Login() {
   // Initialize navigation hook for redirecting after login
   const history = useNavigate();
+  const { login } = useContext(AuthContext);
 
   // State variables for form inputs
   const [email, setEmail] = useState("");
@@ -32,6 +34,7 @@ function Login() {
       // Check backend response
       if (res.data === "exist") {
         alert("User logged in successfully!");
+        login(email); // Update authentication context
 
         // Redirect user to lessons page and pass user email in state
         history("/lessons", { state: { id: email } });

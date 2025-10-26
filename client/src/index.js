@@ -4,12 +4,15 @@ import './index.css';              // Global styling
 import App from './App';             // Main App component
 import reportWebVitals from './reportWebVitals';  // For measuring performance
 import {BrowserRouter } from 'react-router-dom';  // For routing
+import { AuthProvider } from "./context/AuthContext";  // Importing AuthProvider for authentication context
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
