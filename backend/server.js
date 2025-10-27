@@ -100,9 +100,10 @@ app.post("/account", async (req, res) => {
 
    try {
     await collection.findAndModify({ 
-       query:{data},
-       update:{$set:[updateData]},
+       query:{name:data.name, email:data.email, password:data.password},
+       update:{$set:{name:updateData.newName,email:updateData.newEmail,password:updateData.newPassword}},
       })
+    return res.json("Updated")
   } catch (e) {
     console.error("Update error:", e);
     return res.status(500).json("error");
