@@ -94,7 +94,7 @@ app.post("/account", async (req, res) => {
   //Current Status: It does not update the user info but it does not break anything.
 
    const { name, email, password } = req.body;
-   const data = { name, emial, password};
+   const data = { name, email, password};
    const { newName, newEmail, newPassword } = req.body;
    const updateData = { newName, newEmail, newPassword};
 
