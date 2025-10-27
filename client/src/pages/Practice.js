@@ -46,11 +46,19 @@ function Practice() {
     let animationFrameId;
     let gestureRecognizer;
 
-    let categoryName;
-    let categoryScore;
-    let handedness;
-    let indexFingerCoor;
-    let indexFingerCoorWorld;
+    let firstCategoryName;
+    let firstCategoryScore;
+    let firstHandedness;
+    let firstIndexFingerCoor;
+    let firstIndexFingerCoorWorld;
+    let secondCategoryName;
+    let secondCategoryScore;
+    let secondHandedness;
+    let secondIndexFingerCoor;
+    let secondIndexFingerCoorWorld;
+
+    let oldPositionHandNine = [0,0,0];
+    let newPositionHandNine;
 
     const initializeHandDetection = async () => {
       console.log("in initHandDetect");
@@ -62,7 +70,7 @@ function Practice() {
         handLandmarker = await HandLandmarker.createFromOptions(
           vision, {
             baseOptions: { modelAssetPath: hand_landmarker_task},
-            numHands: 1,
+            numHands: 2,
             runningMode: "video"
           }
         );
@@ -85,7 +93,7 @@ function Practice() {
             baseOptions: { 
             //modelAssetPath: "https://storage.googleapis.com/mediapipe-tasks/gesture_recognizer/gesture_recognizer.task"},
             modelAssetPath: recognizerTask},
-            numHands: 1,
+            numHands: 2,
             runningMode: "video"
           }
         );
@@ -123,26 +131,64 @@ function Practice() {
         // through experience it is flipped
         
         if(recognizerResult.gestures[0] !== undefined){
-          categoryName = recognizerResult.gestures[0][0].categoryName;
-          categoryScore = parseFloat(recognizerResult.gestures[0][0].score * 100).toFixed(2);
-          handedness = recognizerResult.handednesses[0][0].displayName;
-          indexFingerCoor = recognizerResult.landmarks[0][8].x;
-          indexFingerCoorWorld = recognizerResult.landmarks[0][8].x;
+
+          firstCategoryName = recognizerResult.gestures[0][0].categoryName;
+          firstCategoryScore = parseFloat(recognizerResult.gestures[0][0].score * 100).toFixed(2);
+          firstHandedness = recognizerResult.handednesses[0][0].displayName;
+          firstIndexFingerCoor = recognizerResult.landmarks[0][8].x;
+          firstIndexFingerCoorWorld = recognizerResult.landmarks[0][8].x;
+
+          if(Math.abs(oldPositionHandNine[0] - recognizerResult.landmarks[0][9].x) > 0.03){
+            canvasCtx.fillText("x/Horizontal Moves", (canvas.width / 8), canvas.height / 3);
+          }
+          if(Math.abs(oldPositionHandNine[1] - recognizerResult.landmarks[0][9].y) > 0.03){
+            canvasCtx.fillText("y/Vertical Moves", (canvas.width / 8), (canvas.height / 3)+(canvas.height/9));
+          }
+          if(Math.abs(oldPositionHandNine[2] - recognizerResult.landmarks[0][9].z) > 0.03){
+            canvasCtx.fillText("z/Depth Moves", (canvas.width / 8), (canvas.height / 3)+((2*canvas.height)/9));
+          }
+
+          oldPositionHandNine = [
+              recognizerResult.landmarks[0][9].x, 
+              recognizerResult.landmarks[0][9].y,
+              recognizerResult.landmarks[0][9].z
+            ];
+
+          if(recognizerResult.gestures[1] !== undefined){
+          secondCategoryName = recognizerResult.gestures[1][0].categoryName;
+          secondCategoryScore = parseFloat(recognizerResult.gestures[1][0].score * 100).toFixed(2);
+          secondHandedness = recognizerResult.handednesses[1][0].displayName;
+          secondIndexFingerCoor = recognizerResult.landmarks[1][8].x;
+          secondIndexFingerCoorWorld = recognizerResult.landmarks[1][8].x;
+          }
         }
         else{
-          categoryName ="No Hand";
-          categoryScore = 0;
-          handedness = "No Hand";
-          indexFingerCoor = 0;
-          indexFingerCoorWorld = 0;
+          firstCategoryName ="No Hand";
+          firstCategoryScore = 0;
+          firstHandedness = "No Hand";
+          firstIndexFingerCoor = 0;
+          firstIndexFingerCoorWorld = 0;
+
+          secondCategoryName ="No Hand";
+          secondCategoryScore = 0;
+          secondHandedness = "No Hand";
+          secondIndexFingerCoor = 0;
+          secondIndexFingerCoorWorld = 0;
         }
         
-        canvasCtx.fillText(categoryName, canvas.width / 4, canvas.height / 6);
-        canvasCtx.fillText(categoryScore, canvas.width / 2, canvas.height / 6);
-        canvasCtx.fillText(handedness, (canvas.width / 4)*3, canvas.height / 6);
+        canvasCtx.fillText(firstCategoryName, canvas.width / 4, canvas.height / 8);
+        canvasCtx.fillText(firstCategoryScore, canvas.width / 2, canvas.height / 8);
+        canvasCtx.fillText(firstHandedness, (canvas.width / 4)*3, canvas.height / 8);
 
-        canvasCtx.fillText(indexFingerCoor, (canvas.width / 4), (canvas.height / 6)*5.5);
-        canvasCtx.fillText(indexFingerCoorWorld, (canvas.width / 4)*3, (canvas.height / 6)*5.5);
+        canvasCtx.fillText(firstIndexFingerCoor, (canvas.width / 4), (canvas.height / 8)*5.5);
+        canvasCtx.fillText(firstIndexFingerCoorWorld, (canvas.width / 4)*3, (canvas.height / 8)*5.5);
+
+        canvasCtx.fillText(secondCategoryName, canvas.width / 4, (canvas.height / 8)+(canvas.height/8));
+        canvasCtx.fillText(secondCategoryScore, canvas.width / 2, (canvas.height / 8)+(canvas.height/8));
+        canvasCtx.fillText(secondHandedness, (canvas.width / 4)*3, (canvas.height / 8)+(canvas.height/8));
+
+        canvasCtx.fillText(secondIndexFingerCoor, (canvas.width / 4), ((canvas.height / 8)*5.5)+(canvas.height/8));
+        canvasCtx.fillText(secondIndexFingerCoorWorld, (canvas.width / 4)*3, ((canvas.height / 8)*5.5)+(canvas.height/8));
       });
     };
 
@@ -153,7 +199,7 @@ function Practice() {
         setHandPresence(detections.handednesses.length > 0);
         
         const gestureRecognizerResult = gestureRecognizer.recognizeForVideo(videoRef.current, performance.now());
-        
+
         //if detections.landmarks is array of landmarks object
         if(detections.landmarks){
           drawLandmarks(detections.landmarks, gestureRecognizerResult);
