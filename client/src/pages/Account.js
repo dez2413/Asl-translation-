@@ -12,6 +12,9 @@ function Account() {
   const[email,setEmail] = useState("")
   const[password,setPassword] = useState("")
   const[name,setName] = useState("")
+  const[newEmail,setNewEmail] = useState("")
+  const[newPassword,setNewPassword] = useState("")
+  const[newName,setNewName] = useState("")
 
   async function submit(e){
     e.preventDefault()
@@ -98,6 +101,7 @@ function Account() {
 }
 
 export default Account;
+
 
 
 
