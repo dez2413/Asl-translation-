@@ -1,8 +1,13 @@
+require("dotenv").config();       // Load environment variables from .env file
+
 // Importing dependencies
 const express = require("express");           // Express is the framework for creating backend APIs
 const collection = require("./mongo");        // Importing the MongoDB user collection (from mongo.js)
 const cors = require("cors");                 // CORS allows frontend (React) and backend to communicate
 const app = express();                        // Initialize Express app
+
+const OpenAI = require("openai");               // OpenAI SDK for AI content generation
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY }); // OpenAI API client
 
 // Middleware setup
 app.use(express.json());                      // Parse incoming JSON request bodies
@@ -113,6 +118,60 @@ app.post("/account", async (req, res) => {
 
 });
 
+app.post("/generate", async (req, res) => {
+  try {
+    const { term } = req.body;
+
+    // --- Generate textual explanation ---
+    const explanation = await openai.chat.completions.create({
+      model: "gpt-5",
+      messages: [
+        {
+          role: "system",
+          content: "You are an ASL instructor who explains hand signs clearly.",
+        },
+        {
+          role: "user",
+          content: `Explain how to sign the letter '${term}' in American Sign Language in one short paragraph.`,
+        },
+      ],
+    });
+
+    let imageUrl;
+
+    try {
+      // --- Generate the diagram image for the ASL letter ---
+      const image = await openai.images.generate({
+        model: "gpt-image-1",
+        prompt: `A clear, simple line drawing of a hand showing the American Sign Language sign for the letter '${term}'. 
+                 Show just the handshape and orientation, no text or background.`,
+        size: "1024x1024",
+      });
+
+      imageUrl = image.data[0].url;
+    } catch (imgError) {
+      console.warn("⚠️ Image model unavailable — using fallback image.");
+
+      // --- Fallback: use a local or online placeholder letter image ---
+      imageUrl = `/asl_letters/${term.toUpperCase()}.png`; // e.g. /public/asl_letters/A.png
+    }
+
+    res.json({
+      term,
+      explanation: explanation.choices[0].message.content,
+      imageUrl,
+    });
+  } catch (error) {
+    console.error("Error in /generate:", error);
+
+    // --- If the whole thing fails, still return something to the frontend ---
+    res.status(500).json({
+      term: req.body.term,
+      explanation: `The ASL sign for '${req.body.term}' is made using a specific handshape.`,
+      imageUrl: "https://via.placeholder.com/1024x1024?text=ASL+Sign",
+    });
+  }
+});
 
 
 // ------------------------------

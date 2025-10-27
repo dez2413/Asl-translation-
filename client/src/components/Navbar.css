@@ -28,7 +28,7 @@
 }
 
 .navbar-center a:hover {
-  color: #a8dadc;
+  color: #a8acdc;
 }
 
 .navbar-right .btn-link {
@@ -54,6 +54,18 @@
 .navbar-right .signup:hover {
   background-color: #7f32d8;
 }
+
+
+.navbar-right .logout {
+  background-color: #2b0255;
+  border: none;
+  font-size: 18px;
+}
+
+.navbar-right .logout:hover {
+  background-color: #7f32d8;
+}
+
 
 
 
