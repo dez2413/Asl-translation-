@@ -22,7 +22,7 @@ function Account() {
     try{
 
       const res = await axios.post("http://localhost:5000/account", {
-        name,email,password
+        name,email,password,newName,newEmail,newPassword
       })
 
       console.log("Response from backend:", res.data);
@@ -101,6 +101,7 @@ function Account() {
 }
 
 export default Account;
+
 
 
 
