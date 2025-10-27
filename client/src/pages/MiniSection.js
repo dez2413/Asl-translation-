@@ -1,5 +1,6 @@
 // src/pages/MiniSection.js
-import React from "react";          // Importing React library      
+import React from "react";          // Importing React library   
+import "./style/MiniSection.css"; // Styles specific to MiniSection page
 import { useParams } from "react-router-dom";       // Used for accessing URL parameters
 import { lessonsData } from "../data/lessonsData";  // Lesson data (contains title, id, sections, etc.)
 import "./style/Page.css";                  // Shared global styles
