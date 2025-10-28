@@ -1,3 +1,5 @@
+
+
 export const lessonsData = [
   {
     id: "alphabet",
@@ -14,32 +16,32 @@ export const lessonsData = [
         signs: [
           {
             letter: "A",
-            image: "/images/letters/A.png",
+            image: "/sign/Alphabet A-F/A.png",
             text: "Make a fist with your thumb beside your index finger.",
           },
           {
             letter: "B",
-            image: "/images/letters/B.png",
+            image: "/sign/Alphabet A-F/B.png",
             text: "Hold your hand up with fingers together, thumb across palm.",
           },
           {
            letter: "C",
-            image: "/images/letters/C.png",
+            image: "/sign/Alphabet A-F/C.png",
             text: "....",
           },
           {
             letter: "D",
-            image: "/images/letters/D.png",
+            image: "/sign/Alphabet A-F/D.png",
             text: "...",
           },
            {
            letter: "E",
-            image: "/images/letters/E.png",
+            image: "/sign/Alphabet A-F/E.png",
             text: "....",
           },
           {
             letter: "F",
-            image: "/images/letters/F.png",
+            image: "/sign/Alphabet A-F/F.png",
             text: "...",
           },
         ],//end of signs array
@@ -51,7 +53,38 @@ export const lessonsData = [
         id: "g-l",
         title: "Letters G–L",
         video: "/videos/alphabet_G-L.mp4",
-        signs: [],
+        signs: [
+          {
+            letter: "G",
+            image: "/sign/Alphabet G-L/G.png",
+            text: "....",
+          },
+          {
+            letter: "H",
+            image: "/sign/Alphabet G-L/H.png",
+            text: "....",
+          },
+          {
+            letter: "I",
+            image: "/sign/Alphabet G-L/I.png",
+            text: "....",
+          },
+          {
+            letter: "J",
+            image: "/sign/Alphabet G-L/J.png",
+            text: "....",
+          },
+          {
+            letter: "K",
+            image: "/sign/Alphabet G-L/K.png",
+            text: "....",
+          },
+          {
+            letter: "L",
+            image: "/sign/Alphabet G-L/L.png",
+            text: "....",
+          },
+        ],//end of signs array
       },
 
 
@@ -61,7 +94,43 @@ export const lessonsData = [
         id: "m-s",
         title: "Letters M–S",
         video: "/videos/alphabet_M-S.mp4",
-        signs: [],
+        signs: [
+           {
+            letter: "M",
+            image: "/sign/Alphabet M-S/M.png",
+            text: "....",
+          },
+          {
+            letter: "N",
+            image: "/sign/Alphabet M-S/N.png",
+            text: "....",
+          },
+          {
+            letter: "O",
+            image: "/sign/Alphabet M-S/O.png",
+            text: "....",
+          },
+          {
+            letter: "P",
+            image: "/sign/Alphabet M-S/P.png",
+            text: "....",
+          },
+          {
+            letter: "Q",
+            image: "/sign/Alphabet M-S/Q.png",
+            text: "....",
+          },
+          {
+            letter: "R",
+            image: "/sign/Alphabet M-S/R.png",
+            text: "....",
+          },
+           {
+            letter: "S",
+            image: "/sign/Alphabet M-S/S.png",
+            text: "....",
+          },
+        ],
       },
 
 
@@ -70,7 +139,43 @@ export const lessonsData = [
         id: "t-z",
         title: "Letters T–Z",
         video: "/videos/alphabet_T-Z.mp4",
-        signs: [],
+        signs: [
+           {
+            letter: "T",
+            image: "/sign/Alphabet T-Z/T.png",
+            text: "....",
+          },
+          {
+            letter: "U",
+            image: "/sign/Alphabet T-Z/U.png",
+            text: "....",
+          },
+          {
+            letter: "V",
+            image: "/sign/Alphabet T-Z/V.png",
+            text: "....",
+          },
+          {
+            letter: "W",
+            image: "/sign/Alphabet T-Z/W.png",
+            text: "....",
+          },
+          {
+            letter: "X",
+            image: "/sign/Alphabet T-Z/X.png",
+            text: "....",
+          },
+          {
+            letter: "Y",
+            image: "/sign/Alphabet T-Z/Y.png",
+            text: "....",
+          },
+           {
+            letter: "Z",
+            image: "/sign/Alphabet T-Z/Z.png",
+            text: "....",
+          },
+        ],
       },
     ],//end of ASL Alphabet section
   },//end of ASL Alphabet"

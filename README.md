@@ -76,6 +76,10 @@ Akash. “Asl Alphabet.” Kaggle, 22 Apr. 2018, [www.kaggle.com/datasets/grassk
 https://www.instructables.com/How-to-Train-Custom-Hand-Gestures-Using-Mediapipe/ 
 
 
+Diagrams for Alphabet
+Kelly, Wendy. “Free ASL Alphabet Chart.” American Society for Deaf Children, 23 Nov. 2020, deafchildren.org/2019/06/free-asl-alphabet-chart/. 
+
+
 
 
 
