@@ -27,7 +27,7 @@ export const lessonsData = [
           {
            letter: "C",
             image: "/sign/Alphabet A-F/C.png",
-            text: "....",
+            text: "Curve your hand to form the shape of the letter C.",
           },
           {
             letter: "D",
@@ -142,37 +142,37 @@ export const lessonsData = [
         signs: [
            {
             letter: "T",
-            image: "/sign/Alphabet T-Z/T.png",
+            image: "/sign/Alphabet T-Z/TDD1.png",
             text: "....",
           },
           {
             letter: "U",
-            image: "/sign/Alphabet T-Z/U.png",
+            image: "/sign/Alphabet T-Z/UDD1.png",
             text: "....",
           },
           {
             letter: "V",
-            image: "/sign/Alphabet T-Z/V.png",
+            image: "/sign/Alphabet T-Z/VDD1.png",
             text: "....",
           },
           {
             letter: "W",
-            image: "/sign/Alphabet T-Z/W.png",
+            image: "/sign/Alphabet T-Z/WDD1.png",
             text: "....",
           },
           {
             letter: "X",
-            image: "/sign/Alphabet T-Z/X.png",
+            image: "/sign/Alphabet T-Z/XDD1.png",
             text: "....",
           },
           {
             letter: "Y",
-            image: "/sign/Alphabet T-Z/Y.png",
+            image: "/sign/Alphabet T-Z/YDD1.png",
             text: "....",
           },
            {
             letter: "Z",
-            image: "/sign/Alphabet T-Z/Z.png",
+            image: "/sign/Alphabet T-Z/ZDD1.png",
             text: "....",
           },
         ],
