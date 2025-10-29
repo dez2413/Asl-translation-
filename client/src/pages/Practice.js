@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, use, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 // control
 //hands, hand connections, -> handLandmarker.Hand_connections, createFromModel
 // camera, ????????
@@ -6,13 +6,12 @@ import React, { useRef, useEffect, use, useState } from "react";
 import {
   HandLandmarker,
   //HandLandmarkerOptions,HandLandmarkerResult
-  DrawingUtils, //maybe in individual packets
   GestureRecognizer, 
   FilesetResolver,
 } from "@mediapipe/tasks-vision";
 
 import hand_landmarker_task from "./hand_landmarker.task";
-
+import recognizerTask from "./handgesture_recognizer.task";
 import "./style/Page.css";
 
 /*set true in
@@ -28,6 +27,12 @@ media.getusermedia.insecure.enabled
 // https://codepen.io/mediapipe-preview/pen/gOKBGPN?editors=1010
 // https://medium.com/@kiyo07/integrating-mediapipe-tasks-vision-for-hand-landmark-detection-in-react-a2cfb9d543c7
 // 0.10.17 most popular version of tasks vision
+
+// https://github.com/google-ai-edge/mediapipe/issues/5997
+// https://github.com/google-ai-edge/mediapipe/blob/master/mediapipe/tasks/python/metadata/metadata_writers/metadata_writer.py
+// https://github.com/google-ai-edge/mediapipe/tree/master/mediapipe/tasks/python/metadata/metadata_writers
+// https://ai.google.dev/edge/mediapipe/solutions/customization/gesture_recognizer
+// https://ai.google.dev/edge/mediapipe/solutions/customization/gesture_recognizerhttps://ai.google.dev/edge/mediapipe/solutions/customization/gesture_recognizer
 function Practice() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -40,6 +45,20 @@ function Practice() {
     let handLandmarker;
     let animationFrameId;
     let gestureRecognizer;
+
+    let firstCategoryName;
+    let firstCategoryScore;
+    let firstHandedness;
+    let firstIndexFingerCoor;
+    let firstIndexFingerCoorWorld;
+    let secondCategoryName;
+    let secondCategoryScore;
+    let secondHandedness;
+    let secondIndexFingerCoor;
+    let secondIndexFingerCoorWorld;
+
+    let oldPositionHandNine = [0,0,0];
+    let newPositionHandNine;
 
     const initializeHandDetection = async () => {
       console.log("in initHandDetect");
@@ -71,7 +90,9 @@ function Practice() {
 
         gestureRecognizer = await GestureRecognizer.createFromOptions(
           vision, {
-            baseOptions: { modelAssetPath: "https://storage.googleapis.com/mediapipe-tasks/gesture_recognizer/gesture_recognizer.task"},
+            baseOptions: { 
+            //modelAssetPath: "https://storage.googleapis.com/mediapipe-tasks/gesture_recognizer/gesture_recognizer.task"},
+            modelAssetPath: recognizerTask},
             numHands: 2,
             runningMode: "video"
           }
@@ -82,63 +103,107 @@ function Practice() {
     }; 
 
     const drawLandmarks = (landmarksArray, recognizerResult) => {
+      console.log("in drawLandmarks");
       const canvas = canvasRef.current;
-      const video = videoRef.current;
-      const ctx = canvas.getContext("2d");
+      const canvasCtx = canvas.getContext('2d');
+      canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+      canvasCtx.fillStyle = 'white';
 
-      // Draw video feed first
-      ctx.save();
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-      if (!landmarksArray || landmarksArray.length === 0) {
-        ctx.restore();
-        return;
-      }
-
-      // Draw landmarks on top of video
-      ctx.fillStyle = "lime";
       landmarksArray.forEach(landmarks => {
-        landmarks.forEach(point => {
-          const x = point.x * canvas.width;
-          const y = point.y * canvas.height;
-          ctx.beginPath();
-          ctx.arc(x, y, 5, 0, 2 * Math.PI);
-          ctx.fill();
+        landmarks.forEach(landmark => {
+          const x = landmark.x * canvas.width;
+          const y = landmark.y * canvas.height;
+
+          canvasCtx.beginPath();
+          canvasCtx.arc(x, y, 5, 0, 2*Math.PI);
+          canvasCtx.fill();
         });
+
+        canvasCtx.font = '10px Arial';
+        canvasCtx.fillStyle = 'white';
+        canvasCtx.textAlign = 'center';
+        
+        // top = 0
+        // left = 0
+        // right = 0.9
+        // bottom = 0.9
+        // by seeing camera view
+        // through experience it is flipped
+        
+        if(recognizerResult.gestures[0] !== undefined){
+
+          firstCategoryName = recognizerResult.gestures[0][0].categoryName;
+          firstCategoryScore = parseFloat(recognizerResult.gestures[0][0].score * 100).toFixed(2);
+          firstHandedness = recognizerResult.handednesses[0][0].displayName;
+          firstIndexFingerCoor = recognizerResult.landmarks[0][8].x;
+          firstIndexFingerCoorWorld = recognizerResult.landmarks[0][8].x;
+
+          if(Math.abs(oldPositionHandNine[0] - recognizerResult.landmarks[0][9].x) > 0.03){
+            canvasCtx.fillText("x/Horizontal Moves", (canvas.width / 8), canvas.height / 3);
+          }
+          if(Math.abs(oldPositionHandNine[1] - recognizerResult.landmarks[0][9].y) > 0.03){
+            canvasCtx.fillText("y/Vertical Moves", (canvas.width / 8), (canvas.height / 3)+(canvas.height/9));
+          }
+          if(Math.abs(oldPositionHandNine[2] - recognizerResult.landmarks[0][9].z) > 0.03){
+            canvasCtx.fillText("z/Depth Moves", (canvas.width / 8), (canvas.height / 3)+((2*canvas.height)/9));
+          }
+
+          oldPositionHandNine = [
+              recognizerResult.landmarks[0][9].x, 
+              recognizerResult.landmarks[0][9].y,
+              recognizerResult.landmarks[0][9].z
+            ];
+
+          if(recognizerResult.gestures[1] !== undefined){
+          secondCategoryName = recognizerResult.gestures[1][0].categoryName;
+          secondCategoryScore = parseFloat(recognizerResult.gestures[1][0].score * 100).toFixed(2);
+          secondHandedness = recognizerResult.handednesses[1][0].displayName;
+          secondIndexFingerCoor = recognizerResult.landmarks[1][8].x;
+          secondIndexFingerCoorWorld = recognizerResult.landmarks[1][8].x;
+          }
+        }
+        else{
+          firstCategoryName ="No Hand";
+          firstCategoryScore = 0;
+          firstHandedness = "No Hand";
+          firstIndexFingerCoor = 0;
+          firstIndexFingerCoorWorld = 0;
+
+          secondCategoryName ="No Hand";
+          secondCategoryScore = 0;
+          secondHandedness = "No Hand";
+          secondIndexFingerCoor = 0;
+          secondIndexFingerCoorWorld = 0;
+        }
+        
+        canvasCtx.fillText(firstCategoryName, canvas.width / 4, canvas.height / 8);
+        canvasCtx.fillText(firstCategoryScore, canvas.width / 2, canvas.height / 8);
+        canvasCtx.fillText(firstHandedness, (canvas.width / 4)*3, canvas.height / 8);
+
+        canvasCtx.fillText(firstIndexFingerCoor, (canvas.width / 4), (canvas.height / 8)*5.5);
+        canvasCtx.fillText(firstIndexFingerCoorWorld, (canvas.width / 4)*3, (canvas.height / 8)*5.5);
+
+        canvasCtx.fillText(secondCategoryName, canvas.width / 4, (canvas.height / 8)+(canvas.height/8));
+        canvasCtx.fillText(secondCategoryScore, canvas.width / 2, (canvas.height / 8)+(canvas.height/8));
+        canvasCtx.fillText(secondHandedness, (canvas.width / 4)*3, (canvas.height / 8)+(canvas.height/8));
+
+        canvasCtx.fillText(secondIndexFingerCoor, (canvas.width / 4), ((canvas.height / 8)*5.5)+(canvas.height/8));
+        canvasCtx.fillText(secondIndexFingerCoorWorld, (canvas.width / 4)*3, ((canvas.height / 8)*5.5)+(canvas.height/8));
       });
-
-      // Draw gesture info
-      if (
-        recognizerResult &&
-        recognizerResult.gestures &&
-        recognizerResult.gestures.length > 0 &&
-        recognizerResult.gestures[0].length > 0
-      ) {
-        const gesture = recognizerResult.gestures[0][0];
-        const name = gesture.categoryName || "Unknown";
-        const score = ((gesture.score || 0) * 100).toFixed(1);
-
-        ctx.font = "18px Arial";
-        ctx.fillStyle = "white";
-        ctx.fillText(`Gesture: ${name} (${score}%)`, 20, 30);
-      }
-
-      ctx.restore();
     };
 
-
     const detectHands = () => {
-      if (!videoRef.current || !handLandmarker) return;
+      console.log("in detectHands");
+      if(videoRef.current && videoRef.current.readyState >= 2){
+        const detections = handLandmarker.detectForVideo(videoRef.current, performance.now());
+        setHandPresence(detections.handednesses.length > 0);
+        
+        const gestureRecognizerResult = gestureRecognizer.recognizeForVideo(videoRef.current, performance.now());
 
-      const detections = handLandmarker.detectForVideo(videoRef.current, performance.now());
-      const gestureRecognizerResult = gestureRecognizer.recognizeForVideo(videoRef.current, performance.now());
-
-      if (detections && detections.landmarks && detections.landmarks.length > 0) {
-        setHandPresence(true);
-        drawLandmarks(detections.landmarks, gestureRecognizerResult);
-      } else {
-        setHandPresence(false);
+        //if detections.landmarks is array of landmarks object
+        if(detections.landmarks){
+          drawLandmarks(detections.landmarks, gestureRecognizerResult);
+        }
       }
 
       requestAnimationFrame(detectHands);
@@ -172,38 +237,27 @@ function Practice() {
         cancelAnimationFrame(animationFrameId);
       }
     };
-
-//        <div className="practice-camera">
-//         {/* Webcam Input Panel */}
-//         <div className="webcam-canvas">
-//           <p className="webcam-Input">Webcam Input</p>
-//           <video
-//             ref={videoRef}             // Reference for MediaPipe to access webcam
-//             className="input_video"
-//             autoPlay                   // Start playing automatically
-//             playsInline                // Prevent fullscreen on iPhones
-//             muted                      // Mute video (no need for audio)
-//             width="480"
-//             height="480"
-//           >
-//           </video>
-          
-//         </div>
-
-//         {/* Output Canvas Panel */}
-//         <div className="webcam-canvas">
-//           <p className="practice-description">Hand Detection</p>
-//           <canvas
-//             ref={canvasRef}            // Reference for drawing detections
-//             className="output_canvas"
-//             width="480"
-//             height="480"
-//           ></canvas>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+  /*
+  //webcam
+        <div className="border p-4 rounded-2xl shadow-md bg-gray-50">
+          <p className="font-semibold mb-2">Webcam Input</p>
+          <video
+            ref={videoRef}
+            className="input_video"
+            autoPlay
+            playsInline
+            muted
+            width="480"
+            height="480"
+          ></video>
+        </div>
+  // output canvas
+  <div className="border p-4 rounded-2xl shadow-md bg-gray-50">
+          <p className="font-semibold mb-2">Hand Detection</p>
+          <canvas ref={canvasRef} className="output_canvas" width="480" height="480"></canvas>
+        </div>
+  
+  */
   }, []);
   return (
     <div className="page p-6 text-center">
@@ -218,15 +272,10 @@ function Practice() {
         <>
           <h1> Hand There? {handPresence? "Yes" : "No"}</h1>
           <div style={{ position: "relative"}}>
-
-            <video 
-              ref={videoRef} 
-              muted
-              autoPlay 
-              playsInline>
-            </video>
+            <video ref={videoRef} autoPlay playsInline></video>
             <canvas ref={canvasRef} style={{
-              width:"600px",
+              backgroundColor: "black",
+              width:"640px",
               height: "480px"
             }}>
             </canvas>
