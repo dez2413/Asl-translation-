@@ -32,7 +32,7 @@ export const lessonsData = [
           {
             letter: "D",
             image: "/sign/Alphabet A-F/D.png",
-            text: "Raise pointer finger, curve other fingers, and touch your middle finger and thumb ot eachother in the shape of a d.",
+            text: "Raise pointer finger, curve other fingers, and touch your middle finger and thumb to eachother in the shape of a d.",
           },
            {
            letter: "E",
@@ -67,12 +67,12 @@ export const lessonsData = [
           {
             letter: "I",
             image: "/sign/Alphabet G-L/I.png",
-            text: "Extend just your pinky finger upwards.",
+            text: "Extend just your pinky finger upwards with your other fingers curled in and your palm facing outwards.",
           },
           {
             letter: "J",
             image: "/sign/Alphabet G-L/J.png",
-            text: "Extend your pinky finger and rotate your wrist as if you were making a J.",
+            text: "Extend your pinky finger in the same way as the sign for I. Rotate your wrist as if you were drawing a J with your pinky.",
           },
           {
             letter: "K",
@@ -82,7 +82,7 @@ export const lessonsData = [
           {
             letter: "L",
             image: "/sign/Alphabet G-L/L.png",
-            text: "Extend your pointer finger and thumb in the shape of an L.",
+            text: "Extend your pointer finger and thumb in the shape of an L with your other fingers curled in. Face your palm forward.",
           },
         ],//end of signs array
       },
@@ -118,12 +118,12 @@ export const lessonsData = [
           {
             letter: "Q",
             image: "/sign/Alphabet M-S/Q.png",
-            text: "Extend your pointer finger and thrumb parallel to eachother and point them down ward. Similar to the sign for G but facing downward.",
+            text: "Extend your pointer finger and thrumb parallel to eachother and point them down ward. Your palm should be facing downward. Similar to the sign for G but facing downward.",
           },
           {
             letter: "R",
             image: "/sign/Alphabet M-S/R.png",
-            text: "Extend your pointer and middle fingers upwards and then cross your pointer finger over your middle finger.",
+            text: "Extend your pointer and middle fingers upwards and then cross your pointer finger over your middle finger. Your palm should be facing forward.",
           },
            {
             letter: "S",
