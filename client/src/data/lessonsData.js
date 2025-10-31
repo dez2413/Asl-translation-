@@ -108,7 +108,7 @@ export const lessonsData = [
           {
             letter: "O",
             image: "/sign/Alphabet M-S/O.png",
-            text: "Form a loop wight your thumb and fingers in the shape of an O.",
+            text: "Form a loop with your thumb and fingers in the shape of an O.",
           },
           {
             letter: "P",
