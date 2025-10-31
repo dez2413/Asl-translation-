@@ -19,9 +19,7 @@ function MiniSection() {
     <>
       <div className="page">
         <h1 className="minisection-title">{section.title}</h1>
-        <video controls className="minisection-video">
-          <source src={section.video} type="video/mp4" />
-        </video>
+        <iframe width="560" height="315" src={section.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
         <div className="sign-grid">
           {section.signs.map((sign) => (
