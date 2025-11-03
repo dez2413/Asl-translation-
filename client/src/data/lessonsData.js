@@ -52,7 +52,7 @@ export const lessonsData = [
       //G–L and sign and diagram
       {
         id: "g-l",
-        title: "Letters A–F",
+        title: "Letters G–L",
         videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
         start: 190,
         end: 298,
@@ -142,6 +142,7 @@ export const lessonsData = [
       //T–Z and sign and diagram
       {
         id: "t-z",
+        title: "Letters T-Z",
         videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
         start: 425,
         end: 546,
