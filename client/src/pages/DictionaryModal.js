@@ -1,39 +1,64 @@
-// src/pages/MiniSection.js
-import React from "react";          // Importing React library   
-import "./style/MiniSection.css"; // Styles specific to MiniSection page
-import { useParams } from "react-router-dom";       // Used for accessing URL parameters
-import { lessonsData } from "../data/lessonsData";  // Lesson data (contains title, id, sections, etc.)
-import "./style/Page.css";                  // Shared global styles
+import React, { useState } from "react"; // ✅ Import useState
+import "./style/MiniSection.css"; // Reuse existing CSS if applicable
+import "./style/DictionaryModal.css"; // New CSS for DictionaryModal
+import { useParams } from "react-router-dom"; // React Router hook
+import { lessonsData } from "../data/lessonsData"; // Import lessons data
+import "./style/Page.css"; // General page styles
 
 function DictionaryModal() {
-  // Extract lessonId and sectionId from URL parameters
+  // Get lessonId from URL parameters
   const { lessonId } = useParams();
   const lesson = lessonsData.find((l) => l.id === lessonId);
 
+  // Hooks must go before conditionals
+  const [openIndex, setOpenIndex] = useState(null);
 
-  // If lesson or section not found, display a message
+  // Early return if lesson not found
   if (!lesson) return <p>Lesson not found.</p>;
 
+  // Function to toggle sign details
+  const toggleSign = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
-    <>
-      <div className="page">
-        <h1 className="Dictionary-title">{lesson.title}</h1>
+    <div className="page">
+      <h1 className="Dictionary-title">{lesson.title} Dictionary</h1>
 
-        {/* <div className="sign-grid">
-          {section.signs.map((sign) => (
-            <div
-              key={sign.letter}
-              className="sign-card"
-            >
-              <img src={sign.image} alt={sign.letter} className="sign-image" />
-              <h2 className="sign-letter">{sign.letter}</h2>
-              <p className="sign-text">{sign.text}</p>
-            </div>
-          ))}
-        </div> */}
+      <div className="dictionary-grid">
+        {lesson.sections
+
+        //only include sections that have signs
+          .filter((section) => section.signs && section.signs.length > 0)
+
+          //flatten signs from all sections into a single array
+          .flatMap((section) =>
+
+            //map over each sign in the section
+            section.signs.map((sign, i) => (
+
+              //render each sign card
+              <div
+                key={sign.letter || sign.number || i}
+                className={`dictionary-card ${openIndex === i ? "expanded" : ""}`}
+                onClick={() => toggleSign(i)}
+              >
+                <img
+                  src={sign.image}
+                  alt={sign.letter || sign.number}
+                  className="dictionary-image"
+                />
+                <div className="dictionary-details">
+                  <h2 className="dictionary-letter">
+                    {sign.letter || sign.number}
+                  </h2>
+                  <p className="dictionary-text">{sign.text}</p>
+                </div>
+              </div>
+            ))
+          )}
       </div>
-    </>
+    </div>
   );
 }
 

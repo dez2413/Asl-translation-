@@ -142,44 +142,44 @@ export const lessonsData = [
       //T–Z and sign and diagram
       {
         id: "t-z",
-        title: "Letters T-Z",
+        title: "Letters T–Z",
         videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
         start: 425,
         end: 546,
         signs: [
            {
             letter: "T",
-            image: "/sign/Alphabet T-Z/TDD1.png",
+            image: "/sign/Alphabet T-Z/T.png",
             text: "Form a fist and put your thumb between your pointer and middle finger.",
           },
           {
             letter: "U",
-            image: "/sign/Alphabet T-Z/UDD1.png",
+            image: "/sign/Alphabet T-Z/U.png",
             text: "Extend your pointer and middle fingers upwards and hold them together.",
           },
           {
             letter: "V",
-            image: "/sign/Alphabet T-Z/VDD1.png",
+            image: "/sign/Alphabet T-Z/V.png",
             text: "Extend your pointer and middle fingers upward and then spread them into a V shape.",
           },
           {
             letter: "W",
-            image: "/sign/Alphabet T-Z/WDD1.png",
+            image: "/sign/Alphabet T-Z/W.png",
             text: "Extend your pointer, middle, and ring fingers upward in the shape of a W.",
           },
           {
             letter: "X",
-            image: "/sign/Alphabet T-Z/XDD1.png",
+            image: "/sign/Alphabet T-Z/X.png",
             text: "Curl your thumb over your middle finger and curl your pointer finger in a hook like shape.",
           },
           {
             letter: "Y",
-            image: "/sign/Alphabet T-Z/YDD1.png",
+            image: "/sign/Alphabet T-Z/Y.png",
             text: "Curl your fingers and extend your pinky and thumb.",
           },
            {
             letter: "Z",
-            image: "/sign/Alphabet T-Z/ZDD1.png",
+            image: "/sign/Alphabet T-Z/Z.png",
             text: "Extend your pointer finger and move it it a Z motion.",
           },
         ],
