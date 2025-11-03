@@ -52,8 +52,10 @@ export const lessonsData = [
       //G–L and sign and diagram
       {
         id: "g-l",
-        title: "Letters G–L",
-        video: "https://www.youtube.com/embed/DBQINq0SsAw?si=8oC2dkmrI4LTZlUr&amp;start=189",
+        title: "Letters A–F",
+        videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 190,
+        end: 297,
         signs: [
           {
             letter: "G",
@@ -94,7 +96,9 @@ export const lessonsData = [
       {
         id: "m-s",
         title: "Letters M–S",
-        video: "https://www.youtube.com/embed/DBQINq0SsAw?si=F5GpvH6loLWWWqZf&amp;start=297",
+        videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 297,
+        end: 424,
         signs: [
            {
             letter: "M",
@@ -138,8 +142,9 @@ export const lessonsData = [
       //T–Z and sign and diagram
       {
         id: "t-z",
-        title: "Letters T–Z",
-        video: "https://www.youtube.com/embed/DBQINq0SsAw?si=6y4gDxVihBsZZxU3&amp;start=425",
+        videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 424,
+        end: 545,
         signs: [
            {
             letter: "T",
