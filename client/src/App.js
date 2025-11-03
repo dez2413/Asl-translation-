@@ -16,7 +16,7 @@ import Account from "./pages/Account"
 
 // Importing additional components for nested routes
 import MiniSection from "./pages/MiniSection";
-// import DictionaryModal from "./pages/DictionaryModal";
+import DictionaryModal from "./pages/DictionaryModal";
 
 // Importing ProtectedRoute component for route protection
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -62,6 +62,7 @@ function App() {
             }
           />
           <Route path="/lessons/:lessonId/:sectionId" element={<MiniSection />} />
+          <Route path="/lessons/:lessonId/dictionary" element={<DictionaryModal />} />
         </Routes>
       </div>
     </AuthProvider>

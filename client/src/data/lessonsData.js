@@ -12,7 +12,9 @@ export const lessonsData = [
       //A-F and sign and diagram
         id: "a-f",
         title: "Letters A–F",
-        video: "/videos/alphabet_A-F.mp4",
+        videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 72,
+        end: 190,
         signs: [
           {
             letter: "A",
