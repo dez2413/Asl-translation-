@@ -1,4 +1,4 @@
-import React from "react"; // Import core React library
+import React ,{useState} from "react"; // Import core React library
 import { useLocation, Link } from "react-router-dom"; // Used for routing between pages
 import "./style/Page.css"; // Shared global styles
 import "./style/Lesson.css"; // Lesson-specific styles

@@ -1,8 +1,4 @@
 import React, { useRef, useEffect, useState } from "react";
-// control
-//hands, hand connections, -> handLandmarker.Hand_connections, createFromModel
-// camera, ????????
-// drawconnectors, drawlandmarks -> drawingutils
 import {
   HandLandmarker,
   //HandLandmarkerOptions,HandLandmarkerResult
@@ -10,9 +6,12 @@ import {
   FilesetResolver,
 } from "@mediapipe/tasks-vision";
 
+import ScrollToSelectedListItem from "./ScrollToSelectedListItem";
+
 import hand_landmarker_task from "./hand_landmarker.task";
 import recognizerTask from "./handgesture_recognizer.task";
 import "./style/Page.css";
+
 
 /*set true in
 about:config
@@ -36,12 +35,14 @@ media.getusermedia.insecure.enabled
 function Practice() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+  const resultRef = useRef(null);
   const [handPresence, setHandPresence] = useState(null);
 
+  const [correctGesture, setCorrectGesture] = useState(null);
+  const [currentGesture, setCurrentGesture] = useState(null);
+  const targetGesture = "Victory";
+
   useEffect(() => {
-    //const videoElement = videoRef.current;
-    //const canvasElement = canvasRef.current;
-    //const canvasCtx = canvasElement.getContext("2d");
     let handLandmarker;
     let animationFrameId;
     let gestureRecognizer;
@@ -59,6 +60,10 @@ function Practice() {
 
     let oldPositionHandNine = [0,0,0];
     let newPositionHandNine;
+
+    let targetIndex = 0;
+    let categoryNames = ["None", "Closed_Fist", "Open_Palm", "Pointing_Up", "Thumb_Down", "Thumb_Up", "Victory", "ILoveYou"];
+    let categoryHistory = [1, 0, 0, 0, 0, 0, 0, 0];
 
     const initializeHandDetection = async () => {
       console.log("in initHandDetect");
@@ -109,6 +114,11 @@ function Practice() {
       canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
       canvasCtx.fillStyle = 'white';
 
+      const canvasRes = resultRef.current;
+      const canvasResCtx = canvasRes.getContext('2d');
+      canvasResCtx.clearRect(0, 0, canvasRes.width, canvasRes.height);
+      canvasResCtx.fillStyle = 'white';
+
       landmarksArray.forEach(landmarks => {
         landmarks.forEach(landmark => {
           const x = landmark.x * canvas.width;
@@ -122,6 +132,10 @@ function Practice() {
         canvasCtx.font = '10px Arial';
         canvasCtx.fillStyle = 'white';
         canvasCtx.textAlign = 'center';
+
+        canvasResCtx.font = '10px Arial';
+        canvasResCtx.fillStyle = 'white';
+        canvasResCtx.textAlign = 'center';
         
         // top = 0
         // left = 0
@@ -163,13 +177,13 @@ function Practice() {
           }
         }
         else{
-          firstCategoryName ="No Hand";
+          firstCategoryName ="None";
           firstCategoryScore = 0;
           firstHandedness = "No Hand";
           firstIndexFingerCoor = 0;
           firstIndexFingerCoorWorld = 0;
 
-          secondCategoryName ="No Hand";
+          secondCategoryName ="None";
           secondCategoryScore = 0;
           secondHandedness = "No Hand";
           secondIndexFingerCoor = 0;
@@ -179,6 +193,23 @@ function Practice() {
         canvasCtx.fillText(firstCategoryName, canvas.width / 4, canvas.height / 8);
         canvasCtx.fillText(firstCategoryScore, canvas.width / 2, canvas.height / 8);
         canvasCtx.fillText(firstHandedness, (canvas.width / 4)*3, canvas.height / 8);
+
+        // testing 2nd canvas
+        canvasResCtx.fillText(firstCategoryName, canvas.width / 4, canvas.height / 8);
+        canvasResCtx.fillText(firstCategoryScore, canvas.width / 2, canvas.height / 8);
+        canvasResCtx.fillText(firstHandedness, (canvas.width / 4)*3, canvas.height / 8);
+        
+        // generate random element from array of names 
+        canvasResCtx.fillText("Target:"+ targetGesture, canvas.width / 4, 4*canvas.height / 8);
+        if(firstCategoryName === targetGesture){
+          canvasResCtx.fillText("Correct!"+firstCategoryName, canvas.width / 4, 6*canvas.height / 8);
+          setCorrectGesture(1);
+          setCurrentGesture(firstCategoryName);
+        }else{
+          canvasResCtx.fillText("Try Again!"+firstCategoryName, canvas.width / 4, 6*canvas.height / 8);
+          setCorrectGesture(null);
+          setCurrentGesture(firstCategoryName);
+        }
 
         canvasCtx.fillText(firstIndexFingerCoor, (canvas.width / 4), (canvas.height / 8)*5.5);
         canvasCtx.fillText(firstIndexFingerCoorWorld, (canvas.width / 4)*3, (canvas.height / 8)*5.5);
@@ -270,11 +301,19 @@ function Practice() {
         {/* Output Canvas */}
         {/* Gesture testing */}
         <>
-          <h1> Hand There? {handPresence? "Yes" : "No"}</h1>
+          <h1> Hand Presence: {handPresence? "Yes" : "No"}</h1>
+          <h1> Target: {targetGesture} ('u') Current:{currentGesture}</h1>
+          <h1> {correctGesture? "Correct!" : "Incorrect!"}</h1>
           <div style={{ position: "relative"}}>
             <video ref={videoRef} autoPlay playsInline></video>
             <canvas ref={canvasRef} style={{
-              backgroundColor: "black",
+              //backgroundColor: "black",
+              width:"640px",
+              height: "480px"
+            }}>
+            </canvas>
+            <canvas ref={resultRef} style={{
+              //backgroundColor: "black",
               width:"640px",
               height: "480px"
             }}>

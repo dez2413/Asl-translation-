@@ -7,12 +7,13 @@ export const lessonsData = [
     description: "Learn how to sign the alphabet in American Sign Language.",
     sections: [
       {
-        
-
+    
       //A-F and sign and diagram
         id: "a-f",
         title: "Letters A–F",
-        video: "https://www.youtube.com/embed/DBQINq0SsAw?si=qZdu283X6Izsb_73&amp;start=63",
+        videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 72,
+        end: 190,
         signs: [
           {
             letter: "A",
