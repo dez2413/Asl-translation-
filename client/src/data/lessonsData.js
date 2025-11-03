@@ -12,7 +12,7 @@ export const lessonsData = [
         id: "a-f",
         title: "Letters A–F",
         videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
-        start: 72,
+        start: 63,
         end: 190,
         signs: [
           {
@@ -55,7 +55,7 @@ export const lessonsData = [
         title: "Letters A–F",
         videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
         start: 190,
-        end: 297,
+        end: 298,
         signs: [
           {
             letter: "G",
@@ -97,8 +97,8 @@ export const lessonsData = [
         id: "m-s",
         title: "Letters M–S",
         videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
-        start: 297,
-        end: 424,
+        start: 298,
+        end: 425,
         signs: [
            {
             letter: "M",
@@ -143,8 +143,8 @@ export const lessonsData = [
       {
         id: "t-z",
         videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
-        start: 424,
-        end: 545,
+        start: 425,
+        end: 546,
         signs: [
            {
             letter: "T",
