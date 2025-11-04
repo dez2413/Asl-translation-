@@ -5,16 +5,17 @@ import "./style/MiniSection.css";
 import { useParams } from "react-router-dom";
 import { lessonsData } from "../data/lessonsData";
 import "./style/Page.css";
+import DictionaryModal from "./DictionaryModal";
+import book_icon from "../assets/book.png"; // Book icon for the dictionary link
 
 function MiniSection() {
   const { lessonId, sectionId } = useParams();
   const lesson = lessonsData.find((l) => l.id === lessonId);
   const section = lesson?.sections.find((s) => s.id === sectionId);
 
-  // ✅ Hooks must go before any early returns
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showDictionary, setShowDictionary] = useState(false); // ✅ toggle state
 
-  // Early returns AFTER hooks
   if (!lesson) return <p>Lesson not found.</p>;
   if (!section) return <p>Section not found.</p>;
 
@@ -45,7 +46,16 @@ function MiniSection() {
 
   return (
     <div className="page">
-      <h1 className="minisection-title">{section.title}</h1>
+      <div className="minisection-header">
+        <h1 className="minisection-title">{section.title}</h1>
+        <button
+          className="dictionary-button"
+          onClick={() => setShowDictionary(true)}
+        >
+          <img src={book_icon} alt="book icon" className="dictionary-icon" />
+           Dictionary
+        </button>
+      </div>
 
       {section.videoId ? (
         <div className="video-container">
@@ -77,6 +87,21 @@ function MiniSection() {
       <p className="progress-indicator">
         {currentIndex + 1} / {section.signs.length}
       </p>
+
+      {/* ✅ Dictionary Modal */}
+      {showDictionary && (
+        <div className="dictionary-overlay">
+          <div className="dictionary-content">
+            <button
+              className="close-button"
+              onClick={() => setShowDictionary(false)}
+            >
+              ✖ Close
+            </button>
+            <DictionaryModal lessonId={lessonId} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

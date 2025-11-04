@@ -5,9 +5,20 @@
   padding: 2rem;
 }
 
+.minisection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 2rem;
+
+}
+
 .minisection-title {
   font-size: 2rem;
   font-weight: 700;
+  margin-left: 35%;
   margin-bottom: 1.5rem;
   text-transform: uppercase;
 }
@@ -85,4 +96,67 @@
   margin-top: 1rem;
   color: #555;
   font-size: 1rem;
+}
+
+
+/* Modal Overlay */
+.dictionary-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.dictionary-content {
+   background: #8d769c;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: #ff5f5f;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 10px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.close-button:hover {
+  background: #e04747;
+}
+
+/* Dictionary button at top */
+.dictionary-button {
+  border-radius: 50%;
+  padding: 10px;
+  background-color:#be62ff9f;
+  border: none;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 20px;
+}
+
+.dictionary-button:hover {
+  background-color: #5c00b3;
 }

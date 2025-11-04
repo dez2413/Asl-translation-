@@ -4,10 +4,22 @@ import "./style/Page.css"; // Shared global styles
 import "./style/Lesson.css"; // Lesson-specific styles
 import { lessonsData } from "../data/lessonsData"; // Lesson data (contains title, id, sections, etc.)
 import book_icon from "../assets/book.png"; // Book icon for the dictionary link
+import DictionaryModal from "./DictionaryModal";
+
 
 function Lessons() {
   // Get user information passed from login via React Router state
   const location = useLocation();
+
+   const [openLessonId, setOpenLessonId] = useState(null);
+
+    const openDictionary = (lessonId) => {
+    setOpenLessonId(lessonId);
+  };
+
+  const closeDictionary = () => {
+    setOpenLessonId(null);
+  };
 
   return (
     <div className="page">
@@ -27,16 +39,18 @@ function Lessons() {
               {/* Lesson title */}
               <h2 className="lesson-title">{lesson.title}</h2>
 
-              {/* Dictionary link with icon */}
-              <div className="lesson-dictionary">
-                <img src={book_icon} alt="book icon" className="dictionary-icon" />
-                <Link
-                  to={`/lessons/${lesson.id}/dictionary`}
-                  className="dictionary-link"
-                >
-                  Dictionary
-                </Link>
-              </div>
+               {/* Dictionary toggle button */}
+              <button
+                className="dictionary-button"
+                onClick={() => openDictionary(lesson.id)}
+              >
+                <img
+                  src={book_icon}
+                  alt="book icon"
+                  className="dictionary-icon"
+                />
+                Dictionary
+              </button>
             </div>
 
             {/* Decorative underline */}
@@ -57,6 +71,19 @@ function Lessons() {
                 </Link>
               ))}
             </div>
+
+
+            {openLessonId === lesson.id && (
+              <div className="dictionary-overlay">
+                <div className="dictionary-content">
+                  <button className="close-button" onClick={closeDictionary}>
+                    ✖ Close
+                  </button>
+                  <DictionaryModal lessonId={lesson.id} />
+                </div>
+              </div>
+            )}
+
           </div>
         ))}
       </div>
