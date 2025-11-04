@@ -1,5 +1,5 @@
 import React from 'react';
-import setTargetGesture from "./Practice";
+import setTargetGesture from "../pages/Practice";
 
 function MyButtonList(targetGesture, labels) {
     labels[0] = "Random";

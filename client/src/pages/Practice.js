@@ -6,7 +6,7 @@ import {
   FilesetResolver,
 } from "@mediapipe/tasks-vision";
 
-import MyButtonList from "./ButtonList";
+import MyButtonList from "../components/ButtonList";
 
 import hand_landmarker_task from "./hand_landmarker.task";
 import recognizerTask from "./handgesture_recognizer.task";
