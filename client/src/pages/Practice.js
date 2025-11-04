@@ -6,7 +6,7 @@ import {
   FilesetResolver,
 } from "@mediapipe/tasks-vision";
 
-import ScrollToSelectedListItem from "./ScrollToSelectedListItem";
+import MyButtonList from "../components/ButtonList";
 
 import hand_landmarker_task from "./hand_landmarker.task";
 import recognizerTask from "./handgesture_recognizer.task";
@@ -38,9 +38,47 @@ function Practice() {
   const resultRef = useRef(null);
   const [handPresence, setHandPresence] = useState(null);
 
-  const [correctGesture, setCorrectGesture] = useState(null);
+  const [isCorrect, setIsCorrect] = useState(null);
   const [currentGesture, setCurrentGesture] = useState(null);
-  const targetGesture = "Victory";
+  //const targetGesture = "Victory";
+  const [targetGesture, setTargetGesture] = useState(null);
+      const gestureList = [
+      {
+        gestureName: 'None',
+        mastery: 1
+      },
+      {
+        gestureName: 'Closed_Fist',
+        mastery: 0
+      },
+      {
+        gestureName: 'Open_Palm',
+        mastery: 0
+      },
+      {
+        gestureName: 'Pointing_Up',
+        mastery: 0
+      },
+      {
+        gestureName: 'Thumb_Down',
+        mastery: 0
+      },
+      {
+        gestureName: 'Thumb_up',
+        mastery: 0
+      },
+      {
+        gestureName: 'Victory',
+        mastery: 0
+      },
+      {
+        gestureName: 'ILoveYou',
+        mastery: 0
+      }
+    ];
+    let targetIndex = 0;
+    let categoryNames = ["None", "Closed_Fist", "Open_Palm", "Pointing_Up", "Thumb_Down", "Thumb_Up", "Victory", "ILoveYou"];
+    let categoryHistory = [1, 0, 0, 0, 0, 0, 0, 0];
 
   useEffect(() => {
     let handLandmarker;
@@ -60,10 +98,7 @@ function Practice() {
 
     let oldPositionHandNine = [0,0,0];
     let newPositionHandNine;
-
-    let targetIndex = 0;
-    let categoryNames = ["None", "Closed_Fist", "Open_Palm", "Pointing_Up", "Thumb_Down", "Thumb_Up", "Victory", "ILoveYou"];
-    let categoryHistory = [1, 0, 0, 0, 0, 0, 0, 0];
+    setTargetGesture(categoryNames[6]);
 
     const initializeHandDetection = async () => {
       console.log("in initHandDetect");
@@ -201,13 +236,17 @@ function Practice() {
         
         // generate random element from array of names 
         canvasResCtx.fillText("Target:"+ targetGesture, canvas.width / 4, 4*canvas.height / 8);
-        if(firstCategoryName === targetGesture){
+        if(firstCategoryName === "None"){
+          canvasResCtx.fillText(firstCategoryName, canvas.width / 4, 6*canvas.height / 8);
+          setIsCorrect("None");
+          setCurrentGesture(firstCategoryName);
+        } else if(firstCategoryName === targetGesture){
           canvasResCtx.fillText("Correct!"+firstCategoryName, canvas.width / 4, 6*canvas.height / 8);
-          setCorrectGesture(1);
+          setIsCorrect("Correct!");
           setCurrentGesture(firstCategoryName);
         }else{
           canvasResCtx.fillText("Try Again!"+firstCategoryName, canvas.width / 4, 6*canvas.height / 8);
-          setCorrectGesture(null);
+          setIsCorrect("Incorrect! Try Again");
           setCurrentGesture(firstCategoryName);
         }
 
@@ -303,7 +342,8 @@ function Practice() {
         <>
           <h1> Hand Presence: {handPresence? "Yes" : "No"}</h1>
           <h1> Target: {targetGesture} ('u') Current:{currentGesture}</h1>
-          <h1> {correctGesture? "Correct!" : "Incorrect!"}</h1>
+          <h1> {isCorrect} </h1>
+          <h1>Buttons {MyButtonList(targetGesture, categoryNames)}</h1>
           <div style={{ position: "relative"}}>
             <video ref={videoRef} autoPlay playsInline></video>
             <canvas ref={canvasRef} style={{
