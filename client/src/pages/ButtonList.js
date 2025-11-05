@@ -1,13 +1,27 @@
 import React from 'react';
-import setTargetGesture from "./Practice";
+import {targetGesture, setTargetGesture} from "./Practice";
 
-function MyButtonList(targetGesture, labels) {
+//https://www.w3schools.com/css/css3_buttons.asp
+
+function MyButtonList(labels) {
+    
+    // if labels[0] is none
     labels[0] = "Random";
     const buttonLabels = labels;
 
     const handleButtonClick = (label) => {
-        alert(`You clicked: ${label}`);
-        //setTargetGesture(label);
+
+        if(label === "Random"){
+            
+            // get random number for random gesture
+            const randomInt = Math.floor(Math.random() * (labels.length - 1) + 1);
+            //console.log("randomInt:"+randomInt);
+            setTargetGesture(buttonLabels[randomInt]);
+
+        } else {
+            setTargetGesture(label);
+        }
+        
     };
 
     return (
