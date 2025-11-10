@@ -1,5 +1,5 @@
 import React from 'react';
-import {targetGesture, setTargetGesture} from "./Practice";
+import {targetGesture, setTargetGesture} from "../pages/Practice";
 
 //https://www.w3schools.com/css/css3_buttons.asp
 
