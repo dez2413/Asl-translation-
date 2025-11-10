@@ -263,13 +263,13 @@ function Practice() {
         } else if(firstCategoryName === targetGesture){
           
           canvasResCtx.fillText("Correct!"+firstCategoryName, canvas.width / 4, 6*canvas.height / 8);
-          setIsCorrect("Correct!");
+          setCorrectGesture(1);
           setCurrentGesture(firstCategoryName);
         
         }else{
           
           canvasResCtx.fillText("Try Again!"+firstCategoryName, canvas.width / 4, 6*canvas.height / 8);
-          setIsCorrect("Incorrect! Try Again");
+          setCorrectGesture(null);
           setCurrentGesture(firstCategoryName);
         
         }
