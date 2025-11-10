@@ -1,0 +1,40 @@
+.dictionary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.dictionary-card {
+  background: rgba(10, 1, 19, 0.377);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dictionary-card:hover {
+  transform: translateY(-3px);
+}
+
+.dictionary-image {
+  max-width: 100px;
+  margin: 0 auto;
+}
+
+.dictionary-details {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.dictionary-letter {
+  font-size: 1.3rem;
+  color: #a1a1a1fd;
+}
+
+.dictionary-text {
+  font-size: 1rem;
+  color: #ffffff;
+}

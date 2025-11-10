@@ -1,3 +1,5 @@
+
+
 export const lessonsData = [
   {
     id: "alphabet",
@@ -5,42 +7,43 @@ export const lessonsData = [
     description: "Learn how to sign the alphabet in American Sign Language.",
     sections: [
       {
-        
-
+    
       //A-F and sign and diagram
         id: "a-f",
         title: "Letters A–F",
-        video: "/videos/alphabet_A-F.mp4",
+        videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 63,
+        end: 190,
         signs: [
           {
             letter: "A",
-            image: "/images/letters/A.png",
+            image: "/sign/Alphabet A-F/A.png",
             text: "Make a fist with your thumb beside your index finger.",
           },
           {
             letter: "B",
-            image: "/images/letters/B.png",
+            image: "/sign/Alphabet A-F/B.png",
             text: "Hold your hand up with fingers together, thumb across palm.",
           },
           {
            letter: "C",
-            image: "/images/letters/C.png",
-            text: "....",
+            image: "/sign/Alphabet A-F/C.png",
+            text: "Curve your hand to form the shape of the letter C.",
           },
           {
             letter: "D",
-            image: "/images/letters/D.png",
-            text: "...",
+            image: "/sign/Alphabet A-F/D.png",
+            text: "Raise pointer finger, curve other fingers, and touch your middle finger and thumb to eachother in the shape of a d.",
           },
            {
            letter: "E",
-            image: "/images/letters/E.png",
-            text: "....",
+            image: "/sign/Alphabet A-F/E.png",
+            text: "Close hand in a fist, then place your thumb across your palm so that it is beneath your fingers.",
           },
           {
             letter: "F",
-            image: "/images/letters/F.png",
-            text: "...",
+            image: "/sign/Alphabet A-F/F.png",
+            text: "Form a loop with your thumb and pointer finger, and then extend your other fingers.",
           },
         ],//end of signs array
       },//end of A-F section
@@ -50,8 +53,41 @@ export const lessonsData = [
       {
         id: "g-l",
         title: "Letters G–L",
-        video: "/videos/alphabet_G-L.mp4",
-        signs: [],
+        videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 190,
+        end: 298,
+        signs: [
+          {
+            letter: "G",
+            image: "/sign/Alphabet G-L/G.png",
+            text: "Curl pinky, ring, and middle finger to your palm and extend your pointer finger and thumb so that they are parallel.",
+          },
+          {
+            letter: "H",
+            image: "/sign/Alphabet G-L/H.png",
+            text: "Extend your index and middle finger together, curl in other figners. Point palm towards yourself.",
+          },
+          {
+            letter: "I",
+            image: "/sign/Alphabet G-L/I.png",
+            text: "Extend just your pinky finger upwards with your other fingers curled in and your palm facing outwards.",
+          },
+          {
+            letter: "J",
+            image: "/sign/Alphabet G-L/J.png",
+            text: "Extend your pinky finger in the same way as the sign for I. Rotate your wrist as if you were drawing a J with your pinky.",
+          },
+          {
+            letter: "K",
+            image: "/sign/Alphabet G-L/K.png",
+            text: "Extend your middle and pointer finger upward then move your middle finger forward from your pointer finger. Place your thumb between the base of both fingers.",
+          },
+          {
+            letter: "L",
+            image: "/sign/Alphabet G-L/L.png",
+            text: "Extend your pointer finger and thumb in the shape of an L with your other fingers curled in. Face your palm forward.",
+          },
+        ],//end of signs array
       },
 
 
@@ -60,8 +96,46 @@ export const lessonsData = [
       {
         id: "m-s",
         title: "Letters M–S",
-        video: "/videos/alphabet_M-S.mp4",
-        signs: [],
+        videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 298,
+        end: 425,
+        signs: [
+           {
+            letter: "M",
+            image: "/sign/Alphabet M-S/M.png",
+            text: "Curl your pointer, middle, and ring fingers over your thumb.",
+          },
+          {
+            letter: "N",
+            image: "/sign/Alphabet M-S/N.png",
+            text: "Curl your pointer and middle fingers over your thumb with your thumb resting on your ring finger.",
+          },
+          {
+            letter: "O",
+            image: "/sign/Alphabet M-S/O.png",
+            text: "Form a loop with your thumb and fingers in the shape of an O.",
+          },
+          {
+            letter: "P",
+            image: "/sign/Alphabet M-S/P.png",
+            text: "Extend your pointer and middle finger downward with your thumb between the base of both fingers. Think the same as the sign for K but facing downward.",
+          },
+          {
+            letter: "Q",
+            image: "/sign/Alphabet M-S/Q.png",
+            text: "Extend your pointer finger and thrumb parallel to eachother and point them down ward. Your palm should be facing downward. Similar to the sign for G but facing downward.",
+          },
+          {
+            letter: "R",
+            image: "/sign/Alphabet M-S/R.png",
+            text: "Extend your pointer and middle fingers upwards and then cross your pointer finger over your middle finger. Your palm should be facing forward.",
+          },
+           {
+            letter: "S",
+            image: "/sign/Alphabet M-S/S.png",
+            text: "Form a fist and then cross your thumb infront of your other fingers.",
+          },
+        ],
       },
 
 
@@ -69,8 +143,46 @@ export const lessonsData = [
       {
         id: "t-z",
         title: "Letters T–Z",
-        video: "/videos/alphabet_T-Z.mp4",
-        signs: [],
+        videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 425,
+        end: 546,
+        signs: [
+           {
+            letter: "T",
+            image: "/sign/Alphabet T-Z/T.png",
+            text: "Form a fist and put your thumb between your pointer and middle finger.",
+          },
+          {
+            letter: "U",
+            image: "/sign/Alphabet T-Z/U.png",
+            text: "Extend your pointer and middle fingers upwards and hold them together.",
+          },
+          {
+            letter: "V",
+            image: "/sign/Alphabet T-Z/V.png",
+            text: "Extend your pointer and middle fingers upward and then spread them into a V shape.",
+          },
+          {
+            letter: "W",
+            image: "/sign/Alphabet T-Z/W.png",
+            text: "Extend your pointer, middle, and ring fingers upward in the shape of a W.",
+          },
+          {
+            letter: "X",
+            image: "/sign/Alphabet T-Z/X.png",
+            text: "Curl your thumb over your middle finger and curl your pointer finger in a hook like shape.",
+          },
+          {
+            letter: "Y",
+            image: "/sign/Alphabet T-Z/Y.png",
+            text: "Curl your fingers and extend your pinky and thumb.",
+          },
+           {
+            letter: "Z",
+            image: "/sign/Alphabet T-Z/Z.png",
+            text: "Extend your pointer finger and move it it a Z motion.",
+          },
+        ],
       },
     ],//end of ASL Alphabet section
   },//end of ASL Alphabet"
