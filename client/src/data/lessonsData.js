@@ -188,6 +188,11 @@ export const lessonsData = [
   },//end of ASL Alphabet"
 
   {
+  id: "number",
+  title: "ASL Number",
+  description: "Learn how to sign the number in American Sign Language.",
+  sections: [
+  {
         id: "0-9",
         title: "Numbers 0–9",
         videoId: "Y4stD_ypaAI", // from https://www.youtube.com/watch?v=DBQINq0SsAw
