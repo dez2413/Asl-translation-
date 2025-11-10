@@ -4,6 +4,7 @@ import {targetGesture, setTargetGesture} from "./Practice";
 //https://www.w3schools.com/css/css3_buttons.asp
 
 function MyButtonList(labels) {
+    // make code to change model used
     
     // if labels[0] is none
     labels[0] = "Random";
