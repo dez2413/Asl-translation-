@@ -256,10 +256,65 @@ export const lessonsData = [
     ],//end of ASL Number Section
   },//end of ASL Number"
   {
-    id: "Gestures",
+id: "Gestures",
     title: "ASL Gestures",
     description: "Learn common gestures used in American Sign Language.",
-    sections: [],
+    sections: [
+        {
+          id:"basic signs",
+          title:"Gestures basic sign",
+          video: "",
+          start: 0,
+          end:0,
+          signs: [
+              {
+                gesture: "Hello",
+                image: "/sign/gesture/hello.png",
+                text: "Hello",
+              },
+              {
+                gesture: "Yes",
+                image:"/sign/gesture/yes.png",
+                text: "Yes",
+              },
+              {
+                gesture: "No",
+                image: "sign/gesture/no.png",
+                text: "No",
+              },
+              {
+                gesture: "What",
+                image: "/sign/gesture/what.png",
+                text: "What",
+              },
+              {
+                gesture: "Where",
+                image: "/sign/gesture/where.png",
+                text: "Where",
+              },
+              {
+                gesture: "Why",
+                image: "/sign/gesture/why.png",
+                text: "Why",
+              },
+              {
+                gesture: "When",
+                image: "/sign/gesture/when.png",
+                text: "When",
+              },
+              {
+                gesture: "Help",
+                image: "/sign/gesture/help.png",
+                text: "Help",
+              },
+              {
+                gesture: "Thank You",
+                image: "/sign/gesture/thankyou.png",
+                text: "Thank You",
+              },
+          ],
+        }
+      ]
   },
   {
     id: "basic-phrases",
