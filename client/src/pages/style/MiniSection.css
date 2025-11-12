@@ -49,7 +49,8 @@
 
 .sign-image {
   max-width: 200px;
-  height: auto;
+  min-height: 200px;
+  min-width: 200px;
   border-radius: 10px;
   margin-bottom: 1rem;
 }
