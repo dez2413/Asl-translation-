@@ -12,7 +12,7 @@ export const lessonsData = [
         id: "a-f",
         title: "Letters A–F",
         videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
-        start: 72,
+        start: 63,
         end: 190,
         signs: [
           {
@@ -53,7 +53,9 @@ export const lessonsData = [
       {
         id: "g-l",
         title: "Letters G–L",
-        video: "https://www.youtube.com/embed/DBQINq0SsAw?si=8oC2dkmrI4LTZlUr&amp;start=189",
+        videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 190,
+        end: 298,
         signs: [
           {
             letter: "G",
@@ -94,7 +96,9 @@ export const lessonsData = [
       {
         id: "m-s",
         title: "Letters M–S",
-        video: "https://www.youtube.com/embed/DBQINq0SsAw?si=F5GpvH6loLWWWqZf&amp;start=297",
+        videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 298,
+        end: 425,
         signs: [
            {
             letter: "M",
@@ -139,41 +143,43 @@ export const lessonsData = [
       {
         id: "t-z",
         title: "Letters T–Z",
-        video: "https://www.youtube.com/embed/DBQINq0SsAw?si=6y4gDxVihBsZZxU3&amp;start=425",
+        videoId: "DBQINq0SsAw", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 425,
+        end: 546,
         signs: [
            {
             letter: "T",
-            image: "/sign/Alphabet T-Z/TDD1.png",
+            image: "/sign/Alphabet T-Z/T.png",
             text: "Form a fist and put your thumb between your pointer and middle finger.",
           },
           {
             letter: "U",
-            image: "/sign/Alphabet T-Z/UDD1.png",
+            image: "/sign/Alphabet T-Z/U.png",
             text: "Extend your pointer and middle fingers upwards and hold them together.",
           },
           {
             letter: "V",
-            image: "/sign/Alphabet T-Z/VDD1.png",
+            image: "/sign/Alphabet T-Z/V.png",
             text: "Extend your pointer and middle fingers upward and then spread them into a V shape.",
           },
           {
             letter: "W",
-            image: "/sign/Alphabet T-Z/WDD1.png",
+            image: "/sign/Alphabet T-Z/W.png",
             text: "Extend your pointer, middle, and ring fingers upward in the shape of a W.",
           },
           {
             letter: "X",
-            image: "/sign/Alphabet T-Z/XDD1.png",
+            image: "/sign/Alphabet T-Z/X.png",
             text: "Curl your thumb over your middle finger and curl your pointer finger in a hook like shape.",
           },
           {
             letter: "Y",
-            image: "/sign/Alphabet T-Z/YDD1.png",
+            image: "/sign/Alphabet T-Z/Y.png",
             text: "Curl your fingers and extend your pinky and thumb.",
           },
            {
             letter: "Z",
-            image: "/sign/Alphabet T-Z/ZDD1.png",
+            image: "/sign/Alphabet T-Z/Z.png",
             text: "Extend your pointer finger and move it it a Z motion.",
           },
         ],
@@ -182,59 +188,65 @@ export const lessonsData = [
   },//end of ASL Alphabet"
 
   {
-    id: "number",
-    title: "ASL Number",
-    description: "Learn how to sign the number in American Sign Language.",
-    sections: [
-       //1-9 and sign and diagram
-      {
-        id: "1-9",
-        title: "Numbers 1–9",
-        video: "/videos/numbers_1-9.mp4",
+  id: "number",
+  title: "ASL Number",
+  description: "Learn how to sign the number in American Sign Language.",
+  sections: [
+  {
+        id: "0-9",
+        title: "Numbers 0–9",
+        videoId: "Y4stD_ypaAI", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 83,
+        end: 168,
         signs: [
           {
+            number: "0",
+            image: "/sign/numbers/0.png",
+            text: "Curl figners into a 0 shape.",
+          },
+          {
             number: "1",
-            image: "/images/numbers/1.png",
+            image: "/sign/numbers/1.png",
             text: "Hold up one finger.",
           },
           {
             number: "2",
-            image: "/images/numbers/2.png",
+            image: "/sign/numbers/2.png",
             text: "Hold up two fingers.",
           },
           {
             number: "3",
-            image: "/images/numbers/3.png",
+            image: "/sign/numbers/3.png",
             text: "Hold up three fingers.",
           },
           {
             number: "4",
-            image: "/images/numbers/4.png",
+            image: "/sign/numbers/4.png",
             text: "Hold up four fingers.",
           },
           {
             number: "5",
-            image: "/images/numbers/5.png",
+            image: "/sign/numbers/5.png",
             text: "Hold up five fingers.",
           },
           {
             number: "6",
-            image: "/images/numbers/6.png",
+            image: "/sign/numbers/6.png",
             text: "Hold up six fingers.",
           },
           {
             number: "7",
-            image: "/images/numbers/7.png",
+            image: "/sign/numbers/7.png",
             text: "Hold up seven fingers.",
           },
           {
             number: "8",
-            image: "/images/numbers/8.png",
+            image: "/sign/numbers/8.png",
             text: "Hold up eight fingers.",
           },
           {
             number: "9",
-            image: "/images/numbers/9.png",
+            image: "/sign/numbers/9.png",
             text: "Hold up nine fingers.",
           },
         ],//end of signs array
