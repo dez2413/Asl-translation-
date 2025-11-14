@@ -262,44 +262,44 @@ id: "Gestures",
     sections: [
         {
           id:"basic signs",
-          title:"Gestures basic sign",
-          video: "",
-          start: 0,
-          end:0,
+          title:"Basic Signs",
+          videoId: "0FcwzMq4iWg",
+          start: 77,
+          end:168,
           signs: [
               {
                 gesture: "Hello",
                 image: "/sign/gesture/hello.png",
-                text: "Hello",
+                text: "Raise your hand to your head and move it forward. Almost like a slute.",
+              },
+              {
+                gesture: "See you later",
+                image:"/sign/gesture/seeYouLater.png",
+                text: "Hold you pointer finger and middle finger in a V shape and move them away from your eye. Then point down with your pointer finger.",
+              },
+              {
+                gesture: "I/Me",
+                image: "/sign/gesture/me.png",
+                text: "Point to yourself with your pointer finger.",
+              },
+              {
+                gesture: "Father",
+                image: "/sign/gesture/father.png",
+                text: "With your fingers extended, touch your forehead with your thumb",
+              },
+              {
+                gesture: "Mother",
+                image: "/sign/gesture/mother.png",
+                text: "With your fingers extended, touch your chin with your thumb. Similar to father.",
               },
               {
                 gesture: "Yes",
-                image:"/sign/gesture/yes.png",
-                text: "Yes",
-              },
-              {
-                gesture: "No",
-                image: "sign/gesture/no.png",
-                text: "No",
-              },
-              {
-                gesture: "What",
-                image: "/sign/gesture/what.png",
-                text: "What",
-              },
-              {
-                gesture: "Where",
-                image: "/sign/gesture/where.png",
-                text: "Where",
-              },
-              {
-                gesture: "Why",
-                image: "/sign/gesture/why.png",
+                image: "/sign/gesture/yes.png",
                 text: "Why",
               },
               {
-                gesture: "When",
-                image: "/sign/gesture/when.png",
+                gesture: "No",
+                image: "/sign/gesture/no.png",
                 text: "When",
               },
               {
@@ -308,8 +308,8 @@ id: "Gestures",
                 text: "Help",
               },
               {
-                gesture: "Thank You",
-                image: "/sign/gesture/thankyou.png",
+                gesture: "Please",
+                image: "/sign/gesture/please.png",
                 text: "Thank You",
               },
           ],
