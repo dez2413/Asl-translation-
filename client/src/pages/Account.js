@@ -1,108 +1,79 @@
-import React, { useState} from "react";
-import "./style/Page.css";
-import "./style/login.css";
-import "./style/Account.css";
-// import {useNavigate, Link } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
+import "./style/Account.css";
 
 function Account() {
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+    newName: "",
+    newEmail: "",
+    newPassword: "",
+  });
 
-  // const history = useNavigate();
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
 
-  const[email,setEmail] = useState("")
-  const[password,setPassword] = useState("")
-  const[name,setName] = useState("")
-  const[newEmail,setNewEmail] = useState("")
-  const[newPassword,setNewPassword] = useState("")
-  const[newName,setNewName] = useState("")
+  async function handleUpdate(e) {
+    e.preventDefault();
 
-  async function submit(e){
-    e.preventDefault()
+    try {
+      const res = await axios.post("http://localhost:5000/account/update", form);
 
-    try{
-
-      const res = await axios.post("http://localhost:5000/account", {
-        name,email,password,newName,newEmail,newPassword
-      })
-
-      console.log("Response from backend:", res.data);
-
-      if (res.data === "exist") {
-        alert("User name/Email already exists");
-      } else if (res.data === "notexist") {
+      if (res.data === "updated") {
+        alert("Account updated successfully!");
+      } else if (res.data === "notfound") {
+        alert("Incorrect email or password!");
       }
-    } catch (e) {
-      alert("Something went wrong. Check the console for details.");
-      console.error(e);
+    } catch (err) {
+      console.error(err);
+      alert("Error updating account.");
     }
   }
 
+  async function deleteAccount() {
+    if (!window.confirm("Are you sure you want to delete your account?")) return;
+
+    try {
+      const res = await axios.post("http://localhost:5000/account/delete", {
+        email: form.email,
+        password: form.password
+      });
+
+      if (res.data === "deleted") {
+        alert("Account deleted. Goodbye!");
+      } else {
+        alert("Email/password incorrect.");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
-    <div className="container">
-      <div className="header">
-        <div className ="text"> Account</div>
-        <div className="Underline"></div>
-      </div>
-      <form onSubmit={submit}>
-        <div className="inputs">
-          <div className="account-text"> User Name</div>
-          <div className="input">
-            <input
-              type="text"
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Name"
-            />
-          </div>
-          <div className="input">
-             <input
-             type="text"
-             onChange={(e) => setNewName(e.target.value)}
-             placeholder="New Name"
-             />
-          </div>
-          <div className ="account-text"> Email</div>
-          <div className="input">
-            <input
-              type="email"
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-            />
-          </div>
-          <div className="input">
-             <input
-             type="text"
-             onChange={(e) => setNewEmail(e.target.value)}
-             placeholder="New Email"
-             />
-          </div>
-          <div className="account-text"> Password</div>
-          <div className="input">
-            <input
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-            />
-          </div>
-          <div className="input">
-            <input
-              type="text"
-              onChange={(e) => setNewPassword(e.target.value)}
-              placeholder="New Password"
-            />
-          </div>
-        </div>
-        <button type="submit" className="submit">
-          Submit
-        </button>
+    <div className="account-container">
+      <h1>Account Settings</h1>
+
+      <form onSubmit={handleUpdate} className="account-form">
+
+        <h2>Verify Identity</h2>
+        <input name="email" placeholder="Current Email" onChange={handleChange} />
+        <input name="password" type="password" placeholder="Current Password" onChange={handleChange} />
+
+        <h2>Update Info</h2>
+        <input name="newName" placeholder="New Name" onChange={handleChange} />
+        <input name="newEmail" placeholder="New Email" onChange={handleChange} />
+        <input name="newPassword" placeholder="New Password" onChange={handleChange} />
+
+        <button className="save-btn" type="submit">Save Changes</button>
       </form>
+
+      <button className="delete-btn" onClick={deleteAccount}>
+        Delete Account
+      </button>
     </div>
   );
 }
 
 export default Account;
-
-
-
-
-

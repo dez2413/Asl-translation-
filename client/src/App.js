@@ -53,14 +53,11 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign" element={<Sign />} />
-          <Route
-            path="/account"
-            element={
-              <ProtectedRoute>
-                <Account />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/account" element={
+            <ProtectedRoute>
+              <Account />
+            </ProtectedRoute>
+          }/>
           <Route path="/lessons/:lessonId/:sectionId" element={<MiniSection />} />
           <Route path="/lessons/:lessonId/dictionary" element={<DictionaryModal />} />
         </Routes>

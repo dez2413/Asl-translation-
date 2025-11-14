@@ -37,6 +37,7 @@ function MiniSection() {
   // Hooks must be called before any early returns
   // currentIndex controls which sign from `section.signs` is displayed
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showDictionary, setShowDictionary] = useState(false); // ✅ toggle state
 
   // Early returns: render helpful messages if the requested data is missing
   if (!lesson) return <p>Lesson not found.</p>;
@@ -111,6 +112,21 @@ function MiniSection() {
       <p className="progress-indicator">
         {currentIndex + 1} / {section.signs.length}
       </p>
+
+      {/* ✅ Dictionary Modal */}
+      {showDictionary && (
+        <div className="dictionary-overlay">
+          <div className="dictionary-content">
+            <button
+              className="close-button"
+              onClick={() => setShowDictionary(false)}
+            >
+              ✖ Close
+            </button>
+            <DictionaryModal lessonId={lessonId} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

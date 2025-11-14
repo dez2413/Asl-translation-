@@ -70,6 +70,9 @@
 
 /* Dictionary link */
 .lesson-dictionary {
+  border-radius: 50%;
+  padding: 10px;
+  background-color:#be62ff9f;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -77,8 +80,8 @@
 }
 
 .dictionary-icon {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
 }
 
 .dictionary-link {

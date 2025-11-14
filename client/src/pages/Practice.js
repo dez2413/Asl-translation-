@@ -6,7 +6,7 @@ import {
   FilesetResolver,
 } from "@mediapipe/tasks-vision";
 
-import ScrollToSelectedListItem from "./ScrollToSelectedListItem";
+import MyButtonList from "../components/ButtonList";
 
 import hand_landmarker_task from "./hand_landmarker.task";
 import recognizerTask from "./handgesture_recognizer.task";
@@ -32,15 +32,67 @@ media.getusermedia.insecure.enabled
 // https://github.com/google-ai-edge/mediapipe/tree/master/mediapipe/tasks/python/metadata/metadata_writers
 // https://ai.google.dev/edge/mediapipe/solutions/customization/gesture_recognizer
 // https://ai.google.dev/edge/mediapipe/solutions/customization/gesture_recognizerhttps://ai.google.dev/edge/mediapipe/solutions/customization/gesture_recognizer
+export let targetGesture = ""; 
+
+export function setTargetGesture(goal){
+  targetGesture = goal;
+};
+
 function Practice() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const resultRef = useRef(null);
-  const [handPresence, setHandPresence] = useState(null);
 
-  const [correctGesture, setCorrectGesture] = useState(null);
+  const [handPresence, setHandPresence] = useState(null);
+  const [isCorrect, setIsCorrect] = useState(null);
   const [currentGesture, setCurrentGesture] = useState(null);
-  const targetGesture = "Victory";
+  const [goalUpdater, setGoalUpdater] = useState(null);
+
+      const gestureList = [
+      {
+        gestureName: "None",
+        mastery: 1
+      },
+      {
+        gestureName: "Closed_Fist",
+        mastery: 0
+      },
+      {
+        gestureName: "Open_Palm",
+        mastery: 0
+      },
+      {
+        gestureName: "Pointing_Up",
+        mastery: 0
+      },
+      {
+        gestureName: "Thumb_Down",
+        mastery: 0
+      },
+      {
+        gestureName: "Thumb_Up",
+        mastery: 0
+      },
+      {
+        gestureName: "Victory",
+        mastery: 0
+      },
+      {
+        gestureName: "ILoveYou",
+        mastery: 0
+      }
+    ];
+    let testArray = gestureList;
+    console.log(testArray[0]);
+    console.log(testArray[1]);
+    console.log(testArray[2]);
+    console.log(testArray[3]);
+    console.log(gestureList[4]);
+    console.log(gestureList[5]);
+    
+    let targetIndex = 0;
+    let categoryNames = ["None", "Closed_Fist", "Open_Palm", "Pointing_Up", "Thumb_Down", "Thumb_Up", "Victory", "ILoveYou"];
+    let categoryHistory = [1, 0, 0, 0, 0, 0, 0, 0];
 
   useEffect(() => {
     let handLandmarker;
@@ -52,6 +104,7 @@ function Practice() {
     let firstHandedness;
     let firstIndexFingerCoor;
     let firstIndexFingerCoorWorld;
+
     let secondCategoryName;
     let secondCategoryScore;
     let secondHandedness;
@@ -60,10 +113,6 @@ function Practice() {
 
     let oldPositionHandNine = [0,0,0];
     let newPositionHandNine;
-
-    let targetIndex = 0;
-    let categoryNames = ["None", "Closed_Fist", "Open_Palm", "Pointing_Up", "Thumb_Down", "Thumb_Up", "Victory", "ILoveYou"];
-    let categoryHistory = [1, 0, 0, 0, 0, 0, 0, 0];
 
     const initializeHandDetection = async () => {
       console.log("in initHandDetect");
@@ -199,16 +248,30 @@ function Practice() {
         canvasResCtx.fillText(firstCategoryScore, canvas.width / 2, canvas.height / 8);
         canvasResCtx.fillText(firstHandedness, (canvas.width / 4)*3, canvas.height / 8);
         
-        // generate random element from array of names 
+        // testing target gesture to current gesture
+
+        console.log("ExpTarget" + targetGesture);
+
         canvasResCtx.fillText("Target:"+ targetGesture, canvas.width / 4, 4*canvas.height / 8);
-        if(firstCategoryName === targetGesture){
+        
+        if(firstCategoryName === "None"){
+          
+          canvasResCtx.fillText(firstCategoryName, canvas.width / 4, 6*canvas.height / 8);
+          setIsCorrect("None");
+          setCurrentGesture(firstCategoryName);
+        
+        } else if(firstCategoryName === targetGesture){
+          
           canvasResCtx.fillText("Correct!"+firstCategoryName, canvas.width / 4, 6*canvas.height / 8);
-          setCorrectGesture(1);
+          setIsCorrect("Correct!");
           setCurrentGesture(firstCategoryName);
+        
         }else{
+          
           canvasResCtx.fillText("Try Again!"+firstCategoryName, canvas.width / 4, 6*canvas.height / 8);
-          setCorrectGesture(null);
+          setIsCorrect("Incorrect! Try Again");
           setCurrentGesture(firstCategoryName);
+        
         }
 
         canvasCtx.fillText(firstIndexFingerCoor, (canvas.width / 4), (canvas.height / 8)*5.5);
@@ -237,6 +300,7 @@ function Practice() {
         }
       }
 
+      setGoalUpdater(targetGesture);
       requestAnimationFrame(detectHands);
     };
 
@@ -302,8 +366,9 @@ function Practice() {
         {/* Gesture testing */}
         <>
           <h1> Hand Presence: {handPresence? "Yes" : "No"}</h1>
-          <h1> Target: {targetGesture} ('u') Current:{currentGesture}</h1>
-          <h1> {correctGesture? "Correct!" : "Incorrect!"}</h1>
+          <h1> Target: {goalUpdater} | Current: {currentGesture}</h1>
+          <h1> {isCorrect} </h1>
+          <h1>{MyButtonList(categoryNames)}</h1>
           <div style={{ position: "relative"}}>
             <video ref={videoRef} autoPlay playsInline></video>
             <canvas ref={canvasRef} style={{
