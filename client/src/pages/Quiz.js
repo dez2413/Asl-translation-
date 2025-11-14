@@ -7,10 +7,17 @@ import {
 } from "@mediapipe/tasks-vision";
 
 import MyButtonList from "../components/QuizButtonList";
+import ModelButtonList from "../components/ModelButtonList";
 
+import testGestureModel from "./testModel.task"
 import hand_landmarker_task from "./hand_landmarker.task";
 import recognizerTask from "./handgesture_recognizer.task";
 import "./style/Page.css";
+
+// check if buttons necessary at all of gesture names
+
+//https://developers.googleblog.com/en/5-things-to-know-before-customizing-your-first-machine-learning-model-with-mediapipe-model-maker/
+//https://deps.dev/pypi/mediapipe-model-maker/0.2.1/dependencies
 
 
 /*set true in
@@ -25,6 +32,12 @@ export function setTargetGesture(goal){
   targetGesture = goal;
 };
 
+export let targetModel = null;
+
+export function setTargetModel(model){
+  targetModel = model;
+}; 
+
 function Quiz() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -37,51 +50,14 @@ function Quiz() {
   const [currentScore, setCurrentScore] = useState(null);
   const [highScore, setHighScore] = useState(null);
 
-      const gestureList = [
-      {
-        gestureName: "None",
-        mastery: 1
-      },
-      {
-        gestureName: "Closed_Fist",
-        mastery: 0
-      },
-      {
-        gestureName: "Open_Palm",
-        mastery: 0
-      },
-      {
-        gestureName: "Pointing_Up",
-        mastery: 0
-      },
-      {
-        gestureName: "Thumb_Down",
-        mastery: 0
-      },
-      {
-        gestureName: "Thumb_Up",
-        mastery: 0
-      },
-      {
-        gestureName: "Victory",
-        mastery: 0
-      },
-      {
-        gestureName: "ILoveYou",
-        mastery: 0
-      }
-    ];
-    /*let testArray = gestureList;
-    console.log(testArray[0]);
-    console.log(testArray[1]);
-    console.log(testArray[2]);
-    console.log(testArray[3]);
-    console.log(gestureList[4]);
-    console.log(gestureList[5]);*/
+  let testModel1Names = ["None", "Closed_Fist", "Open_Palm", "Pointing_Up", "Thumb_Down", "Thumb_Up", "Victory", "ILoveYou"];
+  let categoryNames = ["Closed_Fist", "Open_Palm", "Pointing_Up"];
+  
+  let modelList = [testGestureModel, recognizerTask];
+  //let modelNames = [testModel1Names, categoryNames];
 
-    let targetIndex = 0;
-    let categoryNames = ["None", "Closed_Fist", "Open_Palm", "Pointing_Up", "Thumb_Down", "Thumb_Up", "Victory", "ILoveYou"];
-    let categoryHistory = [1, 0, 0, 0, 0, 0, 0, 0];
+  //modelIndex = 0;
+  targetModel = testGestureModel;
 
   useEffect(() => {
     
@@ -140,8 +116,7 @@ function Quiz() {
         gestureRecognizer = await GestureRecognizer.createFromOptions(
           vision, {
             baseOptions: { 
-            //modelAssetPath: "https://storage.googleapis.com/mediapipe-tasks/gesture_recognizer/gesture_recognizer.task"},
-            modelAssetPath: recognizerTask},
+            modelAssetPath: targetModel},
             numHands: 2,
             runningMode: "video"
           }
@@ -348,6 +323,8 @@ function Quiz() {
           <h1> Target: {goalUpdater} | Current: {currentGesture}</h1>
           <h1> {isCorrect} </h1>
           <h1> Score: {currentScore} | High Score: {highScore} </h1>
+          <></>
+          <h1>{ModelButtonList(modelList)}</h1>
           <h1>{MyButtonList(categoryNames)}</h1>
           <div style={{ position: "relative"}}>
             <video ref={videoRef} autoPlay playsInline></video>
