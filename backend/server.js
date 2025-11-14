@@ -1,3 +1,30 @@
+/**
+ * backend/server.js
+ * -----------------
+ * Simple Express backend used by the ASL translation app.
+ *
+ * Responsibilities:
+ * - Exposes small API endpoints used by the React client for login, signup,
+ *   and basic account management.
+ * - Uses the `collection` exported from `mongo.js` (a MongoDB collection wrapper)
+ *   to perform simple user CRUD operations.
+ *
+ * Contract / Response shape (summary):
+ * - POST /login  -> returns one of: "notexist", "wrongpassword", "exist" or "error"
+ * - POST /signUp -> returns "exist", "notexist" or "error"
+ * - /account routes -> return strings like "updated", "deleted", "notfound" or an error
+ *
+ * Notes and TODOs:
+ * - Passwords are stored and compared in plaintext in this demo. Do NOT use
+ *   this approach in production: hash passwords using bcrypt (or similar) and
+ *   validate inputs properly.
+ * - Consider adding authentication (JWT or sessions) for protected routes.
+ * - The PORT can be configured via the PORT environment variable.
+ *
+ * Inputs: JSON request bodies for POST routes (login, signUp, account updates).
+ * Outputs: JSON strings or small objects (see above). Errors return HTTP 500.
+ */
+
 // Importing dependencies
 const express = require("express");           // Express is the framework for creating backend APIs
 const collection = require("./mongo");        // Importing the MongoDB user collection (from mongo.js)
@@ -9,8 +36,9 @@ app.use(express.json());                      // Parse incoming JSON request bod
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
 app.use(cors());                              // Enable Cross-Origin Resource Sharing for all routes
 
-// Define port (React usually runs on 3000, so backend uses 5000)
-const PORT = 5000;
+// Define port: allow override with environment variable for deployment flexibility.
+// Example: PORT=8080 node server.js
+const PORT = process.env.PORT || 5000;
 
 // ------------------------------
 // Example GET route (Test endpoint)
@@ -89,27 +117,83 @@ app.post("/signUp", async (req, res) => {
 // ------------------------------
 // This route will handle user profile updates or password changes later.
 app.post("/account", async (req, res) => {
-  // TODO: Implement logic for updating or deleting account info
-  // e.g., Update name, email, or password in the database
-  //Current Status: It does not update the user info but it does not break anything.
+  const { email, password, newName, newEmail, newPassword } = req.body;
 
-   const { name, email, password } = req.body;
-   const data = { name, email, password};
-   const { newName, newEmail, newPassword } = req.body;
-   const updateData = { newName, newEmail, newPassword};
+  try {
+    // Find user by old email + password
+    const user = await collection.findOne({ email, password });
 
-   try {
-    await collection.findAndModify({ 
-       query:{name:data.name, email:data.email, password:data.password},
-       update:{$set:{name:updateData.newName,email:updateData.newEmail,password:updateData.newPassword}},
-      })
-    return res.json("Updated")
+    if (!user) {
+      return res.json("notexist");
+    }
+
+    const updatedUser = await collection.findOneAndUpdate(
+      { email, password },
+      {
+        $set: {
+          name: newName || user.name,
+          email: newEmail || user.email,
+          password: newPassword || user.password
+        }
+      },
+      { new: true }
+    );
+
+    return res.json({
+      status: "updated",
+      updatedUser
+    });
+
   } catch (e) {
     console.error("Update error:", e);
     return res.status(500).json("error");
   }
-
 });
+
+
+app.post("/account/update", async (req, res) => {
+  const { email, password, newName, newEmail, newPassword } = req.body;
+
+  try {
+    const user = await collection.findOne({ email, password });
+
+    if (!user) return res.json("notfound");
+
+    await collection.updateOne(
+      { email, password },
+      {
+        $set: {
+          name: newName || user.name,
+          email: newEmail || user.email,
+          password: newPassword || user.password
+        }
+      }
+    );
+
+    return res.json("updated");
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json("error");
+  }
+});
+
+//
+
+app.post("/account/delete", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await collection.findOne({ email, password });
+    if (!user) return res.json("notfound");
+
+    await collection.deleteOne({ email, password });
+    return res.json("deleted");
+  } catch (err) {
+    console.error(err);
+    res.status(500).json("error");
+  }
+});
+
 
 
 
