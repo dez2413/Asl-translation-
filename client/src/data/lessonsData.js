@@ -256,10 +256,65 @@ export const lessonsData = [
     ],//end of ASL Number Section
   },//end of ASL Number"
   {
-    id: "Gestures",
+id: "Gestures",
     title: "ASL Gestures",
     description: "Learn common gestures used in American Sign Language.",
-    sections: [],
+    sections: [
+        {
+          id:"basic signs",
+          title:"Basic Signs",
+          videoId: "0FcwzMq4iWg",
+          start: 77,
+          end:168,
+          signs: [
+              {
+                gesture: "Hello",
+                image: "/sign/gesture/hello.png",
+                text: "Raise your hand to your head and move it forward. Almost like a slute.",
+              },
+              {
+                gesture: "See you later",
+                image:"/sign/gesture/seeYouLater.png",
+                text: "Hold you pointer finger and middle finger in a V shape and move them away from your eye. Then point down with your pointer finger.",
+              },
+              {
+                gesture: "I/Me",
+                image: "/sign/gesture/me.png",
+                text: "Point to yourself with your pointer finger.",
+              },
+              {
+                gesture: "Father",
+                image: "/sign/gesture/father.png",
+                text: "With your fingers extended, touch your forehead with your thumb",
+              },
+              {
+                gesture: "Mother",
+                image: "/sign/gesture/mother.png",
+                text: "With your fingers extended, touch your chin with your thumb. Similar to father.",
+              },
+              {
+                gesture: "Yes",
+                image: "/sign/gesture/yes.png",
+                text: "Why",
+              },
+              {
+                gesture: "No",
+                image: "/sign/gesture/no.png",
+                text: "When",
+              },
+              {
+                gesture: "Help",
+                image: "/sign/gesture/help.png",
+                text: "Help",
+              },
+              {
+                gesture: "Please",
+                image: "/sign/gesture/please.png",
+                text: "Thank You",
+              },
+          ],
+        }
+      ]
   },
   {
     id: "basic-phrases",
