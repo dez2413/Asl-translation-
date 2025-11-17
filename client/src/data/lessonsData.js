@@ -295,22 +295,22 @@ id: "Gestures",
               {
                 gesture: "Yes",
                 image: "/sign/gesture/yes.png",
-                text: "Why",
+                text: "Make a fist and move it in a nodding motion.",
               },
               {
                 gesture: "No",
                 image: "/sign/gesture/no.png",
-                text: "When",
+                text: "Touch the tips of your pointer and middle finger to your thumb.",
               },
               {
                 gesture: "Help",
                 image: "/sign/gesture/help.png",
-                text: "Help",
+                text: "Extend your thumb with your main hand and rest it on the palm of your other hand.",
               },
               {
                 gesture: "Please",
                 image: "/sign/gesture/please.png",
-                text: "Thank You",
+                text: "Move your hand in a circular motion on your chest with an open palm.",
               },
           ],
         }
