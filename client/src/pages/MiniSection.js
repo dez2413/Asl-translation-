@@ -25,6 +25,7 @@ import { useParams } from "react-router-dom"; // read URL params
 import { lessonsData } from "../data/lessonsData"; // static lesson content
 import "./style/Page.css"; // shared page styles
 
+
 function MiniSection() {
   // read lesson and section identifiers from the URL
   const { lessonId, sectionId } = useParams();
@@ -113,20 +114,8 @@ function MiniSection() {
         {currentIndex + 1} / {section.signs.length}
       </p>
 
-      {/* ✅ Dictionary Modal */}
-      {showDictionary && (
-        <div className="dictionary-overlay">
-          <div className="dictionary-content">
-            <button
-              className="close-button"
-              onClick={() => setShowDictionary(false)}
-            >
-              ✖ Close
-            </button>
-            <DictionaryModal lessonId={lessonId} />
-          </div>
-        </div>
-      )}
+  
+    
     </div>
   );
 }
