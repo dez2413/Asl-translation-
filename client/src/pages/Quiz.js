@@ -9,6 +9,7 @@ import {
 import MyButtonList from "../components/QuizButtonList";
 import ModelButtonList from "../components/ModelButtonList";
 
+import rockTest from "./rock.task"
 import testGestureModel from "./testModel.task"
 import hand_landmarker_task from "./hand_landmarker.task";
 import recognizerTask from "./handgesture_recognizer.task";
@@ -116,7 +117,7 @@ function Quiz() {
         gestureRecognizer = await GestureRecognizer.createFromOptions(
           vision, {
             baseOptions: { 
-            modelAssetPath: targetModel},
+            modelAssetPath: rockTest},
             numHands: 2,
             runningMode: "video"
           }
