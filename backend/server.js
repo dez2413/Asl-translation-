@@ -195,6 +195,41 @@ app.post("/account/delete", async (req, res) => {
 });
 
 
+app.post("/updateProgress", async (req, res) => {
+  const { email, lessonId, sectionId, progressValue } = req.body;
+
+  try {
+    const user = await collection.findOne({ email });
+    if (!user) return res.status(404).json("User not found");
+
+    const updatedProgress = user.progress || {};
+
+    if (!updatedProgress[lessonId]) updatedProgress[lessonId] = {};
+    updatedProgress[lessonId][sectionId] = progressValue;
+
+    await collection.updateOne(
+      { email },
+      { $set: { progress: updatedProgress } }
+    );
+
+    res.json("Progress updated");
+  } catch (e) {
+    console.error("Progress update error:", e);
+    res.status(500).json("error");
+  }
+})
+
+
+
+app.post("/getProgress", async (req, res) => {
+  const { email } = req.body;
+  const user = await collection.findOne({ email });
+  res.json(user?.progress || {});
+});
+
+
+
+
 
 
 // ------------------------------

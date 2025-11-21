@@ -33,8 +33,25 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,     // Hashed password stored securely
     required: true
+  },
+  // NEW → Store user progress
+  progress: {
+    type: Object,
+    default: {
+      alphabet: {
+        "a-f": 0,
+        "g-l": 0,
+        "m-s": 0,
+        "t-z": 0
+      },
+      number: {
+        "1-9": 0
+      }
+    }
   }
 });
+
+
 
 
 // Create a collection (model) from the schema
