@@ -59,7 +59,6 @@ Initial Work that will enable us to work quickly will be choosing a concrete int
 
 ## Gantt Chart 
 <img width="1024" height="768" alt="Soft Pink Beige Minimalist Website Development Process Gantt Graph  (1)" src="https://github.com/user-attachments/assets/5ec5b008-4c97-484e-94fa-68166b009062" />
-https://www.canva.com/design/DAGzNV9BQrU/fSlYnrs8jm1TSZaXlO17kA/view?utm_content=DAGzNV9BQrU&utm_campaign=designshare&utm_medium=link&utm_source=viewer
 
 
 ## Reference 
