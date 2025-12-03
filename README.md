@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Asl-translation-
 # Welcome to the Asl-translation- wiki!
 
@@ -135,19 +135,4 @@ Kelly, Wendy. “Free ASL Alphabet Chart.” American Society for Deaf Children,
     should see if no error
         Frontend will run at: http://localhost:3000
 
-## if there's an error of allowed hosts
-in the terminal in client directory: unset HOST
-replace the proxy part of the package.json file in client folder with:
-"options":{
-    "allowedHosts":[
-        "localhost",
-        ".localhost"
-    ],
-    "proxy":[
-        "https://localhost:5000/",
-        "https://localhost:3000/"
-    ]
-}
-=======
-# Asl-translation-
->>>>>>> parent of 2c1d2b2 (Update README.md)
+
