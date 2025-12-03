@@ -24,11 +24,17 @@ import "./style/MiniSection.css"; // styles for this page's mini section
 import { useParams } from "react-router-dom"; // read URL params
 import { lessonsData } from "../data/lessonsData"; // static lesson content
 import "./style/Page.css"; // shared page styles
+import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 
 function MiniSection() {
   // read lesson and section identifiers from the URL
   const { lessonId, sectionId } = useParams();
+
+//getting user info
+  const { user } = useContext(AuthContext);
 
   // find the lesson data by id; data shape assumed from lessonsData
   const lesson = lessonsData.find((l) => l.id === lessonId);
@@ -38,8 +44,7 @@ function MiniSection() {
   // Hooks must be called before any early returns
   // currentIndex controls which sign from `section.signs` is displayed
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showDictionary, setShowDictionary] = useState(false); // ✅ toggle state
-
+ // ✅ toggle state
   // Early returns: render helpful messages if the requested data is missing
   if (!lesson) return <p>Lesson not found.</p>;
   if (!section) return <p>Section not found.</p>;
@@ -60,19 +65,34 @@ function MiniSection() {
     },
   };
 
+  // When user clicks NEXT
+const updateProgress = async (newIndex) => {
+  if (!user) return;
+
+  await axios.post("http://localhost:5000/updateProgress", {
+    email: user.email,
+    lessonId,
+    sectionId,
+    progressValue: newIndex
+  });
+};
+
   // Advance to the next sign, but don't exceed bounds
   const nextSign = () => {
-    if (currentIndex < section.signs.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
+  if (currentIndex < section.signs.length - 1  ) {
+    const newIndex = currentIndex + 1;
+    setCurrentIndex(newIndex );
+    updateProgress(newIndex + 1); 
+  }
+};
 
   // Go back to the previous sign, but don't go below zero
-  const prevSign = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
+ const prevSign = () => {
+  if (currentIndex > 0) {
+    const newIndex = currentIndex - 1;
+    setCurrentIndex(newIndex);
+  }
+};
 
   return (
     <div className="page">
@@ -104,8 +124,10 @@ function MiniSection() {
           onClick={nextSign}
           disabled={currentIndex === section.signs.length - 1}
           className="nav-button"
+          
         >
           Next ➡
+         
         </button>
       </div>
 

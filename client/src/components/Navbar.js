@@ -26,6 +26,7 @@ function Navbar() {
         <Link to="/lessons">Lessons</Link>
         <Link to="/practice">Practice</Link>
         <Link to="/quiz">Quiz</Link>
+        <Link to="/about">About</Link>
       </div>
 
       {/* Right side changes depending on login */}
