@@ -38,9 +38,9 @@ function About() {
 
         <div className="team-card">
           <img src={team3} alt="Team member 3" className="team-photo" />
-          <h3 className="team-name">Teammate 3</h3>
+          <h3 className="team-name">Thaddeus Gatlin</h3>
           <p className="team-desc">
-            ...
+            Graduating December 2025 with bachelor's degree in computer science. Contributed to the database, account page, and lessons pages.
           </p>
         </div>
 
