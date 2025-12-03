@@ -88,24 +88,27 @@ Kelly, Wendy. “Free ASL Alphabet Chart.” American Society for Deaf Children,
 
 
 
-
-
-
-
 📂 Project Structure
-/backend/           ← Backend server (Express, Mongoose)
-    /mongo.js       ← MongoDB connection and Schema
-    /server.js      ← Backend server (Express)
-    /package.json   ← Backend dependencies
-/client/            ← React frontend
-   /src/            ← React components
-        /asserts    ← Imgine and icons
-        /components ← Navbar 
-        /data       ← Lesson data
-        /pages/     ← Pages in React
-            /style  ← Pages css
-   /public          ← Static files
-   /package.json    ← Frontend dependencies
+
+    /backend/           ← Backend server (Express, Mongoose)
+        /mongo.js       ← MongoDB connection and Schema
+        /server.js      ← Backend server (Express)
+        /package.json   ← Backend dependencies
+     /client/            ← React frontend
+       /src/            ← React components
+            /asserts    ← Imgine and icons
+            /components ← Navbar & Elements 
+            /context    ← Authorized the email
+            /data       ← Lesson data
+            /pages/     ← Pages in React
+                /style  ← Pages css
+       /public          ← Static files
+           /sign        ← Photo in lesson
+       /package.json    ← Frontend dependencies
+
+
+
+
 
 
 
