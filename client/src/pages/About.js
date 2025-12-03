@@ -3,7 +3,7 @@ import "./style/About.css";
 
 import team1 from "../assets/team1.jpg";
 import team2 from "../assets/team2.jpg";
-// import team3 from "../assets/team3.jpg";
+import team3 from "../assets/team3.jpg";
 
 
 
@@ -37,7 +37,7 @@ function About() {
         </div>
 
         <div className="team-card">
-          {/* <img src={team3} alt="Team member 3" className="team-photo" /> */}
+          <img src={team3} alt="Team member 3" className="team-photo" />
           <h3 className="team-name">Teammate 3</h3>
           <p className="team-desc">
             ...
