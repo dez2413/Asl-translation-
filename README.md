@@ -5,48 +5,39 @@
 To do this project, we're going to be dividing the work into 4 sprints. In the first sprint, we're going to focus on the website for the first lesson and camera input with body detection. Then we can begin developments to input the ASL. The second sprint will be to finish the first lesson with the ABCs, that is letters without motion, then develop the motion capture of ASL to do some words with the hand fingers. Third sprint is about adding near face motion and adding a new lesson for the new words that we can do. Fourth sprint is adding any more words or lessons that we want to make and adding a feature for meeting with a professional for a one-on-one practice to practice sign language that they know when the user is more intermediate to advanced level.  
 
 
-## Sprint idea 1:  database + camera (ABCs) + setup of code 
+ 
 
-Scrum master: Tiare 
+## Sprint 1:  database + camera + frontend setup 
 
-Developer Setup/database: Thaddeus 
+Database Setup: Thaddeus & Desiree 
 
-Developer Camera: Tiare 
+Camera/Hand Detection: Tiare & Desiree 
 
-Developer Frontend Setup: Desiree 
+Frontend Setup: Desiree 
 
+## Sprint 2: Hand Detection + Frontend Lessons + Frontend Elements 
 
-## Sprint idea 2: motion + Front website/webapp + add words/lesson 
+Hand Detection: Tiare & Desiree 
 
-Scrum master: Thaddeus 
+Elements / Database / Log-In: Thaddeus & Desiree 
 
-Developer motion: Tiare 
+Frontend Lessons / Log-In: Desiree 
 
-Developer database: Thaddeus 
+## Sprint 3: Gesture Detection + Frontend Dictionary + Frontend Elements 
 
-Developer Frontend Setup: Desiree 
+Gesture Detection / Model Making: Tiare & Desiree 
 
+Dictionary / Lessons: Desiree 
 
-## Sprint Idea 3: motion (near face) + add more words/lesson + front website update 
+Elements/Lessons: Thaddeus 
 
-Scrum master: Desiree 
+## Sprint 4: Model Making + Frontend Review 
 
-Developer motion face: Tiare & Desiree 
+Reviewer/Helper: Thaddeus 
 
-Developer database: Desiree 
+Progress/Review/Helper: Desiree 
 
-Developer Frontend Setup: Thaddeus 
-
-
-## Sprint idea 4: Debug/review + front website update + One on One 
-
-Scrum master: Thaddeus 
-
-Developer debug backend: Thaddeus 
-
-Developer One on One: Desiree 
-
-Developer Frontend Setup: Tiare
+Model Maker: Tiare 
  
 
 We will accomplish this task by using our existing knowledge of programming in Python, expanding our knowledge through research as is needed, use of department resources like Machine Learning Computers, and advice from department staff. We will use prior work, including existing Python libraries, to act as a foundation to build off from. Thaddeus has some experience in programming in C++, Python, and Java, and he is currently in his last semester in his pursuit of a bachelor's degree in computer science. Tiare has experience in programming in C++, Python (including Jupyter Notebooks), and Java, and a family member with knowledge of ASL. Desiree, some of my skills that are used for the project are web development with html and JavaScript, and python skills. 
