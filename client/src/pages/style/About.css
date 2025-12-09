@@ -1,0 +1,112 @@
+.about-page {
+  padding: 40px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.about-title {
+  font-size: 48px;
+  color: #a7a7a7;
+  margin-bottom: 10px;
+}
+
+.about-subtitle {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-size: 18px;
+  color:  #ffffff;
+}
+
+/* TEAM SECTION --------------------------- */
+
+.team-section {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.team-card {
+  width: 300px;
+  background: white;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0px 4px 25px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+  transform: scale(1);
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+}
+
+.team-photo {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.team-name {
+  margin-top: 15px;
+  font-size: 24px;
+  color: #5b04b1;
+}
+
+.team-desc {
+  font-size: 16px;
+  margin-top: 10px;
+  color: #444;
+}
+
+/* FADE ANIMATIONS -------------------------------- */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeSlide 1s ease forwards;
+}
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* PROGRESS SECTION -------------------------------- */
+
+.progress-area {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.progress-title {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #c38ff7;
+}
+
+.progress-text {
+  max-width: 850px;
+  margin: 0 auto 20px;
+  color: #ffffff;
+}
+
+.progress-chart-container {
+  width: 70%;
+  margin: 40px auto;
+}
+
+.progress-list {
+  list-style: none;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.progress-list li {
+  margin: 8px 0;
+}

@@ -1,6 +1,65 @@
-.account-text{
-    color: rgb(30, 2, 46);
-    font-size:48px;
-    font-weight: 700;
-    margin-left: 60px
+.account-container {
+  width: 600px;
+  margin: 140px auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.account-container h1 {
+  text-align: center;
+  color: #30004d;
+  margin-bottom: 20px;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.account-form h2 {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #30004d;
+}
+
+.account-form input {
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.save-btn {
+  background: #5b04b1;
+  color: white;
+  padding: 18px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: #470389;
+}
+
+.delete-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 18px;
+  background: #b10404;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #8b0303;
 }

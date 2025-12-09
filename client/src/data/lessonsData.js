@@ -188,59 +188,65 @@ export const lessonsData = [
   },//end of ASL Alphabet"
 
   {
-    id: "number",
-    title: "ASL Number",
-    description: "Learn how to sign the number in American Sign Language.",
-    sections: [
-       //1-9 and sign and diagram
-      {
-        id: "1-9",
-        title: "Numbers 1–9",
-        video: "/videos/numbers_1-9.mp4",
+  id: "number",
+  title: "ASL Number",
+  description: "Learn how to sign the number in American Sign Language.",
+  sections: [
+  {
+        id: "0-9",
+        title: "Numbers 0–9",
+        videoId: "Y4stD_ypaAI", // from https://www.youtube.com/watch?v=DBQINq0SsAw
+        start: 83,
+        end: 168,
         signs: [
           {
+            number: "0",
+            image: "/sign/numbers/0.png",
+            text: "Curl figners into a 0 shape.",
+          },
+          {
             number: "1",
-            image: "/images/numbers/1.png",
+            image: "/sign/numbers/1.png",
             text: "Hold up one finger.",
           },
           {
             number: "2",
-            image: "/images/numbers/2.png",
+            image: "/sign/numbers/2.png",
             text: "Hold up two fingers.",
           },
           {
             number: "3",
-            image: "/images/numbers/3.png",
+            image: "/sign/numbers/3.png",
             text: "Hold up three fingers.",
           },
           {
             number: "4",
-            image: "/images/numbers/4.png",
+            image: "/sign/numbers/4.png",
             text: "Hold up four fingers.",
           },
           {
             number: "5",
-            image: "/images/numbers/5.png",
+            image: "/sign/numbers/5.png",
             text: "Hold up five fingers.",
           },
           {
             number: "6",
-            image: "/images/numbers/6.png",
+            image: "/sign/numbers/6.png",
             text: "Hold up six fingers.",
           },
           {
             number: "7",
-            image: "/images/numbers/7.png",
+            image: "/sign/numbers/7.png",
             text: "Hold up seven fingers.",
           },
           {
             number: "8",
-            image: "/images/numbers/8.png",
+            image: "/sign/numbers/8.png",
             text: "Hold up eight fingers.",
           },
           {
             number: "9",
-            image: "/images/numbers/9.png",
+            image: "/sign/numbers/9.png",
             text: "Hold up nine fingers.",
           },
         ],//end of signs array
@@ -250,10 +256,65 @@ export const lessonsData = [
     ],//end of ASL Number Section
   },//end of ASL Number"
   {
-    id: "Gestures",
+id: "Gestures",
     title: "ASL Gestures",
     description: "Learn common gestures used in American Sign Language.",
-    sections: [],
+    sections: [
+        {
+          id:"basic signs",
+          title:"Basic Signs",
+          videoId: "0FcwzMq4iWg",
+          start: 77,
+          end:168,
+          signs: [
+              {
+                gesture: "Hello",
+                image: "/sign/gesture/hello.png",
+                text: "Raise your hand to your head and move it forward. Almost like a slute.",
+              },
+              {
+                gesture: "See you later",
+                image:"/sign/gesture/seeYouLater.png",
+                text: "Hold you pointer finger and middle finger in a V shape and move them away from your eye. Then point down with your pointer finger.",
+              },
+              {
+                gesture: "I/Me",
+                image: "/sign/gesture/me.png",
+                text: "Point to yourself with your pointer finger.",
+              },
+              {
+                gesture: "Father",
+                image: "/sign/gesture/father.png",
+                text: "With your fingers extended, touch your forehead with your thumb",
+              },
+              {
+                gesture: "Mother",
+                image: "/sign/gesture/mother.png",
+                text: "With your fingers extended, touch your chin with your thumb. Similar to father.",
+              },
+              {
+                gesture: "Yes",
+                image: "/sign/gesture/yes.png",
+                text: "Make a fist and move it in a nodding motion.",
+              },
+              {
+                gesture: "No",
+                image: "/sign/gesture/no.png",
+                text: "Touch the tips of your pointer and middle finger to your thumb.",
+              },
+              {
+                gesture: "Help",
+                image: "/sign/gesture/help.png",
+                text: "Extend your thumb with your main hand and rest it on the palm of your other hand.",
+              },
+              {
+                gesture: "Please",
+                image: "/sign/gesture/please.png",
+                text: "Move your hand in a circular motion on your chest with an open palm.",
+              },
+          ],
+        }
+      ]
   },
   {
     id: "basic-phrases",

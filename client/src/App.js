@@ -13,6 +13,7 @@ import Quiz from "./pages/Quiz";
 import Login from "./pages/Login";
 import Sign from "./pages/Sign";
 import Account from "./pages/Account"
+import About from "./pages/About";
 
 // Importing additional components for nested routes
 import MiniSection from "./pages/MiniSection";
@@ -53,14 +54,12 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign" element={<Sign />} />
-          <Route
-            path="/account"
-            element={
-              <ProtectedRoute>
-                <Account />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/about" element={<About />} />
+          <Route path="/account" element={
+            <ProtectedRoute>
+              <Account />
+            </ProtectedRoute>
+          }/>
           <Route path="/lessons/:lessonId/:sectionId" element={<MiniSection />} />
           <Route path="/lessons/:lessonId/dictionary" element={<DictionaryModal />} />
         </Routes>
