@@ -8,8 +8,8 @@ import {
 
 import MyButtonList from "../components/ButtonList";
 
-import hand_landmarker_task from "./hand_landmarker.task";
-import recognizerTask from "./handgesture_recognizer.task";
+import hand_landmarker_task from "./taskModels/hand_landmarker.task";
+import recognizerTask from "./taskModels/handgesture_recognizer.task";
 import "./style/Page.css";
 
 
@@ -91,7 +91,7 @@ function Practice() {
     console.log(gestureList[5]);
     
     let targetIndex = 0;
-    let categoryNames = ["None", "Closed_Fist", "Open_Palm", "Pointing_Up", "Thumb_Down", "Thumb_Up", "Victory", "ILoveYou"];
+    let categoryNames = ["Random", "Closed_Fist", "Open_Palm", "Pointing_Up", "Thumb_Down", "Thumb_Up", "Victory", "ILoveYou"];
     let categoryHistory = [1, 0, 0, 0, 0, 0, 0, 0];
 
   useEffect(() => {

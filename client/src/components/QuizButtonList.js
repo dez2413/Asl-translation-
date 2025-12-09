@@ -1,22 +1,31 @@
+// Given a list:
+// Creates and styles the buttons that change the gesture target
+// Remember to import functions that will activate on click
+
 import React from 'react';
 import {targetGesture, setTargetGesture} from "../pages/Quiz";
 
-//https://www.w3schools.com/css/css3_buttons.asp
-
 function MyButtonList(labels) {
 
-    
-    // if labels[0] is none
-    labels[0] = "Random";
     const buttonLabels = labels;
+
+    // button style
+
+    const buttonStyle = {
+        color: "#7a30c4ff",
+        border: "2px solid #d6ced8ff",
+        borderRadius: "6px"
+    };
+
+    // button click
 
     const handleButtonClick = (label) => {
 
+        // If random set random target gesture from list
+        // else set target gesture normally
+
         if(label === "Random"){
-            
-            // get random number for random gesture
             const randomInt = Math.floor(Math.random() * (labels.length - 1) + 1);
-            //console.log("randomInt:"+randomInt);
             setTargetGesture(buttonLabels[randomInt]);
         } else {
             setTargetGesture(label);
@@ -27,7 +36,9 @@ function MyButtonList(labels) {
     return (
         <div>
             {buttonLabels.map((label, index) => (
-            <button key={index} onClick={() => handleButtonClick(label)}>
+            <button 
+            style={buttonStyle} 
+            key={index} onClick={() => handleButtonClick(label)}>
             {label}
             </button>
         ))}
