@@ -15,7 +15,7 @@ function About() {
     datasets: [
       {
         label: "Sprint Completion",
-        data: [100, 100, 100, 90],   // You can change this anytime
+        data: [100, 100, 90, 90],   // You can change this anytime
         backgroundColor: [
           "rgba(91, 4, 177, 0.7)",
           "rgba(140, 50, 220, 0.7)",

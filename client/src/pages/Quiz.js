@@ -15,7 +15,7 @@ import {
 // buttons and style import
 
 import MyButtonList from "../components/QuizButtonList";
-import ModelButtonList from "../components/ModelButtonList";
+import ModelButtonList from "../components/QuizModelButtonList";
 import "./style/Page.css";
 
 // tasks-vision models
@@ -56,7 +56,7 @@ export function setModelIndex(index){
 
 let handModels = [AFmodel, GLmodel, MSmodel, TZmodel, NumModel];
 
-// MAIN QUIZ FUNCTION
+// MAIN Quiz FUNCTION
 
 function Quiz() {
   
@@ -465,7 +465,7 @@ function Quiz() {
 
   return (
     <div className="page p-6 text-center">
-      <h1 className="text-3xl font-bold mb-4">Quiz</h1>
+      <h1 className="text-3xl font-bold mb-4">Practice</h1>
       <p className="mb-6">Show off you knowledge!</p>
 
       <div className="flex flex-col md:flex-row justify-center items-center gap-6">
@@ -481,7 +481,6 @@ function Quiz() {
           <br /> 
           <p>{ModelButtonList(modelList)} 
             <br /> {MyButtonList(targetNames)}
-            <br /> {MyButtonList(numNames)}
           </p>
           
           <div style={{ position: "relative"}}>
