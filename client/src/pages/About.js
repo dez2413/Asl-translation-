@@ -7,24 +7,6 @@ import team3 from "../assets/team3.jpg";
 import sprintOverview from "../assets/Gantt.png";
 
 function About() {
-  // Progress data for the TEAM (from your wiki)
-  const progressData = {
-    labels: ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4"],
-    datasets: [
-      {
-        label: "Sprint Completion",
-        data: [100, 100, 100, 90],   // You can change this anytime
-        backgroundColor: [
-          "rgba(91, 4, 177, 0.7)",
-          "rgba(140, 50, 220, 0.7)",
-          "rgba(190, 90, 255, 0.7)",
-          "rgba(230, 150, 255, 0.7)",
-        ],
-        borderRadius: 10,
-      },
-    ],
-  };
-
   return (
     <div className="about-page">
 
