@@ -1,12 +1,15 @@
+/* ================================
+   BASE PAGE
+================================ */
 .about-page {
   padding: 40px;
-  text-align: center;
   color: #ffffff;
+  text-align: center;
 }
 
 .about-title {
   font-size: 48px;
-  color: #a7a7a7;
+  color: #d9c8ff;
   margin-bottom: 10px;
 }
 
@@ -14,17 +17,18 @@
   max-width: 800px;
   margin: 0 auto 40px;
   font-size: 18px;
-  color:  #ffffff;
+  color: #f8f8f8;
 }
 
-/* TEAM SECTION --------------------------- */
-
+/* ================================
+   TEAM SECTION
+================================ */
 .team-section {
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin-bottom: 60px;
   flex-wrap: wrap;
+  margin-bottom: 60px;
 }
 
 .team-card {
@@ -34,7 +38,6 @@
   border-radius: 18px;
   box-shadow: 0px 4px 25px rgba(0,0,0,0.1);
   transition: 0.3s ease;
-  transform: scale(1);
 }
 
 .team-card:hover {
@@ -44,8 +47,8 @@
 .team-photo {
   width: 100%;
   height: 260px;
-  object-fit: cover;
   border-radius: 14px;
+  object-fit: cover;
 }
 
 .team-name {
@@ -55,58 +58,116 @@
 }
 
 .team-desc {
-  font-size: 16px;
-  margin-top: 10px;
   color: #444;
+  margin-top: 8px;
+  font-size: 16px;
 }
 
-/* FADE ANIMATIONS -------------------------------- */
-
-.fade-in {
+/* ================================
+   SECTION BLOCKS
+================================ */
+.section-block {
+  background: #f4edff;
+  padding: 30px;
+  border-radius: 14px;
+  margin: 30px auto;
+  max-width: 900px;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.08);
+  text-align: left;
+  animation: fadeUp 0.7s ease forwards;
   opacity: 0;
-  transform: translateY(40px);
-  animation: fadeSlide 1s ease forwards;
+  transform: translateY(30px);
 }
-.delay-1 { animation-delay: 0.3s; }
-.delay-2 { animation-delay: 0.6s; }
 
-@keyframes fadeSlide {
+.section-title {
+  color: #4a1e7a;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.section-text {
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Remove the bullet points */
+.section-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.section-list li {
+  padding-left: 12px;
+  margin-bottom: 6px;
+  color: #333;
+  position: relative;
+}
+
+/* Add a custom purple bar instead of a bullet */
+.section-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  background: #7c3aed;
+  border-radius: 3px;
+}
+
+/* ================================
+   SPRINT SECTION LAYOUT
+================================ */
+.sprint-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.sprint-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.sprint-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.sprint-image {
+  width: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.15);
+}
+
+.sprint-subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #6b29b5;
+  margin-top: 20px;
+}
+
+/* ================================
+   ANIMATIONS
+================================ */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* PROGRESS SECTION -------------------------------- */
-
-.progress-area {
-  margin-top: 60px;
-  text-align: center;
-}
-
-.progress-title {
-  font-size: 36px;
-  margin-bottom: 10px;
-  color: #c38ff7;
-}
-
-.progress-text {
-  max-width: 850px;
-  margin: 0 auto 20px;
-  color: #ffffff;
-}
-
-.progress-chart-container {
-  width: 70%;
-  margin: 40px auto;
-}
-
-.progress-list {
-  list-style: none;
-  margin-top: 20px;
-  font-size: 18px;
-}
-
-.progress-list li {
-  margin: 8px 0;
-}
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 0.9s; }
