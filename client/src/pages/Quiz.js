@@ -319,7 +319,7 @@ function Quiz() {
 
         // if confidence is too low, hand gesture is none
 
-        if(firstCategoryScore < 90.00){
+        if(firstCategoryScore < 50.00){
           firstCategoryName = "None";
         }
 
