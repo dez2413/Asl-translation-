@@ -317,13 +317,19 @@ function Practice() {
 
         //console.log("ExpTarget" + targetGesture);
 
+        // if confidence is too low, hand gesture is none
+
+        if(firstCategoryScore < 90.00){
+          firstCategoryName = "None";
+        }
+
         // target gesture system output in test canvas
 
         canvasResCtx.fillText("Target:"+ targetGesture, canvas.width / 4, 4*canvas.height / 8);
 
         // target and useState variables update & output in test canvas
 
-        if(firstCategoryName === "None"){
+        if(firstCategoryName === "None" || firstCategoryName === "none"){
           
           canvasResCtx.fillText(firstCategoryName, canvas.width / 4, 6*canvas.height / 8);
           
@@ -345,9 +351,15 @@ function Practice() {
           
           canvasResCtx.fillText("Try Again!" + firstCategoryName, canvas.width / 4, 6*canvas.height / 8);
           
-          setIsCorrect("Incorrect! Try Again");
-          setCurrentGesture(firstCategoryName);
-          setCurrentString(tempString);
+          if(targetGesture === "Choose!"){
+            setIsCorrect("");
+            setCurrentGesture(firstCategoryName);
+            setCurrentString(tempString);
+          }else{
+            setIsCorrect("Incorrect! Try Again");
+            setCurrentGesture(firstCategoryName);
+            setCurrentString(tempString);
+          }
 
         }
 
