@@ -25,7 +25,7 @@ function Navbar() {
       <div className="navbar-center">
         <Link to="/lessons">Lessons</Link>
         <Link to="/practice">Practice</Link>
-        <Link to="/quiz">Quiz</Link>
+        <Link style={{display: "none"}} to="/quiz">Quiz</Link>
         <Link to="/about">About</Link>
       </div>
 
