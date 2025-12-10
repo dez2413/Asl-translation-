@@ -7,70 +7,8 @@ To do this project, we're going to be dividing the work into 4 sprints. In the f
 
  
 
-## Sprint 1:  database + camera + frontend setup 
 
-Database Setup: Thaddeus & Desiree 
-
-Camera/Hand Detection: Tiare & Desiree 
-
-Frontend Setup: Desiree 
-
-## Sprint 2: Hand Detection + Frontend Lessons + Frontend Elements 
-
-Hand Detection: Tiare & Desiree 
-
-Elements / Database / Log-In: Thaddeus & Desiree 
-
-Frontend Lessons / Log-In: Desiree 
-
-## Sprint 3: Gesture Detection + Frontend Dictionary + Frontend Elements 
-
-Gesture Detection / Model Making: Tiare & Desiree 
-
-Dictionary / Lessons: Desiree 
-
-Elements/Lessons: Thaddeus 
-
-## Sprint 4: Model Making + Frontend Review 
-
-Reviewer/Helper: Thaddeus 
-
-Progress/Review/Helper: Desiree 
-
-Model Maker: Tiare 
  
-
-We will accomplish this task by using our existing knowledge of programming in Python, expanding our knowledge through research as is needed, use of department resources like Machine Learning Computers, and advice from department staff. We will use prior work, including existing Python libraries, to act as a foundation to build off from. Thaddeus has some experience in programming in C++, Python, and Java, and he is currently in his last semester in his pursuit of a bachelor's degree in computer science. Tiare has experience in programming in C++, Python (including Jupyter Notebooks), and Java, and a family member with knowledge of ASL. Desiree, some of my skills that are used for the project are web development with html and JavaScript, and python skills. 
-
-It is likely that work will be split based on components, but because of the interactions between components and uncertainty of unknown challenges, all the team might end up working in one component at once while specific tasks of the component are split. 
-
-Major milestones could include interface completion, ABCs motion capture completion, non-static motion capture completion, near face motion capture completion, ASL dictionary database completion, ASL lesson database completion, and professional one-on-one completion. 
-
-Initial Work that will enable us to work quickly will be choosing a concrete interface design, making a detailed workflow, organizing our toolkits, designing the backend, designing the database, and choosing the ASL signs for the lessons. 
-
-## Gantt Chart 
-<img width="1024" height="768" alt="Soft Pink Beige Minimalist Website Development Process Gantt Graph  (1)" src="https://github.com/user-attachments/assets/5ec5b008-4c97-484e-94fa-68166b009062" />
-
-
-## Reference 
-
-Moryossef, A. (n.d.). sign.Translate. Sign translate. https://sign.mt/?lang=en. https://github.com/sign/translate  
-
-Mudassar, I. (2024, September 23). Sign-Language-Translator. GitHub. https://github.com/sign-language-translator/sign-language-translator 
-
-Ross E. Mitchell, Travas A. Young, Bellamie Bachleda, and Michael A. Karchmer (2006). How Many People Use ASL in the United States? Why Estimates Need Updating, Sign Language Studies, Volume 6, Number 3, 2006 
-
-Sign-Speak (Ed.). (2025). Ai sign language translation and interpretation: Sign-speak. Sign. https://sign-speak.com/. https://github.com/Sign-Speak-Development/sign-speak-react-sdk  
-
-Akash. “Asl Alphabet.” Kaggle, 22 Apr. 2018, [www.kaggle.com/datasets/grassknoted/asl-alphabet/data](https://www.kaggle.com/datasets/grassknoted/asl-alphabet/data).
-
-https://www.instructables.com/How-to-Train-Custom-Hand-Gestures-Using-Mediapipe/ 
-
-
-Diagrams for Alphabet
-Kelly, Wendy. “Free ASL Alphabet Chart.” American Society for Deaf Children, 23 Nov. 2020, deafchildren.org/2019/06/free-asl-alphabet-chart/. 
-
-
 
 
 
