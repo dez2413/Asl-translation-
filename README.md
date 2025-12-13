@@ -73,6 +73,13 @@ This list contains the pip list of packages used during model making of gesture 
 
 Make sure to have an internet connection, there are imports done through cdn.jsdelivr.net/npm for mediapipe files like WASM.
 
+For test builds in Firefox/Mozilla:
+
+In "about:config" page, set to "true":
+  
+  media.devices.insecure.enabled
+  media.getusermedia.insecure.enabled
+
 ## Node.js
     cd backend
     npm install

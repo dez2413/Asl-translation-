@@ -27,18 +27,6 @@ import TZmodel from "./taskModels/TZ.task";
 import NumModel from "./taskModels/0-10.task";
 import hand_landmarker_task from "./taskModels/hand_landmarker.task";
 
-
-// TEST BUILD BROWSER CONFIG
-
-/*For test builds in firefox/mozilla:
-
-In "about:config" page, set to "true":
-  
-  media.devices.insecure.enabled
-  media.getusermedia.insecure.enabled
-*/
-
-
 // EXPORTS for button functions
 
 export let targetGesture = ""; 
