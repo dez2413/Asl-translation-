@@ -48,6 +48,23 @@ function About() {
         </div>
       </div>
 
+      {/* --- Project Problem --- */}
+      <div className="section-block fade-in">
+        <h2 className="section-title">Project Problem</h2>
+        <p className="section-text">
+          There are many languages used in the United States and one of 
+          them is American Sign Language (ASL). Providing resources to 
+          help people learn and understand ASL would benefit the public 
+          and businesses alike but can be difficult as it is not a spoken 
+          language and uses not just hands but also arm and other body 
+          movement to communicate. One development in improving communication 
+          is the use of programs that allow cameras to identify ASL gestures 
+          which can allow for translation or improved teaching. Our goal is to 
+          use this technology to create a program to help build on this core 
+          idea of learning and understanding ASL. 
+        </p>
+      </div>
+
       {/* --- USER STUDY SECTION --- */}
       <div className="section-block fade-in">
         <h2 className="section-title">User Study</h2>
@@ -64,6 +81,33 @@ function About() {
         </p>
       </div>
 
+      {/* --- Project Problem & Broad Impact & Innovation --- */}
+      <div className="section-block fade-in">
+        <h2 className="section-title">Broad Impact</h2>
+        <p className="section-text">
+          The benefit of the project is the spread of ASL communication, interactive 
+          learning, and support of communication with family, friends, and 
+          business. With ASL, it is a community and a culture that is hard to 
+          connect with, a language that isn’t taught at school. This project wants 
+          to close the communication gap between hearing and deaf communities 
+          by increasing accessibility, reducing barriers to employment and education, 
+          and encouraging cultural understanding.
+        </p>
+        <h2 className="section-title">Innovation</h2>
+        <p className="section-text">
+          We wanted to experiment with live hand detection but still make 
+          something useful for others, and the most relevant subject we had 
+          some knowledge of was ASL. The method is innovative because it can 
+          do live detection and uses open-source packages, allowing the page 
+          to server as an example for how to make a similar sign-learning page 
+          for free. This along with examples of signs in text, video, and images 
+          give plenty of resources for how to learn the ASL alphabet signs. The 
+          method used allows for a variety of signs given a different model, and 
+          if the user is a programmer, they may be able to modify the code to 
+          add their own custom gesture recognition model. 
+        </p>
+      </div>
+
       {/* --- FUNCTION SECTION --- */}
       <div className="section-block fade-in delay-1">
         <h2 className="section-title">System Functions</h2>
@@ -71,7 +115,9 @@ function About() {
           <p>Camera recognition of ASL gestures using Mediapipe. Lessons
             with interactive activities. Database-stored progress tracking  
             per individual user. Dictionary of ASL words with examples and easy access. Future one-on-one
-            instructor practice sessions.</p>
+            instructor practice sessions.
+          </p>
+          <a href="https://github.com/dez2413/Asl-translation-">GitHub Project Page</a>
         </ul>
       </div>
 
@@ -91,6 +137,21 @@ function About() {
             the other object detection API in its suite.
             </p>
         </ul>
+      </div>
+
+      {/* --- Lessons Learned --- */}
+      <div className="section-block fade-in">
+        <h2 className="section-title">Lessons Learned</h2>
+        <p className="section-text">
+          Previous knowledge and experimentation are essential when 
+          making a project with no background level of what is needed 
+          for it. Set-up for the main functions of the project took 
+          longer than expected and while the final product is functional, 
+          it was barely the beginning of what we wanted to focus on doing. 
+          If it had to be done again, I would recommend to get a solid 
+          background of current up to date tools for hand detection and 
+          the types of site-making languages compatible with those tools.
+        </p>
       </div>
 
       {/* --- SPRINT SECTION --- */}
@@ -314,6 +375,25 @@ function About() {
           Two models are produced, but the default model is in the "exported_model" folder.
           </p>
         </ul>
+      </div>
+
+      {/* --- Future Work --- */}
+      <div className="section-block fade-in">
+        <h2 className="section-title">Future Work</h2>
+        <p className="section-text">
+          Future work would be adding a feature for meeting with a 
+          professional for a one-on-one practice to practice sign 
+          language that they know when the user is more intermediate 
+          to advanced level. Adding a system to detect more complex 
+          signs, add more security to login details, add a quiz page, 
+          and decrease delay between live feed and gesture detection.
+          I would involve more trial and error with mediapipe's 
+          tasks-vision packages that can do fase and pose detection.
+          <br /><br />
+          Currently the project is a locally hosted page, but it would 
+          be more accessible if it were hosted elsewhere so it could
+          run at any time. 
+        </p>
       </div>
 
     </div>

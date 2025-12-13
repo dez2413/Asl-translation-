@@ -27,18 +27,6 @@ import TZmodel from "./taskModels/TZ.task";
 import NumModel from "./taskModels/0-10.task";
 import hand_landmarker_task from "./taskModels/hand_landmarker.task";
 
-
-// TEST BUILD BROWSER CONFIG
-
-/*For test builds in firefox/mozilla:
-
-In "about:config" page, set to "true":
-  
-  media.devices.insecure.enabled
-  media.getusermedia.insecure.enabled
-*/
-
-
 // EXPORTS for button functions
 
 export let targetGesture = ""; 
@@ -478,7 +466,7 @@ function Practice() {
   return (
     <div className="page p-6 text-center">
       <h1 className="text-3xl font-bold mb-4">Practice</h1>
-      <p className="mb-6">Show off you knowledge!</p>
+      <p className="mb-6">Show off you knowledge! Remember to change the model to match the letter you're making!</p>
 
       <div className="flex flex-col md:flex-row justify-center items-center gap-6">
 
