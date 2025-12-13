@@ -2,7 +2,9 @@
 # Asl-translation-
 # Welcome to the Asl-translation- wiki!
 
-To do this project, we're going to be dividing the work into 4 sprints. In the first sprint, we're going to focus on the website for the first lesson and camera input with body detection. Then we can begin developments to input the ASL. The second sprint will be to finish the first lesson with the ABCs, that is letters without motion, then develop the motion capture of ASL to do some words with the hand fingers. Third sprint is about adding near face motion and adding a new lesson for the new words that we can do. Fourth sprint is adding any more words or lessons that we want to make and adding a feature for meeting with a professional for a one-on-one practice to practice sign language that they know when the user is more intermediate to advanced level.  
+To do this project, we're going to be dividing the work into 4 sprints. In the first sprint, we're going to focus on the website and database set-up, and adding live camera input with hand detection. The second sprint will be to design a log-in, dictionary, and add more lessons and the elements(video, text, and images) to be used in them, along with implementing gesture detection. Third sprint is about reviewing the user interface design, making custom models for hand gestures, and adding more content to the lessons. Fourth sprint is finishing the models for the gesture detection, debugging, and adding a progress tracker for the lessons.
+
+Future work would be adding a feature for meeting with a professional for a one-on-one practice to practice sign language that they know when the user is more intermediate to advanced level. Adding a system to detect more complex signs, add more security to login details, add a quiz page, and decrease delay between live feed and gesture detection. 
 
 # Demonstration
 ![Sign Up](https://raw.githubusercontent.com/dez2413/Asl-translation-/Tiare-nmsu/client/src/assets/SignUp.gif)
@@ -57,10 +59,15 @@ To do this project, we're going to be dividing the work into 4 sprints. In the f
 
 
 
+[Project NPM List](client/public/npmList.txt)
+This list contains the npm packages used during development of project.
 
-
+[Model Making PIP List](client/public/PipInstallationModelMaker.txt)
+This list contains the pip list of packages used during model making of gesture detection models.
 
 # How to set up
+
+Make sure to have an internet connection, there are imports done thorugh cdn.jsdelivr.net/npm for mediapipe files like WASM.
 
 ## Node.js
     cd backend
