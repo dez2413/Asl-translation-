@@ -65,9 +65,13 @@ This list contains the npm packages used during development of project.
 [Model Making PIP List](client/public/PipInstallationModelMaker.txt)
 This list contains the pip list of packages used during model making of gesture detection models.
 
+[Google's Mediapipe/tasks-vision package API Reference](https://ai.google.dev/edge/api/mediapipe/js/tasks-vision)
+
+[Google's Mediapipe Solutions guide](https://ai.google.dev/edge/mediapipe/solutions/guide)
+
 # How to set up
 
-Make sure to have an internet connection, there are imports done thorugh cdn.jsdelivr.net/npm for mediapipe files like WASM.
+Make sure to have an internet connection, there are imports done through cdn.jsdelivr.net/npm for mediapipe files like WASM.
 
 ## Node.js
     cd backend

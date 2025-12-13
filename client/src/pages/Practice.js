@@ -478,7 +478,7 @@ function Practice() {
   return (
     <div className="page p-6 text-center">
       <h1 className="text-3xl font-bold mb-4">Practice</h1>
-      <p className="mb-6">Show off you knowledge!</p>
+      <p className="mb-6">Show off you knowledge! Remember to change the model to match the letter you're making!</p>
 
       <div className="flex flex-col md:flex-row justify-center items-center gap-6">
 

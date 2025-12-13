@@ -141,7 +141,7 @@ function About() {
 
       {/* --- Lessons Learned --- */}
       <div className="section-block fade-in">
-        <h2 className="section-title">User Study</h2>
+        <h2 className="section-title">Lessons Learned</h2>
         <p className="section-text">
           Previous knowledge and experimentation are essential when 
           making a project with no background level of what is needed 
