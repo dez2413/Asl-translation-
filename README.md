@@ -78,6 +78,7 @@ For test builds in Firefox/Mozilla:
 In "about:config" page, set to "true":
   
   media.devices.insecure.enabled
+  
   media.getusermedia.insecure.enabled
 
 ## Node.js
